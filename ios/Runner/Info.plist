@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+<key>NSCalendarsUsageDescription</key>
+    <string>HRMS would like to access your calender</string>
+    <key>NSContactsUsageDescription</key>
+    <string>HRMS would like to access your contacts</string>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>We need continuous Bluetooth access to connect and interact with nearby devices for seamless data sharing and communication.</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>We use speech recognition to transcribe your spoken input into text for seamless communication.</string>
+	<key>NSMotionUsageDescription</key>
+	<string>We require access to motion and fitness data to accurately track your physical activity and provide health insights.</string>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>We need access to your Apple Music library to provide personalized music recommendations.</string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>We require Bluetooth access to connect and interact with nearby devices for sharing data.</string>
+	<key>Privacy - Contacts Usage Description
+
+</key>
+	<string>We need access to your contacts to help you easily share information with your friends.</string>
+	<key>Privacy - Calendars Usage Description
+
+</key>
+	<string>We need access to your calendar to schedule and manage events within the app.</string>
+	<key>BGTaskSchedulerPermittedIdentifiers</key>
+	<array>
+		<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	</array>
+	<key>CADisableMinimumFrameDurationOnPhone</key>
+	<true/>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>LEAP HRMS</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>$(MARKETING_VERSION)</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleVersion</key>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>FirebaseAppDelegateProxyEnabled</key>
+	<false/>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>itms-beta</string>
+		<string>itms</string>
+	</array>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+		<key>NSAllowsArbitraryLoadsInWebContent</key>
+		<true/>
+	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>For attendance with selfie, Please allow camera access</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Allow permission to locate user current location for attendance tracking
+
+
+
+
+
+</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Allow permission to locate user current location for attendance tracking
+
+
+
+
+
+</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Allow permission to locate user current location for attendance tracking
+
+
+
+
+
+</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>For attendance with selfie, Please allow camera access</string>
+	<key>UIApplicationSupportsIndirectInputEvents</key>
+	<true/>
+	<!-- <key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+		<string>location</string>
+		<string>remote-notification</string>
+	</array> -->
+	<key>UILaunchStoryboardName</key>
+	<string>LaunchScreen</string>
+	<key>UIMainStoryboardFile</key>
+	<string>Main</string>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+	</array>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
+</dict>
+</plist>

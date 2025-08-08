@@ -1,0 +1,18 @@
+File name  :   aipex-hrms.jks
+Location   :   /home/evonixandroid/work/android/evonixproject/hrms/aipex-hrms.jks
+Password   :   A!pex$hrms#
+Key =====================================
+Alias      :   aipex-hrms
+Password   :   A!pex$hrms#
+Validity   :   25 year
+
+Certificate==================
+Name       :  Network Admin
+Orga. Unit :  Evonix Technologies Pune
+Orga.      :  Evonix Technologies Pvt
+City       :  Pune
+State      :  India
+CountryCode:  +91
+
+
+
