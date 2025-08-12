@@ -857,58 +857,62 @@ class AttendanceRequestState extends State<AttendanceRequest> {
       );
     }
 
-    return Scaffold(
-      body: GestureDetector(
-        child: Stack(
-          children: <Widget>[
-            CustomHeaderWithBack(
-                scaffoldKey: widget.scaffoldKey, title: widget.title),
-            Container(
-                margin: EdgeInsets.only(top: 90.0),
-                child: ListView(
-                  children: <Widget>[
-                    Card(
-                      margin: EdgeInsets.only(
-                          left: ScreenUtil().setSp(10),
-                          right: ScreenUtil().setSp(10),
-                          bottom: ScreenUtil().setSp(30)),
-                      elevation: 5,
-                      child: Form(
-                        key: _formKey,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            headingText('Work Type : '),
-                            workFrom,
-                            headingText('Date : '),
-                            attendanceDate,
-                            headingText('In Time : '),
-                            inTime,
-                            headingText('Out Time : '),
-                            outTime,
-                            headingText('Reason'),
-                            reason,
-                            driverOptions(),
-                            SizedBox(
-                              height: ScreenUtil().setSp(10),
-                            ),
-                            submitButton,
-                            SizedBox(
-                              height: ScreenUtil().setSp(20),
-                            )
-                          ],
+    return SafeArea(
+       top: false,
+        bottom: true,
+      child: Scaffold(
+        body: GestureDetector(
+          child: Stack(
+            children: <Widget>[
+              CustomHeaderWithBack(
+                  scaffoldKey: widget.scaffoldKey, title: widget.title),
+              Container(
+                  margin: EdgeInsets.only(top: 90.0),
+                  child: ListView(
+                    children: <Widget>[
+                      Card(
+                        margin: EdgeInsets.only(
+                            left: ScreenUtil().setSp(10),
+                            right: ScreenUtil().setSp(10),
+                            bottom: ScreenUtil().setSp(30)),
+                        elevation: 5,
+                        child: Form(
+                          key: _formKey,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              headingText('Work Type : '),
+                              workFrom,
+                              headingText('Date : '),
+                              attendanceDate,
+                              headingText('In Time : '),
+                              inTime,
+                              headingText('Out Time : '),
+                              outTime,
+                              headingText('Reason'),
+                              reason,
+                              driverOptions(),
+                              SizedBox(
+                                height: ScreenUtil().setSp(10),
+                              ),
+                              submitButton,
+                              SizedBox(
+                                height: ScreenUtil().setSp(20),
+                              )
+                            ],
+                          ),
                         ),
-                      ),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0)),
-                    )
-                  ],
-                ))
-          ],
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0)),
+                      )
+                    ],
+                  ))
+            ],
+          ),
+          onTap: () {
+            FocusScope.of(context).requestFocus(new FocusNode());
+          },
         ),
-        onTap: () {
-          FocusScope.of(context).requestFocus(new FocusNode());
-        },
       ),
     );
   }

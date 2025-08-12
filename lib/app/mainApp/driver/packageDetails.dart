@@ -891,141 +891,145 @@ class _PackageDetailsState extends State<PackageDetails> {
       ],
     );
 
-    return Scaffold(
-        body: GestureDetector(
-      child: Container(
-          color: appBackgroundDashboard,
-          child: Stack(children: <Widget>[
-            CustomHeaderWithBackGreen(
-                scaffoldKey: widget.scaffoldKey, title: widget.title),
-            Container(
-              padding: EdgeInsets.only(left: 8, right: 8),
-              margin: EdgeInsets.only(top: 90),
-              child: ListView(
-                children: <Widget>[
-                  new Card(
-                    elevation: 2,
-                    child: Padding(
-                      padding: EdgeInsets.fromLTRB(7, 7, 7, 7),
-                      child: Text(
-                        widget.date,
-                        style: TextStyle(
-                            color: Color.fromRGBO(255, 81, 54, 1),
-                            fontSize: 20.0),
-                        textAlign: TextAlign.center,
+    return SafeArea(
+       top: false,
+        bottom: true,
+      child: Scaffold(
+          body: GestureDetector(
+        child: Container(
+            color: appBackgroundDashboard,
+            child: Stack(children: <Widget>[
+              CustomHeaderWithBackGreen(
+                  scaffoldKey: widget.scaffoldKey, title: widget.title),
+              Container(
+                padding: EdgeInsets.only(left: 8, right: 8),
+                margin: EdgeInsets.only(top: 90),
+                child: ListView(
+                  children: <Widget>[
+                    new Card(
+                      elevation: 2,
+                      child: Padding(
+                        padding: EdgeInsets.fromLTRB(7, 7, 7, 7),
+                        child: Text(
+                          widget.date,
+                          style: TextStyle(
+                              color: Color.fromRGBO(255, 81, 54, 1),
+                              fontSize: 20.0),
+                          textAlign: TextAlign.center,
+                        ),
                       ),
                     ),
-                  ),
-                  isEdit()
-                      ? Card(
-                          margin: EdgeInsets.only(
-                              top: ScreenUtil().setSp(10),
-                              left: ScreenUtil().setSp(8),
-                              right: ScreenUtil().setSp(8),
-                              bottom: ScreenUtil().setSp(30)),
-                          elevation: 5,
-                          child: Form(
-                            key: _formKey,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                headingText('Total Packages Received : '),
-                                receivedText,
-                                headingText('Total Packages Delivered : '),
-                                deliveredText,
-                                headingText('Packages Remaining : '),
-                                remaining,
-                                headingText('Wrong Customer Details : '),
-                                wrongText,
-                                headingText('Customer Not Available : '),
-                                customerNotAvailableText,
-                                headingText('Rescheduled : '),
-                                rescheduledText,
-                                headingText('Cancelled : '),
-                                cancelledText,
-                                headingText('Not Attempted : '),
-                                notAttemptedText,
-                                headingText('Comment : '),
-                                commentText,
-                                Container(
-                                  child: CheckboxListTile(
-                                    title: Text('Cash on delivery collection'),
-                                    controlAffinity:
-                                        ListTileControlAffinity.leading,
-                                    value: isCash,
-                                    onChanged: (bool? newValue) {
-                                      setState(() {
-                                        isCash = newValue!;
-                                        if (isCash == true) {
-                                          isVisible = true;
-                                        } else {
-                                          isVisible = false;
-                                        }
-                                      });
-                                    },
+                    isEdit()
+                        ? Card(
+                            margin: EdgeInsets.only(
+                                top: ScreenUtil().setSp(10),
+                                left: ScreenUtil().setSp(8),
+                                right: ScreenUtil().setSp(8),
+                                bottom: ScreenUtil().setSp(30)),
+                            elevation: 5,
+                            child: Form(
+                              key: _formKey,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  headingText('Total Packages Received : '),
+                                  receivedText,
+                                  headingText('Total Packages Delivered : '),
+                                  deliveredText,
+                                  headingText('Packages Remaining : '),
+                                  remaining,
+                                  headingText('Wrong Customer Details : '),
+                                  wrongText,
+                                  headingText('Customer Not Available : '),
+                                  customerNotAvailableText,
+                                  headingText('Rescheduled : '),
+                                  rescheduledText,
+                                  headingText('Cancelled : '),
+                                  cancelledText,
+                                  headingText('Not Attempted : '),
+                                  notAttemptedText,
+                                  headingText('Comment : '),
+                                  commentText,
+                                  Container(
+                                    child: CheckboxListTile(
+                                      title: Text('Cash on delivery collection'),
+                                      controlAffinity:
+                                          ListTileControlAffinity.leading,
+                                      value: isCash,
+                                      onChanged: (bool? newValue) {
+                                        setState(() {
+                                          isCash = newValue!;
+                                          if (isCash == true) {
+                                            isVisible = true;
+                                          } else {
+                                            isVisible = false;
+                                          }
+                                        });
+                                      },
+                                    ),
                                   ),
-                                ),
-                                cashText,
-                                submitButton,
-                                SizedBox(
-                                  height: ScreenUtil().setSp(20),
-                                )
-                              ],
+                                  cashText,
+                                  submitButton,
+                                  SizedBox(
+                                    height: ScreenUtil().setSp(20),
+                                  )
+                                ],
+                              ),
                             ),
-                          ),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10.0)),
-                        )
-                      : Card(
-                          margin: EdgeInsets.only(
-                              top: ScreenUtil().setSp(10),
-                              left: ScreenUtil().setSp(8),
-                              right: ScreenUtil().setSp(8),
-                              bottom: ScreenUtil().setSp(30)),
-                          elevation: 5,
-                          child: Form(
-                            key: _formKey,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                headingText('Total Packages Received : '),
-                                received,
-                                headingText('Total Packages Delivered : '),
-                                delivered,
-                                headingText('Packages Remaining : '),
-                                remaining,
-                                headingText('Wrong Customer Details : '),
-                                wrong,
-                                headingText('Customer Not Available : '),
-                                customerNotAvailable,
-                                headingText('Rescheduled : '),
-                                rescheduled,
-                                headingText('Cancelled : '),
-                                cancelled,
-                                headingText('Not Attempted : '),
-                                notAttempted,
-                                headingText('Comment : '),
-                                comment,
-                                headingText('Cash on delivery collection : '),
-                                cash,
-                                okButton,
-                                SizedBox(
-                                  height: ScreenUtil().setSp(20),
-                                )
-                              ],
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0)),
+                          )
+                        : Card(
+                            margin: EdgeInsets.only(
+                                top: ScreenUtil().setSp(10),
+                                left: ScreenUtil().setSp(8),
+                                right: ScreenUtil().setSp(8),
+                                bottom: ScreenUtil().setSp(30)),
+                            elevation: 5,
+                            child: Form(
+                              key: _formKey,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  headingText('Total Packages Received : '),
+                                  received,
+                                  headingText('Total Packages Delivered : '),
+                                  delivered,
+                                  headingText('Packages Remaining : '),
+                                  remaining,
+                                  headingText('Wrong Customer Details : '),
+                                  wrong,
+                                  headingText('Customer Not Available : '),
+                                  customerNotAvailable,
+                                  headingText('Rescheduled : '),
+                                  rescheduled,
+                                  headingText('Cancelled : '),
+                                  cancelled,
+                                  headingText('Not Attempted : '),
+                                  notAttempted,
+                                  headingText('Comment : '),
+                                  comment,
+                                  headingText('Cash on delivery collection : '),
+                                  cash,
+                                  okButton,
+                                  SizedBox(
+                                    height: ScreenUtil().setSp(20),
+                                  )
+                                ],
+                              ),
                             ),
-                          ),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10.0)),
-                        )
-                ],
-              ),
-            )
-          ])),
-      onTap: () {
-        FocusScope.of(context).requestFocus(new FocusNode());
-      },
-    ));
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0)),
+                          )
+                  ],
+                ),
+              )
+            ])),
+        onTap: () {
+          FocusScope.of(context).requestFocus(new FocusNode());
+        },
+      )),
+    );
   }
 
   // Widget headingText(String name) {

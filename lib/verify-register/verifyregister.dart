@@ -188,1854 +188,1858 @@ class VerifyState extends State<Verify> {
                 value: _typeDropdownValue,
               ));
 
-    return Scaffold(
-      body: GestureDetector(
-        onTap: () {
-          FocusScope.of(context).requestFocus(new FocusNode());
-        },
-        child: Stack(
-          children: <Widget>[
-            CustomHeader(scaffoldKey: widget.scaffoldKey, title: widget.title),
-            // CustomHeaderWithReloadBack(
-            //     scaffoldKey: widget.scaffoldKey, title: widget.title),
-            Visibility(
-              visible: _isVisible,
-              child: Form(
-                key: formkey,
-                child: Padding(
-                  padding: EdgeInsets.only(
-                      top: ScreenUtil().setSp(90),
-                      left: ScreenUtil().setSp(20),
-                      right: ScreenUtil().setSp(20),
-                      bottom: ScreenUtil().setSp(20)),
-                  child: Card(
-                    color: appBackgroundColor,
-                    elevation: 5,
-                    child: ListView(
-                      children: <Widget>[
-                        Padding(
-                          padding: EdgeInsets.all(7),
-                          child: Text(
-                            'Add Employee',
-
-                            // '${DateFormat(' dd, MMM yyyy').format(DateTime.now())}',
-                            // style: titleStyle,
-                            style: TextStyle(
-                                color: colorText,
-                                fontFamily: fontmedium,
-                                fontWeight: FontWeight.w500),
-
-                            textAlign: TextAlign.center,
-                          ),
-                        ),
-                        //ProfileUI
-                        Column(
-                          children: [
-                            Container(
-                              padding: EdgeInsets.all(8),
-                              height: 120,
-                              width: 120,
-                              decoration: new BoxDecoration(
-                                image: DecorationImage(
-                                    image: AssetImage(
-                                        'assets/image/btn_play_pause.png'),
-                                    fit: BoxFit.fill),
-                                borderRadius: new BorderRadius.circular(60),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Container(
-                                  height: 45,
-                                  width: 45,
-                                  decoration: new BoxDecoration(
-                                    color: colorTextDarkBlue,
-                                    image: DecorationImage(
-                                        image: AssetImage(
-                                            'assets/image/upload_image.png'),
-                                        fit: BoxFit.fill),
-                                    borderRadius: new BorderRadius.circular(60),
-                                  ),
-                                ),
-                              ),
+    return SafeArea(
+       top: false,
+        bottom: true,
+      child: Scaffold(
+        body: GestureDetector(
+          onTap: () {
+            FocusScope.of(context).requestFocus(new FocusNode());
+          },
+          child: Stack(
+            children: <Widget>[
+              CustomHeader(scaffoldKey: widget.scaffoldKey, title: widget.title),
+              // CustomHeaderWithReloadBack(
+              //     scaffoldKey: widget.scaffoldKey, title: widget.title),
+              Visibility(
+                visible: _isVisible,
+                child: Form(
+                  key: formkey,
+                  child: Padding(
+                    padding: EdgeInsets.only(
+                        top: ScreenUtil().setSp(90),
+                        left: ScreenUtil().setSp(20),
+                        right: ScreenUtil().setSp(20),
+                        bottom: ScreenUtil().setSp(20)),
+                    child: Card(
+                      color: appBackgroundColor,
+                      elevation: 5,
+                      child: ListView(
+                        children: <Widget>[
+                          Padding(
+                            padding: EdgeInsets.all(7),
+                            child: Text(
+                              'Add Employee',
+      
+                              // '${DateFormat(' dd, MMM yyyy').format(DateTime.now())}',
+                              // style: titleStyle,
+                              style: TextStyle(
+                                  color: colorText,
+                                  fontFamily: fontmedium,
+                                  fontWeight: FontWeight.w500),
+      
+                              textAlign: TextAlign.center,
                             ),
-                            // Container(
-                            //   height: 90,
-                            //   width: 90,
-                            //   decoration: new BoxDecoration(
-                            //     image: DecorationImage(
-                            //         image: AssetImage(
-                            //             'assets/image/btn_play_pause.png'),
-                            //         fit: BoxFit.fill),
-                            //     borderRadius: new BorderRadius.circular(60),
-                            //   ),
-                            //   child:
-                            //   Container(
-                            //     height: 45,
-                            //     width: 45,
-                            //     decoration: new BoxDecoration(
-                            //       color: colorTextDarkBlue,
-                            //       image: DecorationImage(
-                            //           image: AssetImage(
-                            //               'assets/image/upload_image.png'),
-                            //           fit: BoxFit.fill),
-                            //       borderRadius: new BorderRadius.circular(60),
-                            //     ),
-                            //   ),
-                            // ),
-                          ],
-                        ),
-                        Container(
-                          padding: EdgeInsets.only(top: 5, bottom: 5),
-                          margin: EdgeInsets.only(left: 23, right: 20, top: 20),
-                          decoration: new BoxDecoration(
-                            color: tfBackgroundColor,
-                            borderRadius: new BorderRadius.circular(70),
-                            // )
                           ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              taskType,
-                            ],
-                          ),
-                        ),
-                        Container(
-                          padding: EdgeInsets.only(top: 20),
-                          margin: EdgeInsets.only(left: 20, right: 20),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              TextFormField(
-                                // controller: taskController,
-                                //autofocus: true,
-                                maxLines: null,
-                                decoration: InputDecoration(
-                                  hintStyle: TextStyle(
-                                      color: colorText, fontFamily: font),
-                                  hintText: '  Full Name',
-                                  filled: true,
-                                  fillColor: tfBackgroundColor,
-                                  contentPadding:
-                                      EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(25.0),
-                                    borderSide: BorderSide.none,
-                                  ),
-                                  enabledBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide.none,
-                                    borderRadius: BorderRadius.circular(25.7),
-                                  ),
+                          //ProfileUI
+                          Column(
+                            children: [
+                              Container(
+                                padding: EdgeInsets.all(8),
+                                height: 120,
+                                width: 120,
+                                decoration: new BoxDecoration(
+                                  image: DecorationImage(
+                                      image: AssetImage(
+                                          'assets/image/btn_play_pause.png'),
+                                      fit: BoxFit.fill),
+                                  borderRadius: new BorderRadius.circular(60),
                                 ),
-
-                                // decoration:
-                                //     InputDecoration(labelText: "First Name"),
-                                // validator: (value) {
-                                //   if (value.isEmpty) {
-                                //     return 'Please enter task';
-                                //   }
-                                // },
-                              ),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          padding: const EdgeInsets.only(top: 15, bottom: 0),
-                          margin: EdgeInsets.only(left: 20, right: 20),
-                          child: Row(
-                            children: <Widget>[
-                              Expanded(
-                                child: Container(
-                                  decoration: new BoxDecoration(
-                                    color: tfBackgroundColor,
-                                    borderRadius: new BorderRadius.circular(70),
-                                    // )
-                                  ),
-                                  child: DropdownButton(
-                                    underline: SizedBox(),
-                                    hint: Text(
-                                      ' Gender',
-                                      style: TextStyle(
-                                          color: colorText, fontFamily: font),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Container(
+                                    height: 45,
+                                    width: 45,
+                                    decoration: new BoxDecoration(
+                                      color: colorTextDarkBlue,
+                                      image: DecorationImage(
+                                          image: AssetImage(
+                                              'assets/image/upload_image.png'),
+                                          fit: BoxFit.fill),
+                                      borderRadius: new BorderRadius.circular(60),
                                     ),
-                                    isExpanded: true,
-                                    value: _hrstDropdownValue,
-                                    onChanged: (newValue) {
-                                      setState(() {
-                                        _hrstDropdownValue = newValue.toString();
-                                      });
-                                    },
-                                    items: [
-                                      'Male',
-                                      'Female',
-                                    ].map<DropdownMenuItem<String>>(
-                                        (String value) {
-                                      return DropdownMenuItem(
-                                        child: new Text(value),
-                                        value: value,
-                                      );
-                                    }).toList(),
                                   ),
                                 ),
                               ),
-                              SizedBox(
-                                width: 15,
-                              ),
-                              Expanded(
-                                child: Container(
-                                  padding: EdgeInsets.only(top: 20, bottom: 20),
-                                  margin: EdgeInsets.only(left: 20, right: 20),
-                                  decoration: new BoxDecoration(
-                                    color: tfBackgroundColor,
-
-                                    borderRadius: new BorderRadius.circular(70),
-                                    // )
+                              // Container(
+                              //   height: 90,
+                              //   width: 90,
+                              //   decoration: new BoxDecoration(
+                              //     image: DecorationImage(
+                              //         image: AssetImage(
+                              //             'assets/image/btn_play_pause.png'),
+                              //         fit: BoxFit.fill),
+                              //     borderRadius: new BorderRadius.circular(60),
+                              //   ),
+                              //   child:
+                              //   Container(
+                              //     height: 45,
+                              //     width: 45,
+                              //     decoration: new BoxDecoration(
+                              //       color: colorTextDarkBlue,
+                              //       image: DecorationImage(
+                              //           image: AssetImage(
+                              //               'assets/image/upload_image.png'),
+                              //           fit: BoxFit.fill),
+                              //       borderRadius: new BorderRadius.circular(60),
+                              //     ),
+                              //   ),
+                              // ),
+                            ],
+                          ),
+                          Container(
+                            padding: EdgeInsets.only(top: 5, bottom: 5),
+                            margin: EdgeInsets.only(left: 23, right: 20, top: 20),
+                            decoration: new BoxDecoration(
+                              color: tfBackgroundColor,
+                              borderRadius: new BorderRadius.circular(70),
+                              // )
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                taskType,
+                              ],
+                            ),
+                          ),
+                          Container(
+                            padding: EdgeInsets.only(top: 20),
+                            margin: EdgeInsets.only(left: 20, right: 20),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                TextFormField(
+                                  // controller: taskController,
+                                  //autofocus: true,
+                                  maxLines: null,
+                                  decoration: InputDecoration(
+                                    hintStyle: TextStyle(
+                                        color: colorText, fontFamily: font),
+                                    hintText: '  Full Name',
+                                    filled: true,
+                                    fillColor: tfBackgroundColor,
+                                    contentPadding:
+                                        EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(25.0),
+                                      borderSide: BorderSide.none,
+                                    ),
+                                    enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide.none,
+                                      borderRadius: BorderRadius.circular(25.7),
+                                    ),
                                   ),
-                                  child: Row(
-                                    children: <Widget>[
-                                      // Icon(
-                                      //   Icons.calendar_today,
-                                      //   color: Colors.black,
-                                      //   size: ScreenUtil().setSp(15),
-                                      // ),
-                                      ImageIcon(
-                                        AssetImage(
-                                            'assets/image/calendaricon.png'),
-                                        color: appPrimaryColor,
-                                        size: ScreenUtil().setSp(15),
-                                      ),
-                                      SizedBox(
-                                        width: ScreenUtil().setSp(15),
-                                      ),
-                                      Text(
-                                        'BirthDate',
+      
+                                  // decoration:
+                                  //     InputDecoration(labelText: "First Name"),
+                                  // validator: (value) {
+                                  //   if (value.isEmpty) {
+                                  //     return 'Please enter task';
+                                  //   }
+                                  // },
+                                ),
+                              ],
+                            ),
+                          ),
+                          Container(
+                            padding: const EdgeInsets.only(top: 15, bottom: 0),
+                            margin: EdgeInsets.only(left: 20, right: 20),
+                            child: Row(
+                              children: <Widget>[
+                                Expanded(
+                                  child: Container(
+                                    decoration: new BoxDecoration(
+                                      color: tfBackgroundColor,
+                                      borderRadius: new BorderRadius.circular(70),
+                                      // )
+                                    ),
+                                    child: DropdownButton(
+                                      underline: SizedBox(),
+                                      hint: Text(
+                                        ' Gender',
                                         style: TextStyle(
                                             color: colorText, fontFamily: font),
                                       ),
-                                      SizedBox(),
-                                      Text(_toDate),
-                                    ],
-                                  ),
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                        Container(
-                          padding: EdgeInsets.only(top: 20),
-                          margin: EdgeInsets.only(left: 20, right: 20),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              // Text(
-                              //   'Middle Name: ',
-                              //   style:
-                              //       TextStyle(fontSize: ScreenUtil().setSp(15)),
-                              //   textAlign: TextAlign.start,
-                              // ),
-                              TextFormField(
-                                // controller: taskController,
-                                //autofocus: true,
-                                maxLines: null,
-                                decoration: InputDecoration(
-                                  hintStyle: TextStyle(
-                                      color: colorText, fontFamily: font),
-                                  hintText: '  Mobile Number',
-                                  filled: true,
-                                  fillColor: tfBackgroundColor,
-                                  contentPadding:
-                                      EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(25.0),
-                                    borderSide: BorderSide.none,
-                                  ),
-                                  enabledBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide.none,
-                                    borderRadius: BorderRadius.circular(25.7),
-                                  ),
-                                ),
-                                // decoration:
-                                //     InputDecoration(labelText: "Middle Name"),
-                                // validator: (value) {
-                                //   if (value.isEmpty) {
-                                //     return 'Please enter task';
-                                //   }
-                                // },
-                              ),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          padding: EdgeInsets.only(top: 20),
-                          margin: EdgeInsets.only(left: 20, right: 20),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              // Text(
-                              //   'Last  Name: ',
-                              //   style:
-                              //       TextStyle(fontSize: ScreenUtil().setSp(15)),
-                              //   textAlign: TextAlign.start,
-                              // ),
-                              TextFormField(
-                                // controller: taskController,
-                                //autofocus: true,
-                                maxLines: null,
-                                decoration: InputDecoration(
-                                  hintStyle: TextStyle(
-                                      color: colorText, fontFamily: font),
-                                  hintText: ' Emergency Mobile Number',
-                                  filled: true,
-                                  fillColor: tfBackgroundColor,
-                                  contentPadding:
-                                      EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(25.0),
-                                    borderSide: BorderSide.none,
-                                  ),
-                                  enabledBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide.none,
-                                    borderRadius: BorderRadius.circular(25.7),
-                                  ),
-                                ),
-                                // validator: (value) {
-                                //   if (value.isEmpty) {
-                                //     return 'Please enter task';
-                                //   }
-                                // },
-                              ),
-                            ],
-                          ),
-                        ),
-
-                        Container(
-                          padding: EdgeInsets.only(top: 20),
-                          margin: EdgeInsets.only(left: 20, right: 20),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              // Text(
-                              //   'Present Address: ',
-                              //   style:
-                              //       TextStyle(fontSize: ScreenUtil().setSp(15)),
-                              //   textAlign: TextAlign.start,
-                              // ),
-                              TextFormField(
-                                // controller: taskController,
-                                //autofocus: true,
-                                maxLines: null,
-                                decoration: InputDecoration(
-                                  hintStyle: TextStyle(
-                                      color: colorText, fontFamily: font),
-                                  hintText: '  Present Address',
-                                  filled: true,
-                                  fillColor: tfBackgroundColor,
-                                  contentPadding:
-                                      EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(25.0),
-                                    borderSide: BorderSide.none,
-                                  ),
-                                  enabledBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide.none,
-                                    borderRadius: BorderRadius.circular(25.7),
-                                  ),
-                                ),
-                                // decoration: InputDecoration(
-                                //     labelText: "Present Address"),
-                                // validator: (value) {
-                                //   if (value.isEmpty) {
-                                //     return 'Please enter task';
-                                //   }
-                                // },
-                              ),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          padding: EdgeInsets.only(top: 20),
-                          margin: EdgeInsets.only(left: 20, right: 20),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              // Text(
-                              //   'Permanent Address: ',
-                              //   style:
-                              //       TextStyle(fontSize: ScreenUtil().setSp(15)),
-                              //   textAlign: TextAlign.start,
-                              // ),
-                              TextFormField(
-                                // controller: taskController,
-                                //autofocus: true,
-                                maxLines: null,
-                                decoration: InputDecoration(
-                                  hintStyle: TextStyle(
-                                      color: colorText, fontFamily: font),
-                                  hintText: '  Permanent Address',
-                                  filled: true,
-                                  fillColor: tfBackgroundColor,
-                                  contentPadding:
-                                      EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(25.0),
-                                    borderSide: BorderSide.none,
-                                  ),
-                                  enabledBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide.none,
-                                    borderRadius: BorderRadius.circular(25.7),
-                                  ),
-                                ),
-                                // decoration: InputDecoration(
-                                //     labelText: "Permanent Address"),
-                                // validator: (value) {
-                                //   if (value.isEmpty) {
-                                //     return 'Please enter task';
-                                //   }
-                                // },
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Container(
-                          padding: const EdgeInsets.only(top: 0, bottom: 20),
-                          margin: EdgeInsets.only(left: 20, right: 20),
-                          child: Row(
-                            children: <Widget>[
-                              Expanded(
-                                child: Container(
-                                  decoration: new BoxDecoration(
-                                    color: tfBackgroundColor,
-                                    borderRadius: new BorderRadius.circular(70),
-                                    // )
-                                  ),
-                                  child: DropdownButton(
-                                    underline: SizedBox(),
-                                    hint: Text(
-                                      'Select City',
-                                      style: TextStyle(
-                                          color: colorText, fontFamily: font),
+                                      isExpanded: true,
+                                      value: _hrstDropdownValue,
+                                      onChanged: (newValue) {
+                                        setState(() {
+                                          _hrstDropdownValue = newValue.toString();
+                                        });
+                                      },
+                                      items: [
+                                        'Male',
+                                        'Female',
+                                      ].map<DropdownMenuItem<String>>(
+                                          (String value) {
+                                        return DropdownMenuItem(
+                                          child: new Text(value),
+                                          value: value,
+                                        );
+                                      }).toList(),
                                     ),
-                                    isExpanded: true,
-                                    value: _hrstDropdownValue,
-                                    onChanged: (newValue) {
-                                      setState(() {
-                                        _hrstDropdownValue = newValue.toString();
-                                      });
-                                    },
-                                    items: [
-                                      'Male',
-                                      'Female',
-                                    ].map<DropdownMenuItem<String>>(
-                                        (String value) {
-                                      return DropdownMenuItem(
-                                        child: new Text(value),
-                                        value: value,
-                                      );
-                                    }).toList(),
                                   ),
                                 ),
-                              ),
-                              SizedBox(
-                                width: 15,
-                              ),
-                              Expanded(
-                                child: Container(
-                                  decoration: new BoxDecoration(
-                                    color: tfBackgroundColor,
-                                    borderRadius: new BorderRadius.circular(70),
-                                    // )
-                                  ),
-                                  child: DropdownButton(
-                                    underline: SizedBox(),
-                                    hint: Text(
-                                      'Select State',
-                                      style: TextStyle(
-                                          color: colorText, fontFamily: font),
-                                    ),
-                                    isExpanded: true,
-                                    value: _minDropdownValue,
-                                    onChanged: (newValue) {
-                                      setState(() {
-                                        _minDropdownValue = newValue.toString();
-                                      });
-                                    },
-                                    items: [
-                                      '00',
-                                      '05',
-                                      '10',
-                                      '15',
-                                      '20',
-                                      '25',
-                                      '30',
-                                      '35',
-                                      '40',
-                                      '45',
-                                      '50',
-                                      '55'
-                                    ].map<DropdownMenuItem<String>>(
-                                        (String value) {
-                                      return DropdownMenuItem(
-                                        child: new Text(value),
-                                        value: value,
-                                      );
-                                    }).toList(),
-                                  ),
+                                SizedBox(
+                                  width: 15,
                                 ),
-                              )
-                            ],
-                          ),
-                        ),
-                        Container(
-                          padding: EdgeInsets.only(top: 20),
-                          margin: EdgeInsets.only(left: 20, right: 20),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              // Text(
-                              //   'First Name: ',
-                              //   style:
-                              //       TextStyle(fontSize: ScreenUtil().setSp(15)),
-                              //   textAlign: TextAlign.start,
-                              // ),
-                              TextFormField(
-                                // controller: taskController,
-                                //autofocus: true,
-                                maxLines: null,
-                                decoration: InputDecoration(
-                                  hintStyle: TextStyle(
-                                      color: colorText, fontFamily: font),
-                                  hintText: ' Zip Code',
-                                  filled: true,
-                                  fillColor: tfBackgroundColor,
-                                  contentPadding:
-                                      EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(25.0),
-                                    borderSide: BorderSide.none,
-                                  ),
-                                  enabledBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide.none,
-                                    borderRadius: BorderRadius.circular(25.7),
-                                  ),
-                                ),
-                                // decoration:
-                                //     InputDecoration(labelText: "Zip Code"),
-                                // validator: (value) {
-                                //   if (value.isEmpty) {
-                                //     return 'Please enter task';
-                                //   }
-                                // },
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Center(
-                            child: Container(
-                                padding: EdgeInsets.only(
-                                  top: 20,
-                                ),
-                                height: 55,
-                                margin: EdgeInsets.all(0),
-                                child: ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                      elevation: 5,
-                                      textStyle: TextStyle(color: Colors.white),
-                                      padding: const EdgeInsets.all(0.0),
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(20.0))),
+                                Expanded(
                                   child: Container(
-                                    decoration: const BoxDecoration(
-                                        color: btnBgColor,
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(20.0))),
-                                    padding:
-                                        const EdgeInsets.fromLTRB(50, 7, 50, 7),
-                                    child: const Text(
-                                      'Next',
-                                      style: TextStyle(
-                                          color: appBackground, fontSize: 17),
+                                    padding: EdgeInsets.only(top: 20, bottom: 20),
+                                    margin: EdgeInsets.only(left: 20, right: 20),
+                                    decoration: new BoxDecoration(
+                                      color: tfBackgroundColor,
+      
+                                      borderRadius: new BorderRadius.circular(70),
+                                      // )
+                                    ),
+                                    child: Row(
+                                      children: <Widget>[
+                                        // Icon(
+                                        //   Icons.calendar_today,
+                                        //   color: Colors.black,
+                                        //   size: ScreenUtil().setSp(15),
+                                        // ),
+                                        ImageIcon(
+                                          AssetImage(
+                                              'assets/image/calendaricon.png'),
+                                          color: appPrimaryColor,
+                                          size: ScreenUtil().setSp(15),
+                                        ),
+                                        SizedBox(
+                                          width: ScreenUtil().setSp(15),
+                                        ),
+                                        Text(
+                                          'BirthDate',
+                                          style: TextStyle(
+                                              color: colorText, fontFamily: font),
+                                        ),
+                                        SizedBox(),
+                                        Text(_toDate),
+                                      ],
                                     ),
                                   ),
-                                  onPressed: () {
-                                    showToast();
-                                  },
-                                )),
+                                )
+                              ],
+                            ),
                           ),
-                        ),
-                        SizedBox(
-                          height: 30,
-                        ),
-                      ],
+                          Container(
+                            padding: EdgeInsets.only(top: 20),
+                            margin: EdgeInsets.only(left: 20, right: 20),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                // Text(
+                                //   'Middle Name: ',
+                                //   style:
+                                //       TextStyle(fontSize: ScreenUtil().setSp(15)),
+                                //   textAlign: TextAlign.start,
+                                // ),
+                                TextFormField(
+                                  // controller: taskController,
+                                  //autofocus: true,
+                                  maxLines: null,
+                                  decoration: InputDecoration(
+                                    hintStyle: TextStyle(
+                                        color: colorText, fontFamily: font),
+                                    hintText: '  Mobile Number',
+                                    filled: true,
+                                    fillColor: tfBackgroundColor,
+                                    contentPadding:
+                                        EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(25.0),
+                                      borderSide: BorderSide.none,
+                                    ),
+                                    enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide.none,
+                                      borderRadius: BorderRadius.circular(25.7),
+                                    ),
+                                  ),
+                                  // decoration:
+                                  //     InputDecoration(labelText: "Middle Name"),
+                                  // validator: (value) {
+                                  //   if (value.isEmpty) {
+                                  //     return 'Please enter task';
+                                  //   }
+                                  // },
+                                ),
+                              ],
+                            ),
+                          ),
+                          Container(
+                            padding: EdgeInsets.only(top: 20),
+                            margin: EdgeInsets.only(left: 20, right: 20),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                // Text(
+                                //   'Last  Name: ',
+                                //   style:
+                                //       TextStyle(fontSize: ScreenUtil().setSp(15)),
+                                //   textAlign: TextAlign.start,
+                                // ),
+                                TextFormField(
+                                  // controller: taskController,
+                                  //autofocus: true,
+                                  maxLines: null,
+                                  decoration: InputDecoration(
+                                    hintStyle: TextStyle(
+                                        color: colorText, fontFamily: font),
+                                    hintText: ' Emergency Mobile Number',
+                                    filled: true,
+                                    fillColor: tfBackgroundColor,
+                                    contentPadding:
+                                        EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(25.0),
+                                      borderSide: BorderSide.none,
+                                    ),
+                                    enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide.none,
+                                      borderRadius: BorderRadius.circular(25.7),
+                                    ),
+                                  ),
+                                  // validator: (value) {
+                                  //   if (value.isEmpty) {
+                                  //     return 'Please enter task';
+                                  //   }
+                                  // },
+                                ),
+                              ],
+                            ),
+                          ),
+      
+                          Container(
+                            padding: EdgeInsets.only(top: 20),
+                            margin: EdgeInsets.only(left: 20, right: 20),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                // Text(
+                                //   'Present Address: ',
+                                //   style:
+                                //       TextStyle(fontSize: ScreenUtil().setSp(15)),
+                                //   textAlign: TextAlign.start,
+                                // ),
+                                TextFormField(
+                                  // controller: taskController,
+                                  //autofocus: true,
+                                  maxLines: null,
+                                  decoration: InputDecoration(
+                                    hintStyle: TextStyle(
+                                        color: colorText, fontFamily: font),
+                                    hintText: '  Present Address',
+                                    filled: true,
+                                    fillColor: tfBackgroundColor,
+                                    contentPadding:
+                                        EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(25.0),
+                                      borderSide: BorderSide.none,
+                                    ),
+                                    enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide.none,
+                                      borderRadius: BorderRadius.circular(25.7),
+                                    ),
+                                  ),
+                                  // decoration: InputDecoration(
+                                  //     labelText: "Present Address"),
+                                  // validator: (value) {
+                                  //   if (value.isEmpty) {
+                                  //     return 'Please enter task';
+                                  //   }
+                                  // },
+                                ),
+                              ],
+                            ),
+                          ),
+                          Container(
+                            padding: EdgeInsets.only(top: 20),
+                            margin: EdgeInsets.only(left: 20, right: 20),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                // Text(
+                                //   'Permanent Address: ',
+                                //   style:
+                                //       TextStyle(fontSize: ScreenUtil().setSp(15)),
+                                //   textAlign: TextAlign.start,
+                                // ),
+                                TextFormField(
+                                  // controller: taskController,
+                                  //autofocus: true,
+                                  maxLines: null,
+                                  decoration: InputDecoration(
+                                    hintStyle: TextStyle(
+                                        color: colorText, fontFamily: font),
+                                    hintText: '  Permanent Address',
+                                    filled: true,
+                                    fillColor: tfBackgroundColor,
+                                    contentPadding:
+                                        EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(25.0),
+                                      borderSide: BorderSide.none,
+                                    ),
+                                    enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide.none,
+                                      borderRadius: BorderRadius.circular(25.7),
+                                    ),
+                                  ),
+                                  // decoration: InputDecoration(
+                                  //     labelText: "Permanent Address"),
+                                  // validator: (value) {
+                                  //   if (value.isEmpty) {
+                                  //     return 'Please enter task';
+                                  //   }
+                                  // },
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Container(
+                            padding: const EdgeInsets.only(top: 0, bottom: 20),
+                            margin: EdgeInsets.only(left: 20, right: 20),
+                            child: Row(
+                              children: <Widget>[
+                                Expanded(
+                                  child: Container(
+                                    decoration: new BoxDecoration(
+                                      color: tfBackgroundColor,
+                                      borderRadius: new BorderRadius.circular(70),
+                                      // )
+                                    ),
+                                    child: DropdownButton(
+                                      underline: SizedBox(),
+                                      hint: Text(
+                                        'Select City',
+                                        style: TextStyle(
+                                            color: colorText, fontFamily: font),
+                                      ),
+                                      isExpanded: true,
+                                      value: _hrstDropdownValue,
+                                      onChanged: (newValue) {
+                                        setState(() {
+                                          _hrstDropdownValue = newValue.toString();
+                                        });
+                                      },
+                                      items: [
+                                        'Male',
+                                        'Female',
+                                      ].map<DropdownMenuItem<String>>(
+                                          (String value) {
+                                        return DropdownMenuItem(
+                                          child: new Text(value),
+                                          value: value,
+                                        );
+                                      }).toList(),
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 15,
+                                ),
+                                Expanded(
+                                  child: Container(
+                                    decoration: new BoxDecoration(
+                                      color: tfBackgroundColor,
+                                      borderRadius: new BorderRadius.circular(70),
+                                      // )
+                                    ),
+                                    child: DropdownButton(
+                                      underline: SizedBox(),
+                                      hint: Text(
+                                        'Select State',
+                                        style: TextStyle(
+                                            color: colorText, fontFamily: font),
+                                      ),
+                                      isExpanded: true,
+                                      value: _minDropdownValue,
+                                      onChanged: (newValue) {
+                                        setState(() {
+                                          _minDropdownValue = newValue.toString();
+                                        });
+                                      },
+                                      items: [
+                                        '00',
+                                        '05',
+                                        '10',
+                                        '15',
+                                        '20',
+                                        '25',
+                                        '30',
+                                        '35',
+                                        '40',
+                                        '45',
+                                        '50',
+                                        '55'
+                                      ].map<DropdownMenuItem<String>>(
+                                          (String value) {
+                                        return DropdownMenuItem(
+                                          child: new Text(value),
+                                          value: value,
+                                        );
+                                      }).toList(),
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                          Container(
+                            padding: EdgeInsets.only(top: 20),
+                            margin: EdgeInsets.only(left: 20, right: 20),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                // Text(
+                                //   'First Name: ',
+                                //   style:
+                                //       TextStyle(fontSize: ScreenUtil().setSp(15)),
+                                //   textAlign: TextAlign.start,
+                                // ),
+                                TextFormField(
+                                  // controller: taskController,
+                                  //autofocus: true,
+                                  maxLines: null,
+                                  decoration: InputDecoration(
+                                    hintStyle: TextStyle(
+                                        color: colorText, fontFamily: font),
+                                    hintText: ' Zip Code',
+                                    filled: true,
+                                    fillColor: tfBackgroundColor,
+                                    contentPadding:
+                                        EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(25.0),
+                                      borderSide: BorderSide.none,
+                                    ),
+                                    enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide.none,
+                                      borderRadius: BorderRadius.circular(25.7),
+                                    ),
+                                  ),
+                                  // decoration:
+                                  //     InputDecoration(labelText: "Zip Code"),
+                                  // validator: (value) {
+                                  //   if (value.isEmpty) {
+                                  //     return 'Please enter task';
+                                  //   }
+                                  // },
+                                ),
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Center(
+                              child: Container(
+                                  padding: EdgeInsets.only(
+                                    top: 20,
+                                  ),
+                                  height: 55,
+                                  margin: EdgeInsets.all(0),
+                                  child: ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                        elevation: 5,
+                                        textStyle: TextStyle(color: Colors.white),
+                                        padding: const EdgeInsets.all(0.0),
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(20.0))),
+                                    child: Container(
+                                      decoration: const BoxDecoration(
+                                          color: btnBgColor,
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(20.0))),
+                                      padding:
+                                          const EdgeInsets.fromLTRB(50, 7, 50, 7),
+                                      child: const Text(
+                                        'Next',
+                                        style: TextStyle(
+                                            color: appBackground, fontSize: 17),
+                                      ),
+                                    ),
+                                    onPressed: () {
+                                      showToast();
+                                    },
+                                  )),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 30,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-            //secondform
-            Visibility(
-              visible: _secondFormvisible,
-              child: Form(
-                key: formkey,
-                child: Padding(
-                  padding: EdgeInsets.only(
-                      top: ScreenUtil().setSp(90),
-                      left: ScreenUtil().setSp(20),
-                      right: ScreenUtil().setSp(20),
-                      bottom: ScreenUtil().setSp(20)),
-                  child: Card(
-                    color: appBackgroundColor,
-                    elevation: 5,
-                    child: ListView(
-                      children: <Widget>[
-                        Padding(
-                          padding: EdgeInsets.all(5),
-                          child: Text(
-                            'Other Information',
-                            // '${DateFormat(' dd, MMM yyyy').format(DateTime.now())}',
-                            style: titleStyle,
-                            textAlign: TextAlign.center,
+              //secondform
+              Visibility(
+                visible: _secondFormvisible,
+                child: Form(
+                  key: formkey,
+                  child: Padding(
+                    padding: EdgeInsets.only(
+                        top: ScreenUtil().setSp(90),
+                        left: ScreenUtil().setSp(20),
+                        right: ScreenUtil().setSp(20),
+                        bottom: ScreenUtil().setSp(20)),
+                    child: Card(
+                      color: appBackgroundColor,
+                      elevation: 5,
+                      child: ListView(
+                        children: <Widget>[
+                          Padding(
+                            padding: EdgeInsets.all(5),
+                            child: Text(
+                              'Other Information',
+                              // '${DateFormat(' dd, MMM yyyy').format(DateTime.now())}',
+                              style: titleStyle,
+                              textAlign: TextAlign.center,
+                            ),
                           ),
-                        ),
-
-                        Container(
-                          padding: EdgeInsets.only(top: 20),
-                          margin: EdgeInsets.only(left: 20, right: 20),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              // Text(
-                              //   'First Name: ',
-                              //   style:
-                              //       TextStyle(fontSize: ScreenUtil().setSp(15)),
-                              //   textAlign: TextAlign.start,
-                              // ),
-                              TextFormField(
-                                // controller: taskController,
-                                //autofocus: true,
-                                maxLines: null,
-                                decoration: InputDecoration(
-                                  hintStyle: TextStyle(
-                                      color: colorText, fontFamily: font),
-                                  hintText: ' Qualification',
-                                  filled: true,
-                                  fillColor: tfBackgroundColor,
-                                  contentPadding:
-                                      EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(25.0),
-                                    borderSide: BorderSide.none,
-                                  ),
-                                  enabledBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide.none,
-                                    borderRadius: BorderRadius.circular(25.7),
-                                  ),
-                                ),
-                                // decoration:
-                                //     InputDecoration(labelText: "Qualification"),
-                                // validator: (value) {
-                                //   if (value.isEmpty) {
-                                //     return 'Please enter task';
-                                //   }
-                                // },
-                              ),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          padding: EdgeInsets.only(top: 20),
-                          margin: EdgeInsets.only(left: 20, right: 20),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              // Text(
-                              //   'First Name: ',
-                              //   style:
-                              //       TextStyle(fontSize: ScreenUtil().setSp(15)),
-                              //   textAlign: TextAlign.start,
-                              // ),
-                              TextFormField(
-                                // controller: taskController,
-                                //autofocus: true,
-                                maxLines: null,
-                                decoration: InputDecoration(
-                                  hintStyle: TextStyle(
-                                      color: colorText, fontFamily: font),
-                                  hintText: '  Mothers Name',
-                                  filled: true,
-                                  fillColor: tfBackgroundColor,
-                                  contentPadding:
-                                      EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(25.0),
-                                    borderSide: BorderSide.none,
-                                  ),
-                                  enabledBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide.none,
-                                    borderRadius: BorderRadius.circular(25.7),
-                                  ),
-                                ),
-                                // decoration:
-                                //     InputDecoration(labelText: "Mothers Name"),
-                                // validator: (value) {
-                                //   if (value.isEmpty) {
-                                //     return 'Please enter task';
-                                //   }
-                                // },
-                              ),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          padding: EdgeInsets.only(top: 20),
-                          margin: EdgeInsets.only(left: 20, right: 20),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              // Text(
-                              //   'First Name: ',
-                              //   style:
-                              //       TextStyle(fontSize: ScreenUtil().setSp(15)),
-                              //   textAlign: TextAlign.start,
-                              // ),
-                              TextFormField(
-                                // controller: taskController,
-                                //autofocus: true,
-                                maxLines: null,
-                                decoration: InputDecoration(
-                                  hintStyle: TextStyle(
-                                      color: colorText, fontFamily: font),
-                                  hintText: ' Take Home',
-                                  filled: true,
-                                  fillColor: tfBackgroundColor,
-                                  contentPadding:
-                                      EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(25.0),
-                                    borderSide: BorderSide.none,
-                                  ),
-                                  enabledBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide.none,
-                                    borderRadius: BorderRadius.circular(25.7),
-                                  ),
-                                ),
-                                // decoration:
-                                //     InputDecoration(labelText: "Take Home"),
-                                // validator: (value) {
-                                //   if (value.isEmpty) {
-                                //     return 'Please enter task';
-                                //   }
-                                // },
-                              ),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          padding: EdgeInsets.only(top: 20),
-                          margin: EdgeInsets.only(left: 20, right: 20),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              // Text(
-                              //   'First Name: ',
-                              //   style:
-                              //       TextStyle(fontSize: ScreenUtil().setSp(15)),
-                              //   textAlign: TextAlign.start,
-                              // ),
-                              TextFormField(
-                                // controller: taskController,
-                                //autofocus: true,
-                                maxLines: null,
-                                decoration: InputDecoration(
-                                  hintStyle: TextStyle(
-                                      color: colorText, fontFamily: font),
-                                  hintText: ' Gross Salary',
-                                  filled: true,
-                                  fillColor: tfBackgroundColor,
-                                  contentPadding:
-                                      EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(25.0),
-                                    borderSide: BorderSide.none,
-                                  ),
-                                  enabledBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide.none,
-                                    borderRadius: BorderRadius.circular(25.7),
-                                  ),
-                                ),
-                                // decoration:
-                                //     InputDecoration(labelText: "Gross Salary"),
-                                // validator: (value) {
-                                //   if (value.isEmpty) {
-                                //     return 'Please enter task';
-                                //   }
-                                // },
-                              ),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          padding: EdgeInsets.only(top: 20),
-                          margin: EdgeInsets.only(left: 20, right: 20),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              // Text(
-                              //   'First Name: ',
-                              //   style:
-                              //       TextStyle(fontSize: ScreenUtil().setSp(15)),
-                              //   textAlign: TextAlign.start,
-                              // ),
-                              TextFormField(
-                                // controller: taskController,
-                                //autofocus: true,
-                                maxLines: null,
-                                decoration: InputDecoration(
-                                  hintStyle: TextStyle(
-                                      color: colorText, fontFamily: font),
-                                  hintText: ' Marital Status',
-                                  filled: true,
-                                  fillColor: tfBackgroundColor,
-                                  contentPadding:
-                                      EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(25.0),
-                                    borderSide: BorderSide.none,
-                                  ),
-                                  enabledBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide.none,
-                                    borderRadius: BorderRadius.circular(25.7),
-                                  ),
-                                ),
-                                // decoration: InputDecoration(labelText: "CTC"),
-                                // validator: (value) {
-                                //   if (value.isEmpty) {
-                                //     return 'Please enter task';
-                                //   }
-                                // },
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(height: 10),
-
-                        // Container(
-                        //   padding: EdgeInsets.only(top: 10),
-                        //   margin: EdgeInsets.only(left: 20, right: 20),
-                        //   child: Column(
-                        //     crossAxisAlignment: CrossAxisAlignment.start,
-                        //     children: <Widget>[
-                        //       Text(
-                        //         'Marital Status: ',
-                        //         style:
-                        //             TextStyle(fontSize: ScreenUtil().setSp(15)),
-                        //         textAlign: TextAlign.start,
-                        //       ),
-                        //       drop,
-                        //     ],
-                        //   ),
-                        // ),
-
-                        Container(
-                          padding: EdgeInsets.only(top: 20),
-                          margin: EdgeInsets.only(left: 20, right: 20),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              // Text(
-                              //   'Middle Name: ',
-                              //   style:
-                              //       TextStyle(fontSize: ScreenUtil().setSp(15)),
-                              //   textAlign: TextAlign.start,
-                              // ),
-                              TextFormField(
-                                // controller: taskController,
-                                //autofocus: true,
-                                maxLines: null,
-                                decoration: InputDecoration(
-                                  hintStyle: TextStyle(
-                                      color: colorText, fontFamily: font),
-                                  hintText: ' UAN Number',
-                                  filled: true,
-                                  fillColor: tfBackgroundColor,
-                                  contentPadding:
-                                      EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(25.0),
-                                    borderSide: BorderSide.none,
-                                  ),
-                                  enabledBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide.none,
-                                    borderRadius: BorderRadius.circular(25.7),
-                                  ),
-                                ),
-                                // decoration:
-                                //     InputDecoration(labelText: "UAN number"),
-                                // validator: (value) {
-                                //   if (value.isEmpty) {
-                                //     return 'Please enter task';
-                                //   }
-                                // },
-                              ),
-                            ],
-                          ),
-                        ),
-
-                        Container(
-                          padding: EdgeInsets.only(top: 20),
-                          margin: EdgeInsets.only(left: 20, right: 20),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              // Text(
-                              //   'Middle Name: ',
-                              //   style:
-                              //       TextStyle(fontSize: ScreenUtil().setSp(15)),
-                              //   textAlign: TextAlign.start,
-                              // ),
-                              TextFormField(
-                                // controller: taskController,
-                                //autofocus: true,
-                                maxLines: null,
-                                decoration: InputDecoration(
-                                  hintStyle: TextStyle(
-                                      color: colorText, fontFamily: font),
-                                  hintText: ' ESIC Number',
-                                  filled: true,
-                                  fillColor: tfBackgroundColor,
-                                  contentPadding:
-                                      EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(25.0),
-                                    borderSide: BorderSide.none,
-                                  ),
-                                  enabledBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide.none,
-                                    borderRadius: BorderRadius.circular(25.7),
-                                  ),
-                                ),
-                                // decoration:
-                                //     InputDecoration(labelText: "ESIC Number"),
-                                // validator: (value) {
-                                //   if (value.isEmpty) {
-                                //     return 'Please enter task';
-                                //   }
-                                // },
-                              ),
-                            ],
-                          ),
-                        ),
-
-                        Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Row(
-                            children: [
-                              Container(
-                                  padding: EdgeInsets.only(
-                                    top: 20,
-                                  ),
-                                  height: 55,
-                                  margin: EdgeInsets.all(0),
-                                  child: ElevatedButton(
-                                    style: ElevatedButton.styleFrom(
-                                        elevation: 5,
-                                        textStyle:
-                                            TextStyle(color: appBackground),
-                                        padding: const EdgeInsets.all(0.0),
-                                        shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(20.0))),
-                                    child: Container(
-                                      decoration: const BoxDecoration(
-                                          color: btnBgColor,
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(20.0))),
-                                      padding: const EdgeInsets.fromLTRB(
-                                          50, 7, 50, 7),
-                                      child: const Text('Prev  ',
-                                          style: TextStyle(
-                                              color: appBackground,
-                                              fontSize: 17)),
+      
+                          Container(
+                            padding: EdgeInsets.only(top: 20),
+                            margin: EdgeInsets.only(left: 20, right: 20),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                // Text(
+                                //   'First Name: ',
+                                //   style:
+                                //       TextStyle(fontSize: ScreenUtil().setSp(15)),
+                                //   textAlign: TextAlign.start,
+                                // ),
+                                TextFormField(
+                                  // controller: taskController,
+                                  //autofocus: true,
+                                  maxLines: null,
+                                  decoration: InputDecoration(
+                                    hintStyle: TextStyle(
+                                        color: colorText, fontFamily: font),
+                                    hintText: ' Qualification',
+                                    filled: true,
+                                    fillColor: tfBackgroundColor,
+                                    contentPadding:
+                                        EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(25.0),
+                                      borderSide: BorderSide.none,
                                     ),
-                                    onPressed: () {
-                                      setState(() {
-                                        _secondFormvisible = false;
-                                        _isVisible = true;
-                                      });
-                                    },
-                                  )),
-                              Expanded(child: Text("")),
-                              Container(
-                                  padding: EdgeInsets.only(
-                                    top: 20,
-                                  ),
-                                  height: 55,
-                                  margin: EdgeInsets.all(0),
-                                  child: ElevatedButton(
-                                    style: ElevatedButton.styleFrom(
-                                        elevation: 5,
-                                        textStyle:
-                                            TextStyle(color: appBackground),
-                                        padding: const EdgeInsets.all(0.0),
-                                        shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(20.0))),
-                                    child: Container(
-                                      decoration: const BoxDecoration(
-                                          color: btnBgColor,
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(20.0))),
-                                      padding: const EdgeInsets.fromLTRB(
-                                          50, 7, 50, 7),
-                                      child: const Text('Next',
-                                          style: TextStyle(
-                                              color: appBackground,
-                                              fontSize: 17)),
+                                    enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide.none,
+                                      borderRadius: BorderRadius.circular(25.7),
                                     ),
-                                    onPressed: () {
-                                      setState(() {
-                                        _secondFormvisible = false;
-                                        _thirdFormvisible = true;
-                                      });
-                                    },
-                                  )),
-                            ],
+                                  ),
+                                  // decoration:
+                                  //     InputDecoration(labelText: "Qualification"),
+                                  // validator: (value) {
+                                  //   if (value.isEmpty) {
+                                  //     return 'Please enter task';
+                                  //   }
+                                  // },
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-
-                        SizedBox(
-                          height: 30,
-                        ),
-                        // loadAttendanceStatus(),
-                      ],
+                          Container(
+                            padding: EdgeInsets.only(top: 20),
+                            margin: EdgeInsets.only(left: 20, right: 20),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                // Text(
+                                //   'First Name: ',
+                                //   style:
+                                //       TextStyle(fontSize: ScreenUtil().setSp(15)),
+                                //   textAlign: TextAlign.start,
+                                // ),
+                                TextFormField(
+                                  // controller: taskController,
+                                  //autofocus: true,
+                                  maxLines: null,
+                                  decoration: InputDecoration(
+                                    hintStyle: TextStyle(
+                                        color: colorText, fontFamily: font),
+                                    hintText: '  Mothers Name',
+                                    filled: true,
+                                    fillColor: tfBackgroundColor,
+                                    contentPadding:
+                                        EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(25.0),
+                                      borderSide: BorderSide.none,
+                                    ),
+                                    enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide.none,
+                                      borderRadius: BorderRadius.circular(25.7),
+                                    ),
+                                  ),
+                                  // decoration:
+                                  //     InputDecoration(labelText: "Mothers Name"),
+                                  // validator: (value) {
+                                  //   if (value.isEmpty) {
+                                  //     return 'Please enter task';
+                                  //   }
+                                  // },
+                                ),
+                              ],
+                            ),
+                          ),
+                          Container(
+                            padding: EdgeInsets.only(top: 20),
+                            margin: EdgeInsets.only(left: 20, right: 20),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                // Text(
+                                //   'First Name: ',
+                                //   style:
+                                //       TextStyle(fontSize: ScreenUtil().setSp(15)),
+                                //   textAlign: TextAlign.start,
+                                // ),
+                                TextFormField(
+                                  // controller: taskController,
+                                  //autofocus: true,
+                                  maxLines: null,
+                                  decoration: InputDecoration(
+                                    hintStyle: TextStyle(
+                                        color: colorText, fontFamily: font),
+                                    hintText: ' Take Home',
+                                    filled: true,
+                                    fillColor: tfBackgroundColor,
+                                    contentPadding:
+                                        EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(25.0),
+                                      borderSide: BorderSide.none,
+                                    ),
+                                    enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide.none,
+                                      borderRadius: BorderRadius.circular(25.7),
+                                    ),
+                                  ),
+                                  // decoration:
+                                  //     InputDecoration(labelText: "Take Home"),
+                                  // validator: (value) {
+                                  //   if (value.isEmpty) {
+                                  //     return 'Please enter task';
+                                  //   }
+                                  // },
+                                ),
+                              ],
+                            ),
+                          ),
+                          Container(
+                            padding: EdgeInsets.only(top: 20),
+                            margin: EdgeInsets.only(left: 20, right: 20),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                // Text(
+                                //   'First Name: ',
+                                //   style:
+                                //       TextStyle(fontSize: ScreenUtil().setSp(15)),
+                                //   textAlign: TextAlign.start,
+                                // ),
+                                TextFormField(
+                                  // controller: taskController,
+                                  //autofocus: true,
+                                  maxLines: null,
+                                  decoration: InputDecoration(
+                                    hintStyle: TextStyle(
+                                        color: colorText, fontFamily: font),
+                                    hintText: ' Gross Salary',
+                                    filled: true,
+                                    fillColor: tfBackgroundColor,
+                                    contentPadding:
+                                        EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(25.0),
+                                      borderSide: BorderSide.none,
+                                    ),
+                                    enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide.none,
+                                      borderRadius: BorderRadius.circular(25.7),
+                                    ),
+                                  ),
+                                  // decoration:
+                                  //     InputDecoration(labelText: "Gross Salary"),
+                                  // validator: (value) {
+                                  //   if (value.isEmpty) {
+                                  //     return 'Please enter task';
+                                  //   }
+                                  // },
+                                ),
+                              ],
+                            ),
+                          ),
+                          Container(
+                            padding: EdgeInsets.only(top: 20),
+                            margin: EdgeInsets.only(left: 20, right: 20),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                // Text(
+                                //   'First Name: ',
+                                //   style:
+                                //       TextStyle(fontSize: ScreenUtil().setSp(15)),
+                                //   textAlign: TextAlign.start,
+                                // ),
+                                TextFormField(
+                                  // controller: taskController,
+                                  //autofocus: true,
+                                  maxLines: null,
+                                  decoration: InputDecoration(
+                                    hintStyle: TextStyle(
+                                        color: colorText, fontFamily: font),
+                                    hintText: ' Marital Status',
+                                    filled: true,
+                                    fillColor: tfBackgroundColor,
+                                    contentPadding:
+                                        EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(25.0),
+                                      borderSide: BorderSide.none,
+                                    ),
+                                    enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide.none,
+                                      borderRadius: BorderRadius.circular(25.7),
+                                    ),
+                                  ),
+                                  // decoration: InputDecoration(labelText: "CTC"),
+                                  // validator: (value) {
+                                  //   if (value.isEmpty) {
+                                  //     return 'Please enter task';
+                                  //   }
+                                  // },
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(height: 10),
+      
+                          // Container(
+                          //   padding: EdgeInsets.only(top: 10),
+                          //   margin: EdgeInsets.only(left: 20, right: 20),
+                          //   child: Column(
+                          //     crossAxisAlignment: CrossAxisAlignment.start,
+                          //     children: <Widget>[
+                          //       Text(
+                          //         'Marital Status: ',
+                          //         style:
+                          //             TextStyle(fontSize: ScreenUtil().setSp(15)),
+                          //         textAlign: TextAlign.start,
+                          //       ),
+                          //       drop,
+                          //     ],
+                          //   ),
+                          // ),
+      
+                          Container(
+                            padding: EdgeInsets.only(top: 20),
+                            margin: EdgeInsets.only(left: 20, right: 20),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                // Text(
+                                //   'Middle Name: ',
+                                //   style:
+                                //       TextStyle(fontSize: ScreenUtil().setSp(15)),
+                                //   textAlign: TextAlign.start,
+                                // ),
+                                TextFormField(
+                                  // controller: taskController,
+                                  //autofocus: true,
+                                  maxLines: null,
+                                  decoration: InputDecoration(
+                                    hintStyle: TextStyle(
+                                        color: colorText, fontFamily: font),
+                                    hintText: ' UAN Number',
+                                    filled: true,
+                                    fillColor: tfBackgroundColor,
+                                    contentPadding:
+                                        EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(25.0),
+                                      borderSide: BorderSide.none,
+                                    ),
+                                    enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide.none,
+                                      borderRadius: BorderRadius.circular(25.7),
+                                    ),
+                                  ),
+                                  // decoration:
+                                  //     InputDecoration(labelText: "UAN number"),
+                                  // validator: (value) {
+                                  //   if (value.isEmpty) {
+                                  //     return 'Please enter task';
+                                  //   }
+                                  // },
+                                ),
+                              ],
+                            ),
+                          ),
+      
+                          Container(
+                            padding: EdgeInsets.only(top: 20),
+                            margin: EdgeInsets.only(left: 20, right: 20),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                // Text(
+                                //   'Middle Name: ',
+                                //   style:
+                                //       TextStyle(fontSize: ScreenUtil().setSp(15)),
+                                //   textAlign: TextAlign.start,
+                                // ),
+                                TextFormField(
+                                  // controller: taskController,
+                                  //autofocus: true,
+                                  maxLines: null,
+                                  decoration: InputDecoration(
+                                    hintStyle: TextStyle(
+                                        color: colorText, fontFamily: font),
+                                    hintText: ' ESIC Number',
+                                    filled: true,
+                                    fillColor: tfBackgroundColor,
+                                    contentPadding:
+                                        EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(25.0),
+                                      borderSide: BorderSide.none,
+                                    ),
+                                    enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide.none,
+                                      borderRadius: BorderRadius.circular(25.7),
+                                    ),
+                                  ),
+                                  // decoration:
+                                  //     InputDecoration(labelText: "ESIC Number"),
+                                  // validator: (value) {
+                                  //   if (value.isEmpty) {
+                                  //     return 'Please enter task';
+                                  //   }
+                                  // },
+                                ),
+                              ],
+                            ),
+                          ),
+      
+                          Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Row(
+                              children: [
+                                Container(
+                                    padding: EdgeInsets.only(
+                                      top: 20,
+                                    ),
+                                    height: 55,
+                                    margin: EdgeInsets.all(0),
+                                    child: ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                          elevation: 5,
+                                          textStyle:
+                                              TextStyle(color: appBackground),
+                                          padding: const EdgeInsets.all(0.0),
+                                          shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(20.0))),
+                                      child: Container(
+                                        decoration: const BoxDecoration(
+                                            color: btnBgColor,
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(20.0))),
+                                        padding: const EdgeInsets.fromLTRB(
+                                            50, 7, 50, 7),
+                                        child: const Text('Prev  ',
+                                            style: TextStyle(
+                                                color: appBackground,
+                                                fontSize: 17)),
+                                      ),
+                                      onPressed: () {
+                                        setState(() {
+                                          _secondFormvisible = false;
+                                          _isVisible = true;
+                                        });
+                                      },
+                                    )),
+                                Expanded(child: Text("")),
+                                Container(
+                                    padding: EdgeInsets.only(
+                                      top: 20,
+                                    ),
+                                    height: 55,
+                                    margin: EdgeInsets.all(0),
+                                    child: ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                          elevation: 5,
+                                          textStyle:
+                                              TextStyle(color: appBackground),
+                                          padding: const EdgeInsets.all(0.0),
+                                          shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(20.0))),
+                                      child: Container(
+                                        decoration: const BoxDecoration(
+                                            color: btnBgColor,
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(20.0))),
+                                        padding: const EdgeInsets.fromLTRB(
+                                            50, 7, 50, 7),
+                                        child: const Text('Next',
+                                            style: TextStyle(
+                                                color: appBackground,
+                                                fontSize: 17)),
+                                      ),
+                                      onPressed: () {
+                                        setState(() {
+                                          _secondFormvisible = false;
+                                          _thirdFormvisible = true;
+                                        });
+                                      },
+                                    )),
+                              ],
+                            ),
+                          ),
+      
+                          SizedBox(
+                            height: 30,
+                          ),
+                          // loadAttendanceStatus(),
+                        ],
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-            //third form
-            Visibility(
-              visible: _thirdFormvisible,
-              child: Form(
-                key: formkey,
-                child: Padding(
-                  padding: EdgeInsets.only(
-                      top: ScreenUtil().setSp(90),
-                      left: ScreenUtil().setSp(20),
-                      right: ScreenUtil().setSp(20),
-                      bottom: ScreenUtil().setSp(20)),
-                  child: Card(
-                    color: appBackgroundColor,
-                    elevation: 5,
-                    child: ListView(
-                      children: <Widget>[
-                        Padding(
-                          padding: EdgeInsets.all(5),
-                          child: Text(
-                            'Passport details',
-                            // '${DateFormat(' dd, MMM yyyy').format(DateTime.now())}',
-                            style: titleStyle,
-                            textAlign: TextAlign.center,
+              //third form
+              Visibility(
+                visible: _thirdFormvisible,
+                child: Form(
+                  key: formkey,
+                  child: Padding(
+                    padding: EdgeInsets.only(
+                        top: ScreenUtil().setSp(90),
+                        left: ScreenUtil().setSp(20),
+                        right: ScreenUtil().setSp(20),
+                        bottom: ScreenUtil().setSp(20)),
+                    child: Card(
+                      color: appBackgroundColor,
+                      elevation: 5,
+                      child: ListView(
+                        children: <Widget>[
+                          Padding(
+                            padding: EdgeInsets.all(5),
+                            child: Text(
+                              'Passport details',
+                              // '${DateFormat(' dd, MMM yyyy').format(DateTime.now())}',
+                              style: titleStyle,
+                              textAlign: TextAlign.center,
+                            ),
                           ),
-                        ),
-
-                        Container(
-                          padding: const EdgeInsets.only(top: 0, bottom: 20),
-                          margin: EdgeInsets.only(left: 20, right: 20),
-                          child: Row(
-                            children: <Widget>[
-                              Expanded(
-                                child: TextFormField(
-                                  // controller: taskController,
-                                  //autofocus: true,
-                                  maxLines: null,
-                                  decoration: InputDecoration(
-                                    hintStyle: TextStyle(
-                                        color: colorText, fontFamily: font),
-                                    hintText: ' Passport Number',
-                                    filled: true,
-                                    fillColor: tfBackgroundColor,
-                                    contentPadding: EdgeInsets.fromLTRB(
-                                        10.0, 5.0, 10.0, 5.0),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(25.0),
-                                      borderSide: BorderSide.none,
+      
+                          Container(
+                            padding: const EdgeInsets.only(top: 0, bottom: 20),
+                            margin: EdgeInsets.only(left: 20, right: 20),
+                            child: Row(
+                              children: <Widget>[
+                                Expanded(
+                                  child: TextFormField(
+                                    // controller: taskController,
+                                    //autofocus: true,
+                                    maxLines: null,
+                                    decoration: InputDecoration(
+                                      hintStyle: TextStyle(
+                                          color: colorText, fontFamily: font),
+                                      hintText: ' Passport Number',
+                                      filled: true,
+                                      fillColor: tfBackgroundColor,
+                                      contentPadding: EdgeInsets.fromLTRB(
+                                          10.0, 5.0, 10.0, 5.0),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(25.0),
+                                        borderSide: BorderSide.none,
+                                      ),
+                                      enabledBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide.none,
+                                        borderRadius: BorderRadius.circular(25.7),
+                                      ),
                                     ),
-                                    enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide.none,
-                                      borderRadius: BorderRadius.circular(25.7),
-                                    ),
+                                    // decoration: InputDecoration(
+                                    //     labelText: "Passport Number"),
+                                    // validator: (value) {
+                                    //   if (value.isEmpty) {
+                                    //     return 'Please enter task';
+                                    //   }
+                                    // },
                                   ),
-                                  // decoration: InputDecoration(
-                                  //     labelText: "Passport Number"),
-                                  // validator: (value) {
-                                  //   if (value.isEmpty) {
-                                  //     return 'Please enter task';
-                                  //   }
-                                  // },
                                 ),
-                              ),
-                              SizedBox(
-                                width: 15,
-                              ),
-                              Expanded(
-                                child: TextFormField(
-                                  controller: taskController,
-                                  //autofocus: true,
-                                  maxLines: null,
-                                  decoration: InputDecoration(
-                                    hintStyle: TextStyle(
-                                        color: colorText, fontFamily: font),
-                                    hintText: ' Passport issue Date',
-                                    filled: true,
-                                    fillColor: tfBackgroundColor,
-                                    contentPadding: EdgeInsets.fromLTRB(
-                                        10.0, 5.0, 10.0, 5.0),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(25.0),
-                                      borderSide: BorderSide.none,
+                                SizedBox(
+                                  width: 15,
+                                ),
+                                Expanded(
+                                  child: TextFormField(
+                                    controller: taskController,
+                                    //autofocus: true,
+                                    maxLines: null,
+                                    decoration: InputDecoration(
+                                      hintStyle: TextStyle(
+                                          color: colorText, fontFamily: font),
+                                      hintText: ' Passport issue Date',
+                                      filled: true,
+                                      fillColor: tfBackgroundColor,
+                                      contentPadding: EdgeInsets.fromLTRB(
+                                          10.0, 5.0, 10.0, 5.0),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(25.0),
+                                        borderSide: BorderSide.none,
+                                      ),
+                                      enabledBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide.none,
+                                        borderRadius: BorderRadius.circular(25.7),
+                                      ),
                                     ),
-                                    enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide.none,
-                                      borderRadius: BorderRadius.circular(25.7),
-                                    ),
+      
+                                    // decoration: InputDecoration(
+                                    //     labelText: "Passport Issue Date"),
+                                    // validator: (value) {
+                                    //   if (value.isEmpty) {
+                                    //     return 'Please enter task';
+                                    //   }
+                                    // },
                                   ),
-
-                                  // decoration: InputDecoration(
-                                  //     labelText: "Passport Issue Date"),
-                                  // validator: (value) {
-                                  //   if (value.isEmpty) {
-                                  //     return 'Please enter task';
-                                  //   }
-                                  // },
-                                ),
-                              )
-                            ],
+                                )
+                              ],
+                            ),
                           ),
-                        ),
-                        Container(
-                          padding: const EdgeInsets.only(top: 0, bottom: 20),
-                          margin: EdgeInsets.only(left: 20, right: 20),
-                          child: Row(
-                            children: <Widget>[
-                              Expanded(
-                                child: TextFormField(
-                                  // controller: taskController,
-                                  //autofocus: true,
-                                  maxLines: null,
-                                  decoration: InputDecoration(
-                                    hintStyle: TextStyle(
-                                        color: colorText, fontFamily: font),
-                                    hintText: ' Passport Expiry Date',
-                                    filled: true,
-                                    fillColor: tfBackgroundColor,
-                                    contentPadding: EdgeInsets.fromLTRB(
-                                        10.0, 5.0, 10.0, 5.0),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(25.0),
-                                      borderSide: BorderSide.none,
+                          Container(
+                            padding: const EdgeInsets.only(top: 0, bottom: 20),
+                            margin: EdgeInsets.only(left: 20, right: 20),
+                            child: Row(
+                              children: <Widget>[
+                                Expanded(
+                                  child: TextFormField(
+                                    // controller: taskController,
+                                    //autofocus: true,
+                                    maxLines: null,
+                                    decoration: InputDecoration(
+                                      hintStyle: TextStyle(
+                                          color: colorText, fontFamily: font),
+                                      hintText: ' Passport Expiry Date',
+                                      filled: true,
+                                      fillColor: tfBackgroundColor,
+                                      contentPadding: EdgeInsets.fromLTRB(
+                                          10.0, 5.0, 10.0, 5.0),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(25.0),
+                                        borderSide: BorderSide.none,
+                                      ),
+                                      enabledBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide.none,
+                                        borderRadius: BorderRadius.circular(25.7),
+                                      ),
                                     ),
-                                    enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide.none,
-                                      borderRadius: BorderRadius.circular(25.7),
-                                    ),
+                                    // decoration: InputDecoration(
+                                    //     labelText: "Passport Expiry Date"),
+                                    // validator: (value) {
+                                    //   if (value.isEmpty) {
+                                    //     return 'Please enter task';
+                                    //   }
+                                    // },
                                   ),
-                                  // decoration: InputDecoration(
-                                  //     labelText: "Passport Expiry Date"),
-                                  // validator: (value) {
-                                  //   if (value.isEmpty) {
-                                  //     return 'Please enter task';
-                                  //   }
-                                  // },
                                 ),
-                              ),
-                              SizedBox(
-                                width: 15,
-                              ),
-                              Expanded(
-                                child: TextFormField(
-                                  controller: taskController,
-                                  //autofocus: true,
-                                  maxLines: null,
-                                  decoration: InputDecoration(
-                                    hintStyle: TextStyle(
-                                        color: colorText, fontFamily: font),
-                                    hintText: ' NIC Number',
-                                    filled: true,
-                                    fillColor: tfBackgroundColor,
-                                    contentPadding: EdgeInsets.fromLTRB(
-                                        10.0, 5.0, 10.0, 5.0),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(25.0),
-                                      borderSide: BorderSide.none,
+                                SizedBox(
+                                  width: 15,
+                                ),
+                                Expanded(
+                                  child: TextFormField(
+                                    controller: taskController,
+                                    //autofocus: true,
+                                    maxLines: null,
+                                    decoration: InputDecoration(
+                                      hintStyle: TextStyle(
+                                          color: colorText, fontFamily: font),
+                                      hintText: ' NIC Number',
+                                      filled: true,
+                                      fillColor: tfBackgroundColor,
+                                      contentPadding: EdgeInsets.fromLTRB(
+                                          10.0, 5.0, 10.0, 5.0),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(25.0),
+                                        borderSide: BorderSide.none,
+                                      ),
+                                      enabledBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide.none,
+                                        borderRadius: BorderRadius.circular(25.7),
+                                      ),
                                     ),
-                                    enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide.none,
-                                      borderRadius: BorderRadius.circular(25.7),
-                                    ),
+                                    // decoration:
+                                    //     InputDecoration(labelText: "NIC Number"),
+                                    // validator: (value) {
+                                    //   if (value.isEmpty) {
+                                    //     return 'Please enter task';
+                                    //   }
+                                    // },
                                   ),
-                                  // decoration:
-                                  //     InputDecoration(labelText: "NIC Number"),
-                                  // validator: (value) {
-                                  //   if (value.isEmpty) {
-                                  //     return 'Please enter task';
-                                  //   }
-                                  // },
-                                ),
-                              )
-                            ],
+                                )
+                              ],
+                            ),
                           ),
-                        ),
-
-                        SizedBox(
-                          height: 15,
-                        ),
-                        Padding(
-                          padding: EdgeInsets.all(5),
-                          child: Text(
-                            'Visa Details',
-                            // '${DateFormat(' dd, MMM yyyy').format(DateTime.now())}',
-                            style: titleStyle,
-                            textAlign: TextAlign.center,
+      
+                          SizedBox(
+                            height: 15,
                           ),
-                        ),
-                        Container(
-                          padding: const EdgeInsets.only(top: 0, bottom: 20),
-                          margin: EdgeInsets.only(left: 20, right: 20),
-                          child: Row(
-                            children: <Widget>[
-                              Expanded(
-                                child: TextFormField(
-                                  // controller: taskController,
-                                  //autofocus: true,
-                                  maxLines: null,
-                                  decoration: InputDecoration(
-                                    hintStyle: TextStyle(
-                                        color: colorText, fontFamily: font),
-                                    hintText: ' Visa Number',
-                                    filled: true,
-                                    fillColor: tfBackgroundColor,
-                                    contentPadding: EdgeInsets.fromLTRB(
-                                        10.0, 5.0, 10.0, 5.0),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(25.0),
-                                      borderSide: BorderSide.none,
-                                    ),
-                                    enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide.none,
-                                      borderRadius: BorderRadius.circular(25.7),
-                                    ),
-                                  ),
-                                  // decoration:
-                                  //     InputDecoration(labelText: "Visa Number"),
-                                  // validator: (value) {
-                                  //   if (value.isEmpty) {
-                                  //     return 'Please enter task';
-                                  //   }
-                                  // },
-                                ),
-                              ),
-                              SizedBox(
-                                width: 15,
-                              ),
-                              Expanded(
-                                child: TextFormField(
-                                  controller: taskController,
-                                  //autofocus: true,
-                                  maxLines: null,
-                                  decoration: InputDecoration(
-                                    hintStyle: TextStyle(
-                                        color: colorText, fontFamily: font),
-                                    hintText: 'visa Issue Date',
-                                    filled: true,
-                                    fillColor: tfBackgroundColor,
-                                    contentPadding: EdgeInsets.fromLTRB(
-                                        10.0, 5.0, 10.0, 5.0),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(25.0),
-                                      borderSide: BorderSide.none,
-                                    ),
-                                    enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide.none,
-                                      borderRadius: BorderRadius.circular(25.7),
-                                    ),
-                                  ),
-                                  // decoration: InputDecoration(
-                                  //     labelText: "Visa Issue Date"),
-                                  // validator: (value) {
-                                  //   if (value.isEmpty) {
-                                  //     return 'Please enter task';
-                                  //   }
-                                  // },
-                                ),
-                              )
-                            ],
+                          Padding(
+                            padding: EdgeInsets.all(5),
+                            child: Text(
+                              'Visa Details',
+                              // '${DateFormat(' dd, MMM yyyy').format(DateTime.now())}',
+                              style: titleStyle,
+                              textAlign: TextAlign.center,
+                            ),
                           ),
-                        ),
-                        Container(
-                          padding: const EdgeInsets.only(top: 0, bottom: 20),
-                          margin: EdgeInsets.only(left: 20, right: 20),
-                          child: Row(
-                            children: <Widget>[
-                              Expanded(
-                                child: TextFormField(
-                                  // controller: taskController,
-                                  //autofocus: true,
-                                  maxLines: null,
-                                  decoration: InputDecoration(
-                                    hintStyle: TextStyle(
-                                        color: colorText, fontFamily: font),
-                                    hintText: ' Visa Expiry Date',
-                                    filled: true,
-                                    fillColor: tfBackgroundColor,
-                                    contentPadding: EdgeInsets.fromLTRB(
-                                        10.0, 5.0, 10.0, 5.0),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(25.0),
-                                      borderSide: BorderSide.none,
+                          Container(
+                            padding: const EdgeInsets.only(top: 0, bottom: 20),
+                            margin: EdgeInsets.only(left: 20, right: 20),
+                            child: Row(
+                              children: <Widget>[
+                                Expanded(
+                                  child: TextFormField(
+                                    // controller: taskController,
+                                    //autofocus: true,
+                                    maxLines: null,
+                                    decoration: InputDecoration(
+                                      hintStyle: TextStyle(
+                                          color: colorText, fontFamily: font),
+                                      hintText: ' Visa Number',
+                                      filled: true,
+                                      fillColor: tfBackgroundColor,
+                                      contentPadding: EdgeInsets.fromLTRB(
+                                          10.0, 5.0, 10.0, 5.0),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(25.0),
+                                        borderSide: BorderSide.none,
+                                      ),
+                                      enabledBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide.none,
+                                        borderRadius: BorderRadius.circular(25.7),
+                                      ),
                                     ),
-                                    enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide.none,
-                                      borderRadius: BorderRadius.circular(25.7),
-                                    ),
+                                    // decoration:
+                                    //     InputDecoration(labelText: "Visa Number"),
+                                    // validator: (value) {
+                                    //   if (value.isEmpty) {
+                                    //     return 'Please enter task';
+                                    //   }
+                                    // },
                                   ),
-                                  // decoration: InputDecoration(
-                                  //     labelText: "Visa Expiry Date"),
-                                  // validator: (value) {
-                                  //   if (value.isEmpty) {
-                                  //     return 'Please enter task';
-                                  //   }
-                                  // },
                                 ),
-                              ),
-                              SizedBox(
-                                width: 15,
-                              ),
-                              Expanded(
-                                child: TextFormField(
-                                  // controller: taskController,
-                                  //autofocus: true,
-                                  maxLines: null,
-                                  decoration: InputDecoration(
-                                    hintStyle: TextStyle(
-                                        color: colorText, fontFamily: font),
-                                    hintText: ' Visa Status',
-                                    filled: true,
-                                    fillColor: tfBackgroundColor,
-                                    contentPadding: EdgeInsets.fromLTRB(
-                                        10.0, 5.0, 10.0, 5.0),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(25.0),
-                                      borderSide: BorderSide.none,
+                                SizedBox(
+                                  width: 15,
+                                ),
+                                Expanded(
+                                  child: TextFormField(
+                                    controller: taskController,
+                                    //autofocus: true,
+                                    maxLines: null,
+                                    decoration: InputDecoration(
+                                      hintStyle: TextStyle(
+                                          color: colorText, fontFamily: font),
+                                      hintText: 'visa Issue Date',
+                                      filled: true,
+                                      fillColor: tfBackgroundColor,
+                                      contentPadding: EdgeInsets.fromLTRB(
+                                          10.0, 5.0, 10.0, 5.0),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(25.0),
+                                        borderSide: BorderSide.none,
+                                      ),
+                                      enabledBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide.none,
+                                        borderRadius: BorderRadius.circular(25.7),
+                                      ),
                                     ),
-                                    enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide.none,
-                                      borderRadius: BorderRadius.circular(25.7),
-                                    ),
+                                    // decoration: InputDecoration(
+                                    //     labelText: "Visa Issue Date"),
+                                    // validator: (value) {
+                                    //   if (value.isEmpty) {
+                                    //     return 'Please enter task';
+                                    //   }
+                                    // },
                                   ),
-                                  // decoration:
-                                  //     InputDecoration(labelText: "Visa Status"),
-                                  // validator: (value) {
-                                  //   if (value.isEmpty) {
-                                  //     return 'Please enter task';
-                                  //   }
-                                  // },
-                                ),
-                              )
-                            ],
+                                )
+                              ],
+                            ),
                           ),
-                        ),
-                        SizedBox(
-                          height: 15,
-                        ),
-                        Padding(
-                          padding: EdgeInsets.all(5),
-                          child: Text(
-                            'Emirates /license Details',
-                            // '${DateFormat(' dd, MMM yyyy').format(DateTime.now())}',
-                            style: titleStyle,
-                            textAlign: TextAlign.center,
+                          Container(
+                            padding: const EdgeInsets.only(top: 0, bottom: 20),
+                            margin: EdgeInsets.only(left: 20, right: 20),
+                            child: Row(
+                              children: <Widget>[
+                                Expanded(
+                                  child: TextFormField(
+                                    // controller: taskController,
+                                    //autofocus: true,
+                                    maxLines: null,
+                                    decoration: InputDecoration(
+                                      hintStyle: TextStyle(
+                                          color: colorText, fontFamily: font),
+                                      hintText: ' Visa Expiry Date',
+                                      filled: true,
+                                      fillColor: tfBackgroundColor,
+                                      contentPadding: EdgeInsets.fromLTRB(
+                                          10.0, 5.0, 10.0, 5.0),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(25.0),
+                                        borderSide: BorderSide.none,
+                                      ),
+                                      enabledBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide.none,
+                                        borderRadius: BorderRadius.circular(25.7),
+                                      ),
+                                    ),
+                                    // decoration: InputDecoration(
+                                    //     labelText: "Visa Expiry Date"),
+                                    // validator: (value) {
+                                    //   if (value.isEmpty) {
+                                    //     return 'Please enter task';
+                                    //   }
+                                    // },
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 15,
+                                ),
+                                Expanded(
+                                  child: TextFormField(
+                                    // controller: taskController,
+                                    //autofocus: true,
+                                    maxLines: null,
+                                    decoration: InputDecoration(
+                                      hintStyle: TextStyle(
+                                          color: colorText, fontFamily: font),
+                                      hintText: ' Visa Status',
+                                      filled: true,
+                                      fillColor: tfBackgroundColor,
+                                      contentPadding: EdgeInsets.fromLTRB(
+                                          10.0, 5.0, 10.0, 5.0),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(25.0),
+                                        borderSide: BorderSide.none,
+                                      ),
+                                      enabledBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide.none,
+                                        borderRadius: BorderRadius.circular(25.7),
+                                      ),
+                                    ),
+                                    // decoration:
+                                    //     InputDecoration(labelText: "Visa Status"),
+                                    // validator: (value) {
+                                    //   if (value.isEmpty) {
+                                    //     return 'Please enter task';
+                                    //   }
+                                    // },
+                                  ),
+                                )
+                              ],
+                            ),
                           ),
-                        ),
-                        Container(
-                          padding: const EdgeInsets.only(top: 0, bottom: 20),
-                          margin: EdgeInsets.only(left: 20, right: 20),
-                          child: Row(
-                            children: <Widget>[
-                              Expanded(
-                                child: TextFormField(
-                                  // controller: taskController,
-                                  //autofocus: true,
-                                  maxLines: null,
-                                  decoration: InputDecoration(
-                                    hintStyle: TextStyle(
-                                        color: colorText, fontFamily: font),
-                                    hintText: ' Emirates',
-                                    filled: true,
-                                    fillColor: tfBackgroundColor,
-                                    contentPadding: EdgeInsets.fromLTRB(
-                                        10.0, 5.0, 10.0, 5.0),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(25.0),
-                                      borderSide: BorderSide.none,
-                                    ),
-                                    enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide.none,
-                                      borderRadius: BorderRadius.circular(25.7),
-                                    ),
-                                  ),
-                                  // decoration:
-                                  //     InputDecoration(labelText: "Emirates"),
-                                  // validator: (value) {
-                                  //   if (value.isEmpty) {
-                                  //     return 'Please enter task';
-                                  //   }
-                                  // },
-                                ),
-                              ),
-                              SizedBox(
-                                width: 15,
-                              ),
-                              Expanded(
-                                child: TextFormField(
-                                  controller: taskController,
-                                  //autofocus: true,
-                                  maxLines: null,
-                                  decoration: InputDecoration(
-                                    hintStyle: TextStyle(
-                                        color: colorText, fontFamily: font),
-                                    hintText: ' Emirates Code',
-                                    filled: true,
-                                    fillColor: tfBackgroundColor,
-                                    contentPadding: EdgeInsets.fromLTRB(
-                                        10.0, 5.0, 10.0, 5.0),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(25.0),
-                                      borderSide: BorderSide.none,
-                                    ),
-                                    enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide.none,
-                                      borderRadius: BorderRadius.circular(25.7),
-                                    ),
-                                  ),
-                                  // decoration: InputDecoration(
-                                  //     labelText: "Emirates Code"),
-                                  // validator: (value) {
-                                  //   if (value.isEmpty) {
-                                  //     return 'Please enter task';
-                                  //   }
-                                  // },
-                                ),
-                              )
-                            ],
+                          SizedBox(
+                            height: 15,
                           ),
-                        ),
-                        Container(
-                          padding: const EdgeInsets.only(top: 0, bottom: 20),
-                          margin: EdgeInsets.only(left: 20, right: 20),
-                          child: Row(
-                            children: <Widget>[
-                              Expanded(
-                                child: TextFormField(
-                                  // controller: taskController,
-                                  //autofocus: true,
-                                  maxLines: null,
-                                  decoration: InputDecoration(
-                                    hintStyle: TextStyle(
-                                        color: colorText, fontFamily: font),
-                                    hintText: ' Emirates Expiry Date',
-                                    filled: true,
-                                    fillColor: tfBackgroundColor,
-                                    contentPadding: EdgeInsets.fromLTRB(
-                                        10.0, 5.0, 10.0, 5.0),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(25.0),
-                                      borderSide: BorderSide.none,
-                                    ),
-                                    enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide.none,
-                                      borderRadius: BorderRadius.circular(25.7),
-                                    ),
-                                  ),
-                                  // decoration: InputDecoration(
-                                  //     labelText: "Emirates Expiry Date"),
-                                  // validator: (value) {
-                                  //   if (value.isEmpty) {
-                                  //     return 'Please enter task';
-                                  //   }
-                                  // },
-                                ),
-                              ),
-                              SizedBox(
-                                width: 15,
-                              ),
-                              Expanded(
-                                child: TextFormField(
-                                  controller: taskController,
-                                  //autofocus: true,
-                                  maxLines: null,
-                                  decoration: InputDecoration(
-                                    hintStyle: TextStyle(
-                                        color: colorText, fontFamily: font),
-                                    hintText: ' License Number',
-                                    filled: true,
-                                    fillColor: tfBackgroundColor,
-                                    contentPadding: EdgeInsets.fromLTRB(
-                                        10.0, 5.0, 10.0, 5.0),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(25.0),
-                                      borderSide: BorderSide.none,
-                                    ),
-                                    enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide.none,
-                                      borderRadius: BorderRadius.circular(25.7),
-                                    ),
-                                  ),
-                                  // decoration: InputDecoration(
-                                  //     labelText: "License number"),
-                                  // validator: (value) {
-                                  //   if (value.isEmpty) {
-                                  //     return 'Please enter task';
-                                  //   }
-                                  // },
-                                ),
-                              )
-                            ],
+                          Padding(
+                            padding: EdgeInsets.all(5),
+                            child: Text(
+                              'Emirates /license Details',
+                              // '${DateFormat(' dd, MMM yyyy').format(DateTime.now())}',
+                              style: titleStyle,
+                              textAlign: TextAlign.center,
+                            ),
                           ),
-                        ),
-                        Container(
-                          padding: const EdgeInsets.only(top: 0, bottom: 20),
-                          margin: EdgeInsets.only(left: 20, right: 20),
-                          child: Row(
-                            children: <Widget>[
-                              Expanded(
-                                child: TextFormField(
-                                  // controller: taskController,
-                                  //autofocus: true,
-                                  maxLines: null,
-                                  decoration: InputDecoration(
-                                    hintStyle: TextStyle(
-                                        color: colorText, fontFamily: font),
-                                    hintText: ' License Expiry',
-                                    filled: true,
-                                    fillColor: tfBackgroundColor,
-                                    contentPadding: EdgeInsets.fromLTRB(
-                                        10.0, 5.0, 10.0, 5.0),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(25.0),
-                                      borderSide: BorderSide.none,
+                          Container(
+                            padding: const EdgeInsets.only(top: 0, bottom: 20),
+                            margin: EdgeInsets.only(left: 20, right: 20),
+                            child: Row(
+                              children: <Widget>[
+                                Expanded(
+                                  child: TextFormField(
+                                    // controller: taskController,
+                                    //autofocus: true,
+                                    maxLines: null,
+                                    decoration: InputDecoration(
+                                      hintStyle: TextStyle(
+                                          color: colorText, fontFamily: font),
+                                      hintText: ' Emirates',
+                                      filled: true,
+                                      fillColor: tfBackgroundColor,
+                                      contentPadding: EdgeInsets.fromLTRB(
+                                          10.0, 5.0, 10.0, 5.0),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(25.0),
+                                        borderSide: BorderSide.none,
+                                      ),
+                                      enabledBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide.none,
+                                        borderRadius: BorderRadius.circular(25.7),
+                                      ),
                                     ),
-                                    enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide.none,
-                                      borderRadius: BorderRadius.circular(25.7),
-                                    ),
+                                    // decoration:
+                                    //     InputDecoration(labelText: "Emirates"),
+                                    // validator: (value) {
+                                    //   if (value.isEmpty) {
+                                    //     return 'Please enter task';
+                                    //   }
+                                    // },
                                   ),
-                                  // decoration: InputDecoration(
-                                  //     labelText: "License Expiry"),
-                                  // validator: (value) {
-                                  //   if (value.isEmpty) {
-                                  //     return 'Please enter task';
-                                  //   }
-                                  // },
                                 ),
-                              ),
-                              SizedBox(
-                                width: 15,
-                              ),
-                              Expanded(
-                                child: TextFormField(
-                                  // controller: taskController,
-                                  //autofocus: true,
-                                  maxLines: null,
-                                  decoration: InputDecoration(
-                                    hintStyle: TextStyle(
-                                        color: colorText, fontFamily: font),
-                                    hintText: ' License Type',
-                                    filled: true,
-                                    fillColor: tfBackgroundColor,
-                                    contentPadding: EdgeInsets.fromLTRB(
-                                        10.0, 5.0, 10.0, 5.0),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(25.0),
-                                      borderSide: BorderSide.none,
+                                SizedBox(
+                                  width: 15,
+                                ),
+                                Expanded(
+                                  child: TextFormField(
+                                    controller: taskController,
+                                    //autofocus: true,
+                                    maxLines: null,
+                                    decoration: InputDecoration(
+                                      hintStyle: TextStyle(
+                                          color: colorText, fontFamily: font),
+                                      hintText: ' Emirates Code',
+                                      filled: true,
+                                      fillColor: tfBackgroundColor,
+                                      contentPadding: EdgeInsets.fromLTRB(
+                                          10.0, 5.0, 10.0, 5.0),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(25.0),
+                                        borderSide: BorderSide.none,
+                                      ),
+                                      enabledBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide.none,
+                                        borderRadius: BorderRadius.circular(25.7),
+                                      ),
                                     ),
-                                    enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide.none,
-                                      borderRadius: BorderRadius.circular(25.7),
-                                    ),
+                                    // decoration: InputDecoration(
+                                    //     labelText: "Emirates Code"),
+                                    // validator: (value) {
+                                    //   if (value.isEmpty) {
+                                    //     return 'Please enter task';
+                                    //   }
+                                    // },
                                   ),
-                                  // decoration: InputDecoration(
-                                  //     labelText: "License Type"),
-                                  // validator: (value) {
-                                  //   if (value.isEmpty) {
-                                  //     return 'Please enter task';
-                                  //   }
-                                  // },
-                                ),
-                              )
-                            ],
+                                )
+                              ],
+                            ),
                           ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.all(5),
-                          child: Text(
-                            'Bank details',
-                            // '${DateFormat(' dd, MMM yyyy').format(DateTime.now())}',
-                            style: titleStyle,
-                            textAlign: TextAlign.center,
-                          ),
-                        ),
-                        Container(
-                          padding: const EdgeInsets.only(top: 0, bottom: 20),
-                          margin: EdgeInsets.only(left: 20, right: 20),
-                          child: Row(
-                            children: <Widget>[
-                              Expanded(
-                                child: TextFormField(
-                                  // controller: taskController,
-                                  //autofocus: true,
-                                  maxLines: null,
-                                  decoration: InputDecoration(
-                                    hintStyle: TextStyle(
-                                        color: colorText, fontFamily: font),
-                                    hintText: ' Bank Name',
-                                    filled: true,
-                                    fillColor: tfBackgroundColor,
-                                    contentPadding: EdgeInsets.fromLTRB(
-                                        10.0, 5.0, 10.0, 5.0),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(25.0),
-                                      borderSide: BorderSide.none,
+                          Container(
+                            padding: const EdgeInsets.only(top: 0, bottom: 20),
+                            margin: EdgeInsets.only(left: 20, right: 20),
+                            child: Row(
+                              children: <Widget>[
+                                Expanded(
+                                  child: TextFormField(
+                                    // controller: taskController,
+                                    //autofocus: true,
+                                    maxLines: null,
+                                    decoration: InputDecoration(
+                                      hintStyle: TextStyle(
+                                          color: colorText, fontFamily: font),
+                                      hintText: ' Emirates Expiry Date',
+                                      filled: true,
+                                      fillColor: tfBackgroundColor,
+                                      contentPadding: EdgeInsets.fromLTRB(
+                                          10.0, 5.0, 10.0, 5.0),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(25.0),
+                                        borderSide: BorderSide.none,
+                                      ),
+                                      enabledBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide.none,
+                                        borderRadius: BorderRadius.circular(25.7),
+                                      ),
                                     ),
-                                    enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide.none,
-                                      borderRadius: BorderRadius.circular(25.7),
-                                    ),
+                                    // decoration: InputDecoration(
+                                    //     labelText: "Emirates Expiry Date"),
+                                    // validator: (value) {
+                                    //   if (value.isEmpty) {
+                                    //     return 'Please enter task';
+                                    //   }
+                                    // },
                                   ),
-                                  // decoration:
-                                  //     InputDecoration(labelText: "Bank Name"),
-                                  // validator: (value) {
-                                  //   if (value.isEmpty) {
-                                  //     return 'Please enter task';
-                                  //   }
-                                  // },
                                 ),
-                              ),
-                              SizedBox(
-                                width: 15,
-                              ),
-                              Expanded(
-                                child: TextFormField(
-                                  controller: taskController,
-                                  //autofocus: true,
-                                  maxLines: null,
-                                  decoration: InputDecoration(
-                                    hintStyle: TextStyle(
-                                        color: colorText, fontFamily: font),
-                                    hintText: ' Account Number',
-                                    filled: true,
-                                    fillColor: tfBackgroundColor,
-                                    contentPadding: EdgeInsets.fromLTRB(
-                                        10.0, 5.0, 10.0, 5.0),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(25.0),
-                                      borderSide: BorderSide.none,
-                                    ),
-                                    enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide.none,
-                                      borderRadius: BorderRadius.circular(25.7),
-                                    ),
-                                  ),
-                                  // decoration: InputDecoration(
-                                  //     labelText: "Account Number"),
-                                  // validator: (value) {
-                                  //   if (value.isEmpty) {
-                                  //     return 'Please enter task';
-                                  //   }
-                                  // },
+                                SizedBox(
+                                  width: 15,
                                 ),
-                              )
-                            ],
-                          ),
-                        ),
-                        Container(
-                          padding: const EdgeInsets.only(top: 0, bottom: 20),
-                          margin: EdgeInsets.only(left: 20, right: 20),
-                          child: Row(
-                            children: <Widget>[
-                              Expanded(
-                                child: TextFormField(
-                                  // controller: taskController,
-                                  //autofocus: true,
-                                  maxLines: null,
-                                  decoration: InputDecoration(
-                                    hintStyle: TextStyle(
-                                        color: colorText, fontFamily: font),
-                                    hintText: ' IFSC Code',
-                                    filled: true,
-                                    fillColor: tfBackgroundColor,
-                                    contentPadding: EdgeInsets.fromLTRB(
-                                        10.0, 5.0, 10.0, 5.0),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(25.0),
-                                      borderSide: BorderSide.none,
+                                Expanded(
+                                  child: TextFormField(
+                                    controller: taskController,
+                                    //autofocus: true,
+                                    maxLines: null,
+                                    decoration: InputDecoration(
+                                      hintStyle: TextStyle(
+                                          color: colorText, fontFamily: font),
+                                      hintText: ' License Number',
+                                      filled: true,
+                                      fillColor: tfBackgroundColor,
+                                      contentPadding: EdgeInsets.fromLTRB(
+                                          10.0, 5.0, 10.0, 5.0),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(25.0),
+                                        borderSide: BorderSide.none,
+                                      ),
+                                      enabledBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide.none,
+                                        borderRadius: BorderRadius.circular(25.7),
+                                      ),
                                     ),
-                                    enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide.none,
-                                      borderRadius: BorderRadius.circular(25.7),
-                                    ),
+                                    // decoration: InputDecoration(
+                                    //     labelText: "License number"),
+                                    // validator: (value) {
+                                    //   if (value.isEmpty) {
+                                    //     return 'Please enter task';
+                                    //   }
+                                    // },
                                   ),
-                                  // decoration:
-                                  //     InputDecoration(labelText: "IFSC Code"),
-                                  // validator: (value) {
-                                  //   if (value.isEmpty) {
-                                  //     return 'Please enter task';
-                                  //   }
-                                  // },
+                                )
+                              ],
+                            ),
+                          ),
+                          Container(
+                            padding: const EdgeInsets.only(top: 0, bottom: 20),
+                            margin: EdgeInsets.only(left: 20, right: 20),
+                            child: Row(
+                              children: <Widget>[
+                                Expanded(
+                                  child: TextFormField(
+                                    // controller: taskController,
+                                    //autofocus: true,
+                                    maxLines: null,
+                                    decoration: InputDecoration(
+                                      hintStyle: TextStyle(
+                                          color: colorText, fontFamily: font),
+                                      hintText: ' License Expiry',
+                                      filled: true,
+                                      fillColor: tfBackgroundColor,
+                                      contentPadding: EdgeInsets.fromLTRB(
+                                          10.0, 5.0, 10.0, 5.0),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(25.0),
+                                        borderSide: BorderSide.none,
+                                      ),
+                                      enabledBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide.none,
+                                        borderRadius: BorderRadius.circular(25.7),
+                                      ),
+                                    ),
+                                    // decoration: InputDecoration(
+                                    //     labelText: "License Expiry"),
+                                    // validator: (value) {
+                                    //   if (value.isEmpty) {
+                                    //     return 'Please enter task';
+                                    //   }
+                                    // },
+                                  ),
                                 ),
-                              ),
-                              SizedBox(
-                                width: 15,
-                              ),
-                              Expanded(
-                                child: TextFormField(
-                                  controller: taskController,
-                                  //autofocus: true,
-                                  maxLines: null,
-                                  decoration: InputDecoration(
-                                    hintStyle: TextStyle(
-                                        color: colorText, fontFamily: font),
-                                    hintText: ' IBAN',
-                                    filled: true,
-                                    fillColor: tfBackgroundColor,
-                                    contentPadding: EdgeInsets.fromLTRB(
-                                        10.0, 5.0, 10.0, 5.0),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(25.0),
-                                      borderSide: BorderSide.none,
-                                    ),
-                                    enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide.none,
-                                      borderRadius: BorderRadius.circular(25.7),
-                                    ),
-                                  ),
-                                  // decoration:
-                                  //     InputDecoration(labelText: "IBAN"),
-                                  // validator: (value) {
-                                  //   if (value.isEmpty) {
-                                  //     return 'Please enter task';
-                                  //   }
-                                  // },
+                                SizedBox(
+                                  width: 15,
                                 ),
-                              )
-                            ],
-                          ),
-                        ),
-
-                        Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Row(
-                            children: [
-                              Container(
-                                  padding: EdgeInsets.only(
-                                    top: 20,
-                                  ),
-                                  height: 55,
-                                  margin: EdgeInsets.all(0),
-                                  child: ElevatedButton(
-                                    style: ElevatedButton.styleFrom(
-                                        elevation: 5,
-                                        textStyle:
-                                            TextStyle(color: Colors.white),
-                                        padding: const EdgeInsets.all(0.0),
-                                        shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(20.0))),
-                                    child: Container(
-                                      decoration: const BoxDecoration(
-                                          color: btnBgColor,
-                                          // gradient: LinearGradient(
-                                          //   colors: <Color>[
-                                          //     Color.fromRGBO(255, 81, 54, 1),
-                                          //     Color.fromRGBO(255, 163, 54, 1),
-                                          //   ],
-                                          // ),
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(20.0))),
-                                      padding: const EdgeInsets.fromLTRB(
-                                          50, 7, 50, 7),
-                                      child: const Text('Prev  ',
-                                          style: TextStyle(
-                                              color: appBackgroundColor,
-                                              fontSize: 17)),
+                                Expanded(
+                                  child: TextFormField(
+                                    // controller: taskController,
+                                    //autofocus: true,
+                                    maxLines: null,
+                                    decoration: InputDecoration(
+                                      hintStyle: TextStyle(
+                                          color: colorText, fontFamily: font),
+                                      hintText: ' License Type',
+                                      filled: true,
+                                      fillColor: tfBackgroundColor,
+                                      contentPadding: EdgeInsets.fromLTRB(
+                                          10.0, 5.0, 10.0, 5.0),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(25.0),
+                                        borderSide: BorderSide.none,
+                                      ),
+                                      enabledBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide.none,
+                                        borderRadius: BorderRadius.circular(25.7),
+                                      ),
                                     ),
-                                    onPressed: () {
-                                      setState(() {
-                                        _thirdFormvisible = false;
-                                        _secondFormvisible = true;
-                                      });
-                                    },
-                                  )),
-                              Expanded(child: Text("")),
-                              Container(
-                                  padding: EdgeInsets.only(
-                                    top: 20,
+                                    // decoration: InputDecoration(
+                                    //     labelText: "License Type"),
+                                    // validator: (value) {
+                                    //   if (value.isEmpty) {
+                                    //     return 'Please enter task';
+                                    //   }
+                                    // },
                                   ),
-                                  height: 55,
-                                  margin: EdgeInsets.all(0),
-                                  child: ElevatedButton(
-                                    style: ElevatedButton.styleFrom(
-                                        elevation: 5,
-                                        textStyle:
-                                            TextStyle(color: Colors.white),
-                                        padding: const EdgeInsets.all(0.0),
-                                        shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(20.0))),
-                                    child: Container(
-                                      decoration: const BoxDecoration(
-                                          color: btnBgColor,
-
-                                          // gradient: LinearGradient(
-                                          //   colors: <Color>[
-                                          //     Color.fromRGBO(255, 81, 54, 1),
-                                          //     Color.fromRGBO(255, 163, 54, 1),
-                                          //   ],
-                                          // ),
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(20.0))),
-                                      padding: const EdgeInsets.fromLTRB(
-                                          50, 7, 50, 7),
-                                      child: const Text('Submit',
-                                          style: TextStyle(
-                                              color: appBackgroundColor,
-                                              fontSize: 17)),
-                                    ),
-                                    onPressed: () {
-                                      Navigator.pop(context);
-                                    },
-                                  )),
-                            ],
+                                )
+                              ],
+                            ),
                           ),
-                        ),
-
-                        SizedBox(
-                          height: 30,
-                        ),
-                        // loadAttendanceStatus(),
-                      ],
+                          Padding(
+                            padding: EdgeInsets.all(5),
+                            child: Text(
+                              'Bank details',
+                              // '${DateFormat(' dd, MMM yyyy').format(DateTime.now())}',
+                              style: titleStyle,
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                          Container(
+                            padding: const EdgeInsets.only(top: 0, bottom: 20),
+                            margin: EdgeInsets.only(left: 20, right: 20),
+                            child: Row(
+                              children: <Widget>[
+                                Expanded(
+                                  child: TextFormField(
+                                    // controller: taskController,
+                                    //autofocus: true,
+                                    maxLines: null,
+                                    decoration: InputDecoration(
+                                      hintStyle: TextStyle(
+                                          color: colorText, fontFamily: font),
+                                      hintText: ' Bank Name',
+                                      filled: true,
+                                      fillColor: tfBackgroundColor,
+                                      contentPadding: EdgeInsets.fromLTRB(
+                                          10.0, 5.0, 10.0, 5.0),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(25.0),
+                                        borderSide: BorderSide.none,
+                                      ),
+                                      enabledBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide.none,
+                                        borderRadius: BorderRadius.circular(25.7),
+                                      ),
+                                    ),
+                                    // decoration:
+                                    //     InputDecoration(labelText: "Bank Name"),
+                                    // validator: (value) {
+                                    //   if (value.isEmpty) {
+                                    //     return 'Please enter task';
+                                    //   }
+                                    // },
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 15,
+                                ),
+                                Expanded(
+                                  child: TextFormField(
+                                    controller: taskController,
+                                    //autofocus: true,
+                                    maxLines: null,
+                                    decoration: InputDecoration(
+                                      hintStyle: TextStyle(
+                                          color: colorText, fontFamily: font),
+                                      hintText: ' Account Number',
+                                      filled: true,
+                                      fillColor: tfBackgroundColor,
+                                      contentPadding: EdgeInsets.fromLTRB(
+                                          10.0, 5.0, 10.0, 5.0),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(25.0),
+                                        borderSide: BorderSide.none,
+                                      ),
+                                      enabledBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide.none,
+                                        borderRadius: BorderRadius.circular(25.7),
+                                      ),
+                                    ),
+                                    // decoration: InputDecoration(
+                                    //     labelText: "Account Number"),
+                                    // validator: (value) {
+                                    //   if (value.isEmpty) {
+                                    //     return 'Please enter task';
+                                    //   }
+                                    // },
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                          Container(
+                            padding: const EdgeInsets.only(top: 0, bottom: 20),
+                            margin: EdgeInsets.only(left: 20, right: 20),
+                            child: Row(
+                              children: <Widget>[
+                                Expanded(
+                                  child: TextFormField(
+                                    // controller: taskController,
+                                    //autofocus: true,
+                                    maxLines: null,
+                                    decoration: InputDecoration(
+                                      hintStyle: TextStyle(
+                                          color: colorText, fontFamily: font),
+                                      hintText: ' IFSC Code',
+                                      filled: true,
+                                      fillColor: tfBackgroundColor,
+                                      contentPadding: EdgeInsets.fromLTRB(
+                                          10.0, 5.0, 10.0, 5.0),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(25.0),
+                                        borderSide: BorderSide.none,
+                                      ),
+                                      enabledBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide.none,
+                                        borderRadius: BorderRadius.circular(25.7),
+                                      ),
+                                    ),
+                                    // decoration:
+                                    //     InputDecoration(labelText: "IFSC Code"),
+                                    // validator: (value) {
+                                    //   if (value.isEmpty) {
+                                    //     return 'Please enter task';
+                                    //   }
+                                    // },
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 15,
+                                ),
+                                Expanded(
+                                  child: TextFormField(
+                                    controller: taskController,
+                                    //autofocus: true,
+                                    maxLines: null,
+                                    decoration: InputDecoration(
+                                      hintStyle: TextStyle(
+                                          color: colorText, fontFamily: font),
+                                      hintText: ' IBAN',
+                                      filled: true,
+                                      fillColor: tfBackgroundColor,
+                                      contentPadding: EdgeInsets.fromLTRB(
+                                          10.0, 5.0, 10.0, 5.0),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(25.0),
+                                        borderSide: BorderSide.none,
+                                      ),
+                                      enabledBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide.none,
+                                        borderRadius: BorderRadius.circular(25.7),
+                                      ),
+                                    ),
+                                    // decoration:
+                                    //     InputDecoration(labelText: "IBAN"),
+                                    // validator: (value) {
+                                    //   if (value.isEmpty) {
+                                    //     return 'Please enter task';
+                                    //   }
+                                    // },
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+      
+                          Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Row(
+                              children: [
+                                Container(
+                                    padding: EdgeInsets.only(
+                                      top: 20,
+                                    ),
+                                    height: 55,
+                                    margin: EdgeInsets.all(0),
+                                    child: ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                          elevation: 5,
+                                          textStyle:
+                                              TextStyle(color: Colors.white),
+                                          padding: const EdgeInsets.all(0.0),
+                                          shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(20.0))),
+                                      child: Container(
+                                        decoration: const BoxDecoration(
+                                            color: btnBgColor,
+                                            // gradient: LinearGradient(
+                                            //   colors: <Color>[
+                                            //     Color.fromRGBO(255, 81, 54, 1),
+                                            //     Color.fromRGBO(255, 163, 54, 1),
+                                            //   ],
+                                            // ),
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(20.0))),
+                                        padding: const EdgeInsets.fromLTRB(
+                                            50, 7, 50, 7),
+                                        child: const Text('Prev  ',
+                                            style: TextStyle(
+                                                color: appBackgroundColor,
+                                                fontSize: 17)),
+                                      ),
+                                      onPressed: () {
+                                        setState(() {
+                                          _thirdFormvisible = false;
+                                          _secondFormvisible = true;
+                                        });
+                                      },
+                                    )),
+                                Expanded(child: Text("")),
+                                Container(
+                                    padding: EdgeInsets.only(
+                                      top: 20,
+                                    ),
+                                    height: 55,
+                                    margin: EdgeInsets.all(0),
+                                    child: ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                          elevation: 5,
+                                          textStyle:
+                                              TextStyle(color: Colors.white),
+                                          padding: const EdgeInsets.all(0.0),
+                                          shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(20.0))),
+                                      child: Container(
+                                        decoration: const BoxDecoration(
+                                            color: btnBgColor,
+      
+                                            // gradient: LinearGradient(
+                                            //   colors: <Color>[
+                                            //     Color.fromRGBO(255, 81, 54, 1),
+                                            //     Color.fromRGBO(255, 163, 54, 1),
+                                            //   ],
+                                            // ),
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(20.0))),
+                                        padding: const EdgeInsets.fromLTRB(
+                                            50, 7, 50, 7),
+                                        child: const Text('Submit',
+                                            style: TextStyle(
+                                                color: appBackgroundColor,
+                                                fontSize: 17)),
+                                      ),
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
+                                    )),
+                              ],
+                            ),
+                          ),
+      
+                          SizedBox(
+                            height: 30,
+                          ),
+                          // loadAttendanceStatus(),
+                        ],
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-
-            //  AppLoaderView(),
-          ],
+      
+              //  AppLoaderView(),
+            ],
+          ),
         ),
       ),
     );

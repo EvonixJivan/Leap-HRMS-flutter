@@ -664,68 +664,72 @@ class _AddMeetingState extends State<AddMeeting> {
       ],
     );
 
-    return Scaffold(
-      body: GestureDetector(
-        child: Stack(
-          children: <Widget>[
-            // CustomHeader(scaffoldKey: widget.scaffoldKey, title: widget.title),
-            CustomHeaderWithBack(
-                scaffoldKey: widget.scaffoldKey, title: widget.title),
-            Container(
-              margin: EdgeInsets.only(top: 90.0),
-              child: ListView(
-                children: <Widget>[
-                  Card(
-                    color: appBackgroundColor,
-                    margin: EdgeInsets.only(
-                        left: ScreenUtil().setSp(20),
-                        right: ScreenUtil().setSp(20),
-                        bottom: ScreenUtil().setSp(30)),
-                    elevation: 5,
-                    child: Form(
-                      key: _formKey,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          headingText('Client Name'),
-                          contactName,
-                          headingText('Contact Person'),
-                          contactPerson,
-                          headingText('Purpose of Meeting'),
-                          purposeOfMeeting,
-                          headingText('Description'),
-                          description,
-                          headingText('Meeting Date'),
-                          meetingDate,
-                          headingText('Meeting Start Time'),
-                          meetingStartTime,
-                          headingText('Meeting End Time'),
-                          meetingEndTime,
-                          headingText('Next Meeting Date'),
-                          nextMeetingDate,
-                          headingText('Client Contact'),
-                          clientContact,
-                          headingText('Client Email'),
-                          clientEmail,
-                          sendCopyToClient,
-                          submitButton,
-                          SizedBox(
-                            height: ScreenUtil().setSp(20),
-                          )
-                        ],
+    return SafeArea(
+       top: false,
+        bottom: true,
+      child: Scaffold(
+        body: GestureDetector(
+          child: Stack(
+            children: <Widget>[
+              // CustomHeader(scaffoldKey: widget.scaffoldKey, title: widget.title),
+              CustomHeaderWithBack(
+                  scaffoldKey: widget.scaffoldKey, title: widget.title),
+              Container(
+                margin: EdgeInsets.only(top: 90.0),
+                child: ListView(
+                  children: <Widget>[
+                    Card(
+                      color: appBackgroundColor,
+                      margin: EdgeInsets.only(
+                          left: ScreenUtil().setSp(20),
+                          right: ScreenUtil().setSp(20),
+                          bottom: ScreenUtil().setSp(30)),
+                      elevation: 5,
+                      child: Form(
+                        key: _formKey,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            headingText('Client Name'),
+                            contactName,
+                            headingText('Contact Person'),
+                            contactPerson,
+                            headingText('Purpose of Meeting'),
+                            purposeOfMeeting,
+                            headingText('Description'),
+                            description,
+                            headingText('Meeting Date'),
+                            meetingDate,
+                            headingText('Meeting Start Time'),
+                            meetingStartTime,
+                            headingText('Meeting End Time'),
+                            meetingEndTime,
+                            headingText('Next Meeting Date'),
+                            nextMeetingDate,
+                            headingText('Client Contact'),
+                            clientContact,
+                            headingText('Client Email'),
+                            clientEmail,
+                            sendCopyToClient,
+                            submitButton,
+                            SizedBox(
+                              height: ScreenUtil().setSp(20),
+                            )
+                          ],
+                        ),
                       ),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0)),
                     ),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0)),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
+          onTap: () {
+            FocusScope.of(context).requestFocus(new FocusNode());
+          },
         ),
-        onTap: () {
-          FocusScope.of(context).requestFocus(new FocusNode());
-        },
       ),
     );
   }

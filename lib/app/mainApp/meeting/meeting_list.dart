@@ -102,310 +102,314 @@ class _MeetingListState extends State<MeetingList> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: appBackgroundDashboard,
-      body: Stack(
-        children: <Widget>[
-          CustomHeader(scaffoldKey: widget.scaffoldKey, title: widget.title),
-          // getCustomHeader(),
-          Container(
-            margin: EdgeInsets.only(top: ScreenUtil().setSp(90)),
-            child: //(_meetingListApiCallBack!.items.length > 0)
-            (_meetingListApiCallBack?.items.isNotEmpty ?? false)
-                ? ListView.builder(
-                    itemBuilder: (BuildContext context, int index) {
-                      return Padding(
-                        padding: EdgeInsets.only(
-                            left: ScreenUtil().setSp(10),
-                            right: ScreenUtil().setSp(10),
-                            top: ScreenUtil().setSp(5),
-                            bottom: ScreenUtil().setSp(5)),
-                        child: GestureDetector(
-                          child: Card(
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8.0)),
-                            elevation: 5,
-                            child: Column(
-                              children: <Widget>[
-                                Card(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: const BorderRadius.only(
-                                      topLeft: Radius.circular(8.0),
-                                      topRight: Radius.circular(8.0),
+    return SafeArea(
+       top: false,
+        bottom: true,
+      child: Scaffold(
+        backgroundColor: appBackgroundDashboard,
+        body: Stack(
+          children: <Widget>[
+            CustomHeader(scaffoldKey: widget.scaffoldKey, title: widget.title),
+            // getCustomHeader(),
+            Container(
+              margin: EdgeInsets.only(top: ScreenUtil().setSp(90)),
+              child: //(_meetingListApiCallBack!.items.length > 0)
+              (_meetingListApiCallBack?.items.isNotEmpty ?? false)
+                  ? ListView.builder(
+                      itemBuilder: (BuildContext context, int index) {
+                        return Padding(
+                          padding: EdgeInsets.only(
+                              left: ScreenUtil().setSp(10),
+                              right: ScreenUtil().setSp(10),
+                              top: ScreenUtil().setSp(5),
+                              bottom: ScreenUtil().setSp(5)),
+                          child: GestureDetector(
+                            child: Card(
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(8.0)),
+                              elevation: 5,
+                              child: Column(
+                                children: <Widget>[
+                                  Card(
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: const BorderRadius.only(
+                                        topLeft: Radius.circular(8.0),
+                                        topRight: Radius.circular(8.0),
+                                      ),
+                                    ),
+                                    margin: EdgeInsets.all(0.0),
+                                    color: appPrimaryColor,
+                                    child: Padding(
+                                      padding:
+                                          EdgeInsets.all(ScreenUtil().setSp(8)),
+                                      child: Row(
+                                        children: <Widget>[
+                                          Flexible(
+                                              flex: 3,
+                                              fit: FlexFit.tight,
+                                              child: Row(
+                                                children: <Widget>[
+                                                  Icon(
+                                                    Icons.domain,
+                                                    color: Colors.white,
+                                                    size: 20.0,
+                                                  ),
+                                                  SizedBox(
+                                                    width: 5.0,
+                                                  ),
+                                                  Text(
+                                                    _meetingListApiCallBack!
+                                                        .items[index].clientName,
+                                                    style: TextStyle(
+                                                        color: Colors.white),
+                                                  ),
+                                                ],
+                                              )),
+                                          Container(
+                                            width: 1,
+                                            height: 30.0,
+                                            color: Colors.grey[300],
+                                          ),
+                                          SizedBox(
+                                            width: 5.0,
+                                          ),
+                                          Flexible(
+                                              flex: 3,
+                                              fit: FlexFit.tight,
+                                              child: Row(
+                                                children: <Widget>[
+                                                  Icon(
+                                                    Icons.calendar_today,
+                                                    color: Colors.white,
+                                                    size: 20.0,
+                                                  ),
+                                                  SizedBox(
+                                                    width: 5.0,
+                                                  ),
+                                                  Text(
+                                                    '${DateTime.parse("${_meetingListApiCallBack!.items[index].meetingDate}").toLocal().day.toString().padLeft(2, '0')}/'
+                                                    '${DateTime.parse("${_meetingListApiCallBack!.items[index].meetingDate}").toLocal().month.toString().padLeft(2, '0')}/'
+                                                    '${DateTime.parse("${_meetingListApiCallBack!.items[index].meetingDate}").toLocal().year.toString().padLeft(2, '0')}',
+                                                    style: TextStyle(
+                                                        color: Colors.white),
+                                                  ),
+                                                ],
+                                              )),
+                                        ],
+                                      ),
                                     ),
                                   ),
-                                  margin: EdgeInsets.all(0.0),
-                                  color: appPrimaryColor,
-                                  child: Padding(
+                                  Padding(
+                                    padding: EdgeInsets.only(
+                                        left: ScreenUtil().setSp(8),
+                                        right: ScreenUtil().setSp(8),
+                                        top: ScreenUtil().setSp(8)),
+                                    child: Row(
+                                      children: <Widget>[
+                                        Icon(
+                                          Icons.bookmark,
+                                          size: 15,
+                                          color: colorTextDarkBlue,
+                                        ),
+                                        Text(
+                                          ' ${_meetingListApiCallBack!.items[index].title}',
+                                          maxLines: null,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Padding(
                                     padding:
                                         EdgeInsets.all(ScreenUtil().setSp(8)),
-                                    child: Row(
-                                      children: <Widget>[
-                                        Flexible(
-                                            flex: 3,
-                                            fit: FlexFit.tight,
-                                            child: Row(
-                                              children: <Widget>[
-                                                Icon(
-                                                  Icons.domain,
-                                                  color: Colors.white,
-                                                  size: 20.0,
-                                                ),
-                                                SizedBox(
-                                                  width: 5.0,
-                                                ),
-                                                Text(
-                                                  _meetingListApiCallBack!
-                                                      .items[index].clientName,
-                                                  style: TextStyle(
-                                                      color: Colors.white),
-                                                ),
-                                              ],
-                                            )),
-                                        Container(
-                                          width: 1,
-                                          height: 30.0,
-                                          color: Colors.grey[300],
-                                        ),
-                                        SizedBox(
-                                          width: 5.0,
-                                        ),
-                                        Flexible(
-                                            flex: 3,
-                                            fit: FlexFit.tight,
-                                            child: Row(
-                                              children: <Widget>[
-                                                Icon(
-                                                  Icons.calendar_today,
-                                                  color: Colors.white,
-                                                  size: 20.0,
-                                                ),
-                                                SizedBox(
-                                                  width: 5.0,
-                                                ),
-                                                Text(
-                                                  '${DateTime.parse("${_meetingListApiCallBack!.items[index].meetingDate}").toLocal().day.toString().padLeft(2, '0')}/'
-                                                  '${DateTime.parse("${_meetingListApiCallBack!.items[index].meetingDate}").toLocal().month.toString().padLeft(2, '0')}/'
-                                                  '${DateTime.parse("${_meetingListApiCallBack!.items[index].meetingDate}").toLocal().year.toString().padLeft(2, '0')}',
-                                                  style: TextStyle(
-                                                      color: Colors.white),
-                                                ),
-                                              ],
-                                            )),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(
-                                      left: ScreenUtil().setSp(8),
-                                      right: ScreenUtil().setSp(8),
-                                      top: ScreenUtil().setSp(8)),
-                                  child: Row(
-                                    children: <Widget>[
-                                      Icon(
-                                        Icons.bookmark,
-                                        size: 15,
-                                        color: colorTextDarkBlue,
-                                      ),
-                                      Text(
-                                        ' ${_meetingListApiCallBack!.items[index].title}',
-                                        maxLines: null,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Padding(
-                                  padding:
-                                      EdgeInsets.all(ScreenUtil().setSp(8)),
-                                  child: Container(
-                                    width: double.infinity,
-                                    child: Row(
-                                      children: <Widget>[
-                                        Flexible(
-                                            flex: 3,
-                                            fit: FlexFit.tight,
-                                            child: Row(
-                                              children: <Widget>[
-                                                Icon(
-                                                  Icons.person,
-                                                  size: 15,
-                                                  color: colorTextDarkBlue,
-                                                ),
-                                                Text(
-                                                  ' ${_meetingListApiCallBack!.items[index].contactPerson}',
-                                                  style: TextStyle(
-                                                      color: Colors.black,
-                                                      fontSize: ScreenUtil()
-                                                          .setSp(10)),
-                                                ),
-                                              ],
-                                            )),
-                                        SizedBox(
-                                          width: 5.0,
-                                        ),
-                                        Flexible(
-                                            flex: 3,
-                                            fit: FlexFit.tight,
-                                            child: Row(
-                                              children: <Widget>[
-                                                Icon(
-                                                  Icons.call,
-                                                  size: 15,
-                                                  color: colorTextDarkBlue,
-                                                ),
-                                                SizedBox(
-                                                  width: 5.0,
-                                                ),
-                                                InkWell(
-                                                  child: Text(
-                                                    '${_meetingListApiCallBack!.items[index].clientContactNo}',
+                                    child: Container(
+                                      width: double.infinity,
+                                      child: Row(
+                                        children: <Widget>[
+                                          Flexible(
+                                              flex: 3,
+                                              fit: FlexFit.tight,
+                                              child: Row(
+                                                children: <Widget>[
+                                                  Icon(
+                                                    Icons.person,
+                                                    size: 15,
+                                                    color: colorTextDarkBlue,
+                                                  ),
+                                                  Text(
+                                                    ' ${_meetingListApiCallBack!.items[index].contactPerson}',
                                                     style: TextStyle(
                                                         color: Colors.black,
                                                         fontSize: ScreenUtil()
                                                             .setSp(10)),
                                                   ),
-                                                  onTap: () {
-                                                    launch(
-                                                        "tel:${_meetingListApiCallBack!.items[index].clientContactNo}");
-                                                  },
-                                                ),
-                                              ],
-                                            )),
-                                      ],
+                                                ],
+                                              )),
+                                          SizedBox(
+                                            width: 5.0,
+                                          ),
+                                          Flexible(
+                                              flex: 3,
+                                              fit: FlexFit.tight,
+                                              child: Row(
+                                                children: <Widget>[
+                                                  Icon(
+                                                    Icons.call,
+                                                    size: 15,
+                                                    color: colorTextDarkBlue,
+                                                  ),
+                                                  SizedBox(
+                                                    width: 5.0,
+                                                  ),
+                                                  InkWell(
+                                                    child: Text(
+                                                      '${_meetingListApiCallBack!.items[index].clientContactNo}',
+                                                      style: TextStyle(
+                                                          color: Colors.black,
+                                                          fontSize: ScreenUtil()
+                                                              .setSp(10)),
+                                                    ),
+                                                    onTap: () {
+                                                      launch(
+                                                          "tel:${_meetingListApiCallBack!.items[index].clientContactNo}");
+                                                    },
+                                                  ),
+                                                ],
+                                              )),
+                                        ],
+                                      ),
                                     ),
                                   ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(
-                                      left: ScreenUtil().setSp(8),
-                                      right: ScreenUtil().setSp(8),
-                                      bottom: ScreenUtil().setSp(8)),
-                                  child: Container(
-                                    width: double.infinity,
-                                    child: Row(
-                                      children: <Widget>[
-                                        Flexible(
-                                            flex: 3,
-                                            fit: FlexFit.tight,
-                                            child: Row(
-                                              children: <Widget>[
-                                                Icon(
-                                                  Icons.mail,
-                                                  size: 15,
-                                                  color: colorTextDarkBlue,
-                                                ),
-                                                InkWell(
-                                                  child: Text(
-                                                    ' ${_meetingListApiCallBack!.items[index].clientEmail}',
+                                  Padding(
+                                    padding: EdgeInsets.only(
+                                        left: ScreenUtil().setSp(8),
+                                        right: ScreenUtil().setSp(8),
+                                        bottom: ScreenUtil().setSp(8)),
+                                    child: Container(
+                                      width: double.infinity,
+                                      child: Row(
+                                        children: <Widget>[
+                                          Flexible(
+                                              flex: 3,
+                                              fit: FlexFit.tight,
+                                              child: Row(
+                                                children: <Widget>[
+                                                  Icon(
+                                                    Icons.mail,
+                                                    size: 15,
+                                                    color: colorTextDarkBlue,
+                                                  ),
+                                                  InkWell(
+                                                    child: Text(
+                                                      ' ${_meetingListApiCallBack!.items[index].clientEmail}',
+                                                      style: TextStyle(
+                                                          color: Colors.black,
+                                                          fontSize: ScreenUtil()
+                                                              .setSp(10)),
+                                                    ),
+                                                    onTap: () {
+                                                      launch(
+                                                          'mailto:${_meetingListApiCallBack!.items[index].clientEmail}');
+                                                    },
+                                                  ),
+                                                ],
+                                              )),
+                                          SizedBox(
+                                            width: 5.0,
+                                          ),
+                                          Flexible(
+                                              flex: 3,
+                                              fit: FlexFit.tight,
+                                              child: Row(
+                                                children: <Widget>[],
+                                              )),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(
+                                        left: ScreenUtil().setSp(8),
+                                        right: ScreenUtil().setSp(8),
+                                        bottom: ScreenUtil().setSp(8)),
+                                    child: Container(
+                                      width: double.infinity,
+                                      child: Row(
+                                        children: <Widget>[
+                                          Flexible(
+                                              flex: 3,
+                                              fit: FlexFit.tight,
+                                              child: Row(
+                                                children: <Widget>[
+                                                  Icon(
+                                                    Icons.timer,
+                                                    size: 15,
+                                                    color: colorTextDarkBlue,
+                                                  ),
+                                                  Text(' Start : '),
+                                                  Text(
+                                                    //'Meeting start '
+                                                    '${DateTime.parse("${_meetingListApiCallBack!.items[index].meetingStart}").toLocal().hour.toString().padLeft(2, '0')}:'
+                                                    '${DateTime.parse("${_meetingListApiCallBack!.items[index].meetingStart}").toLocal().minute.toString().padLeft(2, '0')}:'
+                                                    '${DateTime.parse("${_meetingListApiCallBack!.items[index].meetingStart}").toLocal().second.toString().padLeft(2, '0')}',
+      //                                                  'In Time  Hours ',
                                                     style: TextStyle(
                                                         color: Colors.black,
                                                         fontSize: ScreenUtil()
                                                             .setSp(10)),
                                                   ),
-                                                  onTap: () {
-                                                    launch(
-                                                        'mailto:${_meetingListApiCallBack!.items[index].clientEmail}');
-                                                  },
-                                                ),
-                                              ],
-                                            )),
-                                        SizedBox(
-                                          width: 5.0,
-                                        ),
-                                        Flexible(
-                                            flex: 3,
-                                            fit: FlexFit.tight,
-                                            child: Row(
-                                              children: <Widget>[],
-                                            )),
-                                      ],
+                                                ],
+                                              )),
+                                          SizedBox(
+                                            width: 5.0,
+                                          ),
+                                          Flexible(
+                                              flex: 3,
+                                              fit: FlexFit.tight,
+                                              child: Row(
+                                                children: <Widget>[
+                                                  Icon(
+                                                    Icons.timer,
+                                                    size: 15,
+                                                    color: colorTextDarkBlue,
+                                                  ),
+                                                  Text(' End : '),
+                                                  Text(
+                                                    //'Meeting End '
+                                                    '${DateTime.parse("${_meetingListApiCallBack!.items[index].meetingEnd}").hour.toString().padLeft(2, '0')}:'
+                                                    '${DateTime.parse("${_meetingListApiCallBack!.items[index].meetingEnd}").minute.toString().padLeft(2, '0')}:'
+                                                    '${DateTime.parse("${_meetingListApiCallBack!.items[index].meetingEnd}").second.toString().padLeft(2, '0')}',
+                                                    style: TextStyle(
+                                                        color: Colors.black,
+                                                        fontSize: ScreenUtil()
+                                                            .setSp(10)),
+                                                  ),
+                                                ],
+                                              )),
+                                        ],
+                                      ),
                                     ),
                                   ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(
-                                      left: ScreenUtil().setSp(8),
-                                      right: ScreenUtil().setSp(8),
-                                      bottom: ScreenUtil().setSp(8)),
-                                  child: Container(
-                                    width: double.infinity,
-                                    child: Row(
-                                      children: <Widget>[
-                                        Flexible(
-                                            flex: 3,
-                                            fit: FlexFit.tight,
-                                            child: Row(
-                                              children: <Widget>[
-                                                Icon(
-                                                  Icons.timer,
-                                                  size: 15,
-                                                  color: colorTextDarkBlue,
-                                                ),
-                                                Text(' Start : '),
-                                                Text(
-                                                  //'Meeting start '
-                                                  '${DateTime.parse("${_meetingListApiCallBack!.items[index].meetingStart}").toLocal().hour.toString().padLeft(2, '0')}:'
-                                                  '${DateTime.parse("${_meetingListApiCallBack!.items[index].meetingStart}").toLocal().minute.toString().padLeft(2, '0')}:'
-                                                  '${DateTime.parse("${_meetingListApiCallBack!.items[index].meetingStart}").toLocal().second.toString().padLeft(2, '0')}',
-//                                                  'In Time  Hours ',
-                                                  style: TextStyle(
-                                                      color: Colors.black,
-                                                      fontSize: ScreenUtil()
-                                                          .setSp(10)),
-                                                ),
-                                              ],
-                                            )),
-                                        SizedBox(
-                                          width: 5.0,
-                                        ),
-                                        Flexible(
-                                            flex: 3,
-                                            fit: FlexFit.tight,
-                                            child: Row(
-                                              children: <Widget>[
-                                                Icon(
-                                                  Icons.timer,
-                                                  size: 15,
-                                                  color: colorTextDarkBlue,
-                                                ),
-                                                Text(' End : '),
-                                                Text(
-                                                  //'Meeting End '
-                                                  '${DateTime.parse("${_meetingListApiCallBack!.items[index].meetingEnd}").hour.toString().padLeft(2, '0')}:'
-                                                  '${DateTime.parse("${_meetingListApiCallBack!.items[index].meetingEnd}").minute.toString().padLeft(2, '0')}:'
-                                                  '${DateTime.parse("${_meetingListApiCallBack!.items[index].meetingEnd}").second.toString().padLeft(2, '0')}',
-                                                  style: TextStyle(
-                                                      color: Colors.black,
-                                                      fontSize: ScreenUtil()
-                                                          .setSp(10)),
-                                                ),
-                                              ],
-                                            )),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ),
-                        ),
-                      );
-                    },
-                    itemCount: _meetingListApiCallBack!.items.length,
-                  )
-                : Center(
-                    child: Text(_noDataFound),
-                  ),
-          )
-        ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          _buttonTapped();
-        },
-        child: Icon(Icons.add, color: Colors.white),
-        backgroundColor: colorTextDarkBlue,
+                        );
+                      },
+                      itemCount: _meetingListApiCallBack!.items.length,
+                    )
+                  : Center(
+                      child: Text(_noDataFound),
+                    ),
+            )
+          ],
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            _buttonTapped();
+          },
+          child: Icon(Icons.add, color: Colors.white),
+          backgroundColor: colorTextDarkBlue,
+        ),
       ),
     );
   }

@@ -63,171 +63,175 @@ class CommentsState extends State<Comments> {
   Widget build(BuildContext context) {
 
 
-    return Scaffold(
-      backgroundColor: Colors.grey[100],
-      body: Stack(
-        children: <Widget>[
-          CustomHeaderWithBack(
-              scaffoldKey: widget.scaffoldKey, title: widget.title),
-          Container(
-            margin: EdgeInsets.only(top: ScreenUtil().setSp(90.0)),
-            child: Column(
-              children: <Widget>[
-                Card(
-                  elevation: 5,
-                  margin: EdgeInsets.only(
-                      top: ScreenUtil().setSp(10),
-                      left: ScreenUtil().setSp(10),
-                      right: ScreenUtil().setSp(10)),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      SizedBox(
-                        height: 8,
-                      ),
-                      Row(
-                        children: <Widget>[
-                          Expanded(
-                            child: Row(
-                              children: <Widget>[
-                                SizedBox(
-                                  width: 8,
-                                ),
-                                Icon(
-                                  Icons.folder_shared,
-                                  color: Colors.deepOrange,
-                                  size: 15,
-                                ),
-                                Text(
-                                  ' ${widget.project}',
-                                  style: TextStyle(
-                                    fontSize: 14.0,
-                                  ),
-                                  maxLines: 2,
-                                )
-                              ],
-                            ),
-                          ),
-                          Expanded(
-                            child: Row(
-                              children: <Widget>[
-                                SizedBox(
-                                  width: 5,
-                                ),
-                                Icon(
-                                  Icons.people,
-                                  color: Colors.deepOrange,
-                                  size: 15,
-                                ),
-                                Text(
-                                  ' ${widget.client}',
-                                  style: TextStyle(
-                                    fontSize: 14.0,
-                                  ),
-                                  maxLines: 2,
-                                )
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            left: 8, right: 8, top: 8, bottom: 8),
-                        child: Text(
-                          widget.task,
-                          style: TextStyle(fontSize: 14.0),
-                          maxLines: null,
+    return SafeArea(
+       top: false,
+        bottom: true,
+      child: Scaffold(
+        backgroundColor: Colors.grey[100],
+        body: Stack(
+          children: <Widget>[
+            CustomHeaderWithBack(
+                scaffoldKey: widget.scaffoldKey, title: widget.title),
+            Container(
+              margin: EdgeInsets.only(top: ScreenUtil().setSp(90.0)),
+              child: Column(
+                children: <Widget>[
+                  Card(
+                    elevation: 5,
+                    margin: EdgeInsets.only(
+                        top: ScreenUtil().setSp(10),
+                        left: ScreenUtil().setSp(10),
+                        right: ScreenUtil().setSp(10)),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        SizedBox(
+                          height: 8,
                         ),
-                      ),
-                      Row(
-                        children: <Widget>[
-                          Expanded(
-                            child: Row(
-                              children: <Widget>[
-                                SizedBox(
-                                  width: 8,
-                                ),
-                                Icon(
-                                  Icons.access_time,
-                                  color: Colors.deepOrange,
-                                  size: 15,
-                                ),
-                                Text(
-                                  '  ${widget.minutes}:00',
-                                  style: TextStyle(
-                                    fontSize: 14.0,
+                        Row(
+                          children: <Widget>[
+                            Expanded(
+                              child: Row(
+                                children: <Widget>[
+                                  SizedBox(
+                                    width: 8,
                                   ),
-                                  maxLines: 2,
-                                )
-                              ],
-                            ),
-                          ),
-                          Text(
-                            DateFormat('hh:mm a, dd MMM').format(
-                              DateTime.parse(widget.time),
-                            ),
-                            style: dateTimeTextStyle,
-                          ),
-                          SizedBox(
-                            width: 8,
-                          )
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                Expanded(
-                  child: Container(
-                      child: (_getCommentCallback?.items?.isNotEmpty ?? false)
-                          ? buildListView()
-                          : Container(
-                              child: Center(
-                                child: Text(_noDataFound),
+                                  Icon(
+                                    Icons.folder_shared,
+                                    color: Colors.deepOrange,
+                                    size: 15,
+                                  ),
+                                  Text(
+                                    ' ${widget.project}',
+                                    style: TextStyle(
+                                      fontSize: 14.0,
+                                    ),
+                                    maxLines: 2,
+                                  )
+                                ],
                               ),
-                            )),
-                ),
-                Card(
-                  elevation: 5,
-                  margin: EdgeInsets.only(
-                      top: ScreenUtil().setSp(10),
-                      left: ScreenUtil().setSp(10),
-                      right: ScreenUtil().setSp(10),
-                      bottom: ScreenUtil().setSp(10)),
-                  child: Row(
-                    children: <Widget>[
-                      Expanded(
-                          child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: TextField(
-                          controller: commentController,
-                          decoration: InputDecoration(
-                            hintText: 'Add comment',
-                            contentPadding: EdgeInsets.only(
-                                left: 8, right: 8, top: 2, bottom: 2),
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10.0)),
+                            ),
+                            Expanded(
+                              child: Row(
+                                children: <Widget>[
+                                  SizedBox(
+                                    width: 5,
+                                  ),
+                                  Icon(
+                                    Icons.people,
+                                    color: Colors.deepOrange,
+                                    size: 15,
+                                  ),
+                                  Text(
+                                    ' ${widget.client}',
+                                    style: TextStyle(
+                                      fontSize: 14.0,
+                                    ),
+                                    maxLines: 2,
+                                  )
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              left: 8, right: 8, top: 8, bottom: 8),
+                          child: Text(
+                            widget.task,
+                            style: TextStyle(fontSize: 14.0),
+                            maxLines: null,
                           ),
-                          maxLines: null,
                         ),
-                      )),
-                      IconButton(
-                        icon: Icon(
-                          Icons.send,
-                          color: Colors.deepOrange,
-                          size: 25,
+                        Row(
+                          children: <Widget>[
+                            Expanded(
+                              child: Row(
+                                children: <Widget>[
+                                  SizedBox(
+                                    width: 8,
+                                  ),
+                                  Icon(
+                                    Icons.access_time,
+                                    color: Colors.deepOrange,
+                                    size: 15,
+                                  ),
+                                  Text(
+                                    '  ${widget.minutes}:00',
+                                    style: TextStyle(
+                                      fontSize: 14.0,
+                                    ),
+                                    maxLines: 2,
+                                  )
+                                ],
+                              ),
+                            ),
+                            Text(
+                              DateFormat('hh:mm a, dd MMM').format(
+                                DateTime.parse(widget.time),
+                              ),
+                              style: dateTimeTextStyle,
+                            ),
+                            SizedBox(
+                              width: 8,
+                            )
+                          ],
                         ),
-                        onPressed: () {
-                          apiCallForPostComment();
-                        },
-                      )
-                    ],
+                      ],
+                    ),
                   ),
-                )
-              ],
+                  Expanded(
+                    child: Container(
+                        child: (_getCommentCallback?.items?.isNotEmpty ?? false)
+                            ? buildListView()
+                            : Container(
+                                child: Center(
+                                  child: Text(_noDataFound),
+                                ),
+                              )),
+                  ),
+                  Card(
+                    elevation: 5,
+                    margin: EdgeInsets.only(
+                        top: ScreenUtil().setSp(10),
+                        left: ScreenUtil().setSp(10),
+                        right: ScreenUtil().setSp(10),
+                        bottom: ScreenUtil().setSp(10)),
+                    child: Row(
+                      children: <Widget>[
+                        Expanded(
+                            child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: TextField(
+                            controller: commentController,
+                            decoration: InputDecoration(
+                              hintText: 'Add comment',
+                              contentPadding: EdgeInsets.only(
+                                  left: 8, right: 8, top: 2, bottom: 2),
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10.0)),
+                            ),
+                            maxLines: null,
+                          ),
+                        )),
+                        IconButton(
+                          icon: Icon(
+                            Icons.send,
+                            color: Colors.deepOrange,
+                            size: 25,
+                          ),
+                          onPressed: () {
+                            apiCallForPostComment();
+                          },
+                        )
+                      ],
+                    ),
+                  )
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

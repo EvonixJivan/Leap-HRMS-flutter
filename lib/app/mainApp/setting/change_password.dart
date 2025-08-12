@@ -85,157 +85,161 @@ class _ChangePasswordState extends State<ChangePassword> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(children: <Widget>[
-        CustomHeaderWithBack(
-            scaffoldKey: widget.scaffoldKey, title: widget.title),
-        Padding(
-          padding: EdgeInsets.only(
-              left: ScreenUtil().setSp(15),
-              top: ScreenUtil().setSp(10),
-              right: ScreenUtil().setSp(10)),
-          child: Card(
-            elevation: 5,
-            margin: EdgeInsets.only(
-              left: ScreenUtil().setSp(20),
-              right: ScreenUtil().setSp(20),
-              top: ScreenUtil().setSp(200),
-            ),
-            child: Form(
-              key: _formKey,
-              child: ListView(
-                shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
-                children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.only(
-                        left: ScreenUtil().setSp(10),
-                        top: ScreenUtil().setSp(10),
-                        right: ScreenUtil().setSp(10)),
-                    child: Container(
-                        padding: EdgeInsets.all(5),
-                        decoration: BoxDecoration(
-                          color: Colors.grey[100],
-                          border: Border.all(width: 1, color: Colors.grey),
-                          borderRadius: BorderRadius.circular(3),
-                        ),
-                        child: TextFormField(
-                          controller: newPassword,
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return 'New Password is required';
-                            }
-                            return null;
-                          },
-                          onSaved: (String? value) {
-                            _newPassword = value!;
-                          },
-                          obscureText: _obscureText,
-                          decoration: InputDecoration(
-                            border: InputBorder.none,
-                            hintText: 'New Password',
-                            prefixIcon: Icon(
-                              Icons.lock,
-                              color: Colors.black,
-                            ),
-                            suffixIcon: new GestureDetector(
-                              onTap: () {
-                                setState(() {
-                                  _obscureText = !_obscureText;
-                                });
-                              },
-                              child: new Icon(_obscureText
-                                  ? Icons.visibility
-                                  : Icons.visibility_off),
-                            ),
-                          ),
-                        )),
-                  ),
-                  SizedBox(
-                    height: ScreenUtil().setSp(10),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(
-                        left: ScreenUtil().setSp(10),
-                        top: ScreenUtil().setSp(10),
-                        right: ScreenUtil().setSp(10)),
-                    child: Container(
-                        padding: EdgeInsets.all(5),
-                        decoration: BoxDecoration(
-                          color: Colors.grey[100],
-                          border: Border.all(width: 1, color: Colors.grey),
-                          borderRadius: BorderRadius.circular(3),
-                        ),
-                        child: TextFormField(
-                          validator: (value) {
-                            if (value != newPassword.text) {
-                              return 'Password is not matching';
-                            }
-                            return null;
-                          },
-                          obscureText: _obscureTextVerify,
-                          decoration: InputDecoration(
-                            border: InputBorder.none,
-                            hintText: 'Verify Password',
-                            prefixIcon: Icon(
-                              Icons.lock,
-                              color: Colors.black,
-                            ),
-                            suffixIcon: new GestureDetector(
-                              onTap: () {
-                                setState(() {
-                                  _obscureTextVerify = !_obscureTextVerify;
-                                });
-                              },
-                              child: new Icon(_obscureTextVerify
-                                  ? Icons.visibility
-                                  : Icons.visibility_off),
-                            ),
-                          ),
-                        )),
-                  ),
-                  SizedBox(
-                    height: ScreenUtil().setSp(10),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(
-                        left: ScreenUtil().setSp(10),
-                        top: ScreenUtil().setSp(10),
-                        right: ScreenUtil().setSp(10),
-                        bottom: ScreenUtil().setSp(15)),
-                    child: ElevatedButton(
-                      // style: ElevatedButton.styleFrom(
-                      //     elevation: 2,
-                      //     backgroundColor: appColorRedIcon,
-                      //     shape: RoundedRectangleBorder(
-                      //         borderRadius: new BorderRadius.circular(5.0)),
-                      //     side: BorderSide(color: appPrimaryColor)),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: btnBgColor,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(25.0),
-                        ),
-                      ),
-                      child: Text(
-                        'Reset Password',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: ScreenUtil().setSp(15)),
-                      ),
-                      onPressed: () {
-                        apiCallForChangePassword();
-                      },
-                    ),
-                  ),
-                ],
+    return SafeArea(
+       top: false,
+        bottom: true,
+      child: Scaffold(
+        body: Stack(children: <Widget>[
+          CustomHeaderWithBack(
+              scaffoldKey: widget.scaffoldKey, title: widget.title),
+          Padding(
+            padding: EdgeInsets.only(
+                left: ScreenUtil().setSp(15),
+                top: ScreenUtil().setSp(10),
+                right: ScreenUtil().setSp(10)),
+            child: Card(
+              elevation: 5,
+              margin: EdgeInsets.only(
+                left: ScreenUtil().setSp(20),
+                right: ScreenUtil().setSp(20),
+                top: ScreenUtil().setSp(200),
               ),
+              child: Form(
+                key: _formKey,
+                child: ListView(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  children: <Widget>[
+                    Padding(
+                      padding: EdgeInsets.only(
+                          left: ScreenUtil().setSp(10),
+                          top: ScreenUtil().setSp(10),
+                          right: ScreenUtil().setSp(10)),
+                      child: Container(
+                          padding: EdgeInsets.all(5),
+                          decoration: BoxDecoration(
+                            color: Colors.grey[100],
+                            border: Border.all(width: 1, color: Colors.grey),
+                            borderRadius: BorderRadius.circular(3),
+                          ),
+                          child: TextFormField(
+                            controller: newPassword,
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return 'New Password is required';
+                              }
+                              return null;
+                            },
+                            onSaved: (String? value) {
+                              _newPassword = value!;
+                            },
+                            obscureText: _obscureText,
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
+                              hintText: 'New Password',
+                              prefixIcon: Icon(
+                                Icons.lock,
+                                color: Colors.black,
+                              ),
+                              suffixIcon: new GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    _obscureText = !_obscureText;
+                                  });
+                                },
+                                child: new Icon(_obscureText
+                                    ? Icons.visibility
+                                    : Icons.visibility_off),
+                              ),
+                            ),
+                          )),
+                    ),
+                    SizedBox(
+                      height: ScreenUtil().setSp(10),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(
+                          left: ScreenUtil().setSp(10),
+                          top: ScreenUtil().setSp(10),
+                          right: ScreenUtil().setSp(10)),
+                      child: Container(
+                          padding: EdgeInsets.all(5),
+                          decoration: BoxDecoration(
+                            color: Colors.grey[100],
+                            border: Border.all(width: 1, color: Colors.grey),
+                            borderRadius: BorderRadius.circular(3),
+                          ),
+                          child: TextFormField(
+                            validator: (value) {
+                              if (value != newPassword.text) {
+                                return 'Password is not matching';
+                              }
+                              return null;
+                            },
+                            obscureText: _obscureTextVerify,
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
+                              hintText: 'Verify Password',
+                              prefixIcon: Icon(
+                                Icons.lock,
+                                color: Colors.black,
+                              ),
+                              suffixIcon: new GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    _obscureTextVerify = !_obscureTextVerify;
+                                  });
+                                },
+                                child: new Icon(_obscureTextVerify
+                                    ? Icons.visibility
+                                    : Icons.visibility_off),
+                              ),
+                            ),
+                          )),
+                    ),
+                    SizedBox(
+                      height: ScreenUtil().setSp(10),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(
+                          left: ScreenUtil().setSp(10),
+                          top: ScreenUtil().setSp(10),
+                          right: ScreenUtil().setSp(10),
+                          bottom: ScreenUtil().setSp(15)),
+                      child: ElevatedButton(
+                        // style: ElevatedButton.styleFrom(
+                        //     elevation: 2,
+                        //     backgroundColor: appColorRedIcon,
+                        //     shape: RoundedRectangleBorder(
+                        //         borderRadius: new BorderRadius.circular(5.0)),
+                        //     side: BorderSide(color: appPrimaryColor)),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: btnBgColor,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(25.0),
+                          ),
+                        ),
+                        child: Text(
+                          'Reset Password',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: ScreenUtil().setSp(15)),
+                        ),
+                        onPressed: () {
+                          apiCallForChangePassword();
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0)),
             ),
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0)),
           ),
-        ),
-      ]),
+        ]),
+      ),
     );
   }
 }

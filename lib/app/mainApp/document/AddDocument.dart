@@ -57,560 +57,564 @@ class _AddDocumentState extends State<AddDocument> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Scaffold(
-      body: Stack(
-        children: [
-          Container(
-            color: appBackgroundColor,
-            child: Stack(
-              children: <Widget>[
-                CustomHeader(
-                    scaffoldKey: widget.scaffoldKey, title: widget.title),
-                // CustomHeaderHeightWithBack(
-                //     scaffoldKey: widget.scaffoldKey, title: widget.title),
-                SingleChildScrollView(
-                  child: Container(
-                    margin: EdgeInsets.only(top: 40.0, left: 30, right: 30),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisSize: MainAxisSize.min,
-                      children: <Widget>[
-                        // IconButton(
-                        //   icon: Icon(Icons.arrow_back_ios,
-                        //       size: 25, color: Colors.white),
-                        //   onPressed: () {
-                        //     print('Back Pressed');
-                        //     Navigator.pop(context);
-                        //   },
-                        // ),
-                        SizedBox(
-                          height: 180,
-                        ),
-                        Text(
-                          widget.selectedDocName,
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 19),
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Text(
-                          'FILE',
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 15,
-                            fontWeight: FontWeight.w600,
-                            fontFamily: font,
+    return SafeArea(
+       top: false,
+        bottom: true,
+      child: Scaffold(
+        body: Stack(
+          children: [
+            Container(
+              color: appBackgroundColor,
+              child: Stack(
+                children: <Widget>[
+                  CustomHeader(
+                      scaffoldKey: widget.scaffoldKey, title: widget.title),
+                  // CustomHeaderHeightWithBack(
+                  //     scaffoldKey: widget.scaffoldKey, title: widget.title),
+                  SingleChildScrollView(
+                    child: Container(
+                      margin: EdgeInsets.only(top: 40.0, left: 30, right: 30),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        children: <Widget>[
+                          // IconButton(
+                          //   icon: Icon(Icons.arrow_back_ios,
+                          //       size: 25, color: Colors.white),
+                          //   onPressed: () {
+                          //     print('Back Pressed');
+                          //     Navigator.pop(context);
+                          //   },
+                          // ),
+                          SizedBox(
+                            height: 180,
                           ),
-                        ),
-                        Container(
-                          width: double.infinity,
-                          child: Row(
-                            children: [
-                              OutlinedButton(
-                                onPressed: () {
-                                  showModalBottomSheet<void>(
-                                      backgroundColor: Colors.transparent,
-                                      context: context,
-                                      builder: (BuildContext context) {
-                                        return Container(
-                                          height: 180,
-                                          decoration: new BoxDecoration(
-                                            color: Colors.white,
-                                            borderRadius: new BorderRadius.only(
-                                              topLeft:
-                                                  const Radius.circular(30.0),
-                                              topRight:
-                                                  const Radius.circular(30.0),
+                          Text(
+                            widget.selectedDocName,
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 19),
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Text(
+                            'FILE',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w600,
+                              fontFamily: font,
+                            ),
+                          ),
+                          Container(
+                            width: double.infinity,
+                            child: Row(
+                              children: [
+                                OutlinedButton(
+                                  onPressed: () {
+                                    showModalBottomSheet<void>(
+                                        backgroundColor: Colors.transparent,
+                                        context: context,
+                                        builder: (BuildContext context) {
+                                          return Container(
+                                            height: 180,
+                                            decoration: new BoxDecoration(
+                                              color: Colors.white,
+                                              borderRadius: new BorderRadius.only(
+                                                topLeft:
+                                                    const Radius.circular(30.0),
+                                                topRight:
+                                                    const Radius.circular(30.0),
+                                              ),
                                             ),
-                                          ),
-                                          margin:
-                                              EdgeInsets.fromLTRB(0, 0, 0, 0),
-                                          // color: Colors.white,
-                                          child: Form(
-                                            key: _formKey,
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.center,
-                                              //mainAxisSize: MainAxisSize.min,
-                                              children: <Widget>[
-                                                Row(
-                                                  children: [
-                                                    SizedBox(
-                                                      width: 20.0,
-                                                    ),
-                                                    Text(
-                                                      'Choose file',
-                                                      style: TextStyle(
-                                                          color: Colors.black,
-                                                          fontSize: 15),
-                                                    ),
-                                                    Expanded(
-                                                      child: Text(''),
-                                                    ),
-                                                    IconButton(
-                                                        icon: Icon(
-                                                          Icons.cancel,
-                                                          color: Colors.grey,
-                                                        ),
-                                                        onPressed: () =>
-                                                            Navigator.pop(
-                                                                context)),
-                                                  ],
-                                                ),
-                                                SizedBox(
-                                                  height: 20,
-                                                ),
-                                                Row(
-                                                  children: [
-                                                    // SizedBox(
-                                                    //   width: 15,
-                                                    // ),
-                                                    Expanded(child: Text('')),
-                                                    Column(
-                                                      children: [
-                                                        Container(
-                                                            height: 70,
-                                                            width: 70,
-                                                            decoration:
-                                                                BoxDecoration(
-                                                              shape: BoxShape
-                                                                  .circle,
-                                                              border:
-                                                                  Border.all(
-                                                                width: 1,
-                                                                color: Theme.of(
-                                                                        context)
-                                                                    .scaffoldBackgroundColor,
-                                                              ),
-                                                              color:
-                                                                  appPrimaryColor,
-                                                            ),
-                                                            child: IconButton(
-                                                                icon: Icon(
-                                                                  Icons
-                                                                      .camera_alt,
-                                                                  color: Colors
-                                                                      .white,
-                                                                  size: 30,
+                                            margin:
+                                                EdgeInsets.fromLTRB(0, 0, 0, 0),
+                                            // color: Colors.white,
+                                            child: Form(
+                                              key: _formKey,
+                                              child: Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.center,
+                                                //mainAxisSize: MainAxisSize.min,
+                                                children: <Widget>[
+                                                  Row(
+                                                    children: [
+                                                      SizedBox(
+                                                        width: 20.0,
+                                                      ),
+                                                      Text(
+                                                        'Choose file',
+                                                        style: TextStyle(
+                                                            color: Colors.black,
+                                                            fontSize: 15),
+                                                      ),
+                                                      Expanded(
+                                                        child: Text(''),
+                                                      ),
+                                                      IconButton(
+                                                          icon: Icon(
+                                                            Icons.cancel,
+                                                            color: Colors.grey,
+                                                          ),
+                                                          onPressed: () =>
+                                                              Navigator.pop(
+                                                                  context)),
+                                                    ],
+                                                  ),
+                                                  SizedBox(
+                                                    height: 20,
+                                                  ),
+                                                  Row(
+                                                    children: [
+                                                      // SizedBox(
+                                                      //   width: 15,
+                                                      // ),
+                                                      Expanded(child: Text('')),
+                                                      Column(
+                                                        children: [
+                                                          Container(
+                                                              height: 70,
+                                                              width: 70,
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                shape: BoxShape
+                                                                    .circle,
+                                                                border:
+                                                                    Border.all(
+                                                                  width: 1,
+                                                                  color: Theme.of(
+                                                                          context)
+                                                                      .scaffoldBackgroundColor,
                                                                 ),
-                                                                onPressed:
-                                                                    () async {
-                                                                  try {
-                                                                    //_imageFile =
-                                                                    
-                                                                     final ImagePicker picker = ImagePicker();
-
-                                  XFile? file = await picker.pickImage(
-                                    source: ImageSource.camera,
-                                    maxWidth: 200.0,
-                                    maxHeight: 500.0,
-                                    imageQuality: 70,
-                                  );
-
-                                  if (file != null) {
-                                    print("Image Path: ${file.path}");
-                                    _imageFile = File(file.path);
-                                  } else {  print("No image selected");
-                                  }
-                                    
-                                                                    // selectedFileName =
-                                                                    //     file.path
-                                                                    //         .toString();
-
-                                                                    _imageFile =
-                                                                        File(file!
-                                                                            .path);
-
-                                                                    // var fileName = File(file
-                                                                    //     .path.split('/').last);
-                                                                    //
-                                                                    // print('Jivan-->  $fileName');
-                                                                    // String dir = path.dirname(file.path);
-                                                                    // selectedFileName =  path.join(dir, 'case01wd03id01.png');
-                                                                    selectedFileName = File(
-                                                                            file.path)
-                                                                        .uri
-                                                                        .pathSegments
-                                                                        .last;
-                                                                    print(
-                                                                        'NewPath: ${selectedFileName}');
-                                                                    // print(selectedFileName);
-
-                                                                    Navigator.pop(
-                                                                        context);
-                                                                    setState(
-                                                                        () {});
-                                                                  } catch (e) {
-                                                                    // _pickImageError = e;
-                                                                    // showBottomToast(
-                                                                    //     "Image picker error: $e");
-                                                                  }
-                                                                })),
-                                                        Text(
-                                                          'Camera',
-                                                          style: TextStyle(
-                                                              color:
-                                                                  Colors.black,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w600,
-                                                              fontSize: 16),
-                                                        )
-                                                      ],
-                                                    ),
-                                                    SizedBox(
-                                                      width: 30,
-                                                    ),
-                                                    Column(
-                                                      children: [
-                                                        Container(
-                                                            height: 70,
-                                                            width: 70,
-                                                            decoration:
-                                                                BoxDecoration(
-                                                              shape: BoxShape
-                                                                  .circle,
-                                                              border:
-                                                                  Border.all(
-                                                                width: 1,
-                                                                color: Theme.of(
-                                                                        context)
-                                                                    .scaffoldBackgroundColor,
+                                                                color:
+                                                                    appPrimaryColor,
                                                               ),
-                                                              color:
-                                                                  appPrimaryColor,
-                                                            ),
-                                                            child: IconButton(
-                                                                icon: Icon(
-                                                                  Icons.camera,
-                                                                  color: Colors
-                                                                      .white,
-                                                                  size: 30,
-                                                                ),
-                                                                onPressed:
-                                                                    () async {
-                                                                  try {
-                                                                    //_imageFile =
-                                                                    final ImagePicker picker = ImagePicker();
-
-                                  XFile? file = await picker.pickImage(
-                                    source: ImageSource.camera,
-                                    maxWidth: 200.0,
-                                    maxHeight: 500.0,
-                                    imageQuality: 70,
-                                  );
-
-                                  if (file != null) {
-                                    print("Image Path: ${file.path}");
-                                    _imageFile = File(file.path);
-                                  } else {  print("No image selected");
-                                  }
-                                                                    // selectedFileName =
-                                                                    //     file.toString();
-                                                                    // _imageFile =
-                                                                    //     File(file.path);
-                                                                    _imageFile =
-                                                                        File(file!
-                                                                            .path);
-                                                                    // String dir = path.dirname(file.path);
-                                                                    // selectedFileName =  path.join(dir, 'case01wd03id01.png');
-
-                                                                    selectedFileName = File(
-                                                                            file.path)
-                                                                        .uri
-                                                                        .pathSegments
-                                                                        .last;
-
-                                                                    print(
-                                                                        'NewPath: ${selectedFileName}');
-                                                                    Navigator.pop(
-                                                                        context);
-                                                                    setState(
-                                                                        () {});
-                                                                  } catch (e) {
-                                                                    // _pickImageError = e;
-                                                                    //   showBottomToast(
-                                                                    //       "Image picker error: $e");
-                                                                  }
-                                                                })),
-                                                        Text(
-                                                          'Gallery',
-                                                          style: TextStyle(
-                                                              color:
-                                                                  Colors.black,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w600,
-                                                              fontSize: 16),
-                                                        )
-                                                      ],
-                                                    ),
-                                                    SizedBox(
-                                                      width: 30,
-                                                    ),
-                                                    Column(
-                                                      children: [
-                                                        Container(
-                                                            height: 70,
-                                                            width: 70,
-                                                            decoration:
-                                                                BoxDecoration(
-                                                              shape: BoxShape
-                                                                  .circle,
-                                                              border:
-                                                                  Border.all(
-                                                                width: 1,
-                                                                color: Theme.of(
-                                                                        context)
-                                                                    .scaffoldBackgroundColor,
-                                                              ),
-                                                              color:
-                                                                  appPrimaryColor,
-                                                            ),
-                                                            child: IconButton(
-                                                                icon: Icon(
-                                                                  FontAwesomeIcons
-                                                                      .filePdf,
-                                                                  color: Colors
-                                                                      .white,
-                                                                  size: 30,
-                                                                ),
-                                                                onPressed:
-                                                                    () async {
-                                                                  try {
-                                                                    //_imageFile =
-                                                                    FilePickerResult?
-                                                                        result =
-                                                                        await FilePicker
-                                                                            .platform
-                                                                            .pickFiles();
-                                                                    setState(
-                                                                        () {
-                                                                      _imageFile = File(result!
-                                                                          .files
-                                                                          .single
-                                                                          .path
-                                                                          .toString());
-
-                                                                      //selectedFileName = File(file.path).uri.pathSegments.last;
+                                                              child: IconButton(
+                                                                  icon: Icon(
+                                                                    Icons
+                                                                        .camera_alt,
+                                                                    color: Colors
+                                                                        .white,
+                                                                    size: 30,
+                                                                  ),
+                                                                  onPressed:
+                                                                      () async {
+                                                                    try {
+                                                                      //_imageFile =
+                                                                      
+                                                                       final ImagePicker picker = ImagePicker();
+      
+                                    XFile? file = await picker.pickImage(
+                                      source: ImageSource.camera,
+                                      maxWidth: 200.0,
+                                      maxHeight: 500.0,
+                                      imageQuality: 70,
+                                    );
+      
+                                    if (file != null) {
+                                      print("Image Path: ${file.path}");
+                                      _imageFile = File(file.path);
+                                    } else {  print("No image selected");
+                                    }
+                                      
+                                                                      // selectedFileName =
+                                                                      //     file.path
+                                                                      //         .toString();
+      
+                                                                      _imageFile =
+                                                                          File(file!
+                                                                              .path);
+      
+                                                                      // var fileName = File(file
+                                                                      //     .path.split('/').last);
+                                                                      //
+                                                                      // print('Jivan-->  $fileName');
+                                                                      // String dir = path.dirname(file.path);
+                                                                      // selectedFileName =  path.join(dir, 'case01wd03id01.png');
+                                                                      selectedFileName = File(
+                                                                              file.path)
+                                                                          .uri
+                                                                          .pathSegments
+                                                                          .last;
                                                                       print(
-                                                                          'NewPath: ${_imageFile!.absolute.path.toString()}');
-                                                                                                                                        });
-
-                                                                    //_imageFile = File(file.path);
-                                                                    // String dir = path.dirname(file.path);
-                                                                    // selectedFileName =  path.join(dir, 'case01wd03id01.png');
-                                                                    // print(selectedFileName);
-
-                                                                    Navigator.pop(
-                                                                        context);
-                                                                    setState(
-                                                                        () {});
-                                                                  } catch (e) {
-                                                                    // _pickImageError = e;
-
-                                                                  }
-                                                                })),
-                                                        Text(
-                                                          'Document',
-                                                          style: TextStyle(
-                                                              color:
-                                                                  Colors.black,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w600,
-                                                              fontSize: 16),
-                                                        )
-                                                      ],
-                                                    ),
-                                                    Expanded(child: Text('')),
-                                                  ],
-                                                )
-                                              ],
+                                                                          'NewPath: ${selectedFileName}');
+                                                                      // print(selectedFileName);
+      
+                                                                      Navigator.pop(
+                                                                          context);
+                                                                      setState(
+                                                                          () {});
+                                                                    } catch (e) {
+                                                                      // _pickImageError = e;
+                                                                      // showBottomToast(
+                                                                      //     "Image picker error: $e");
+                                                                    }
+                                                                  })),
+                                                          Text(
+                                                            'Camera',
+                                                            style: TextStyle(
+                                                                color:
+                                                                    Colors.black,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w600,
+                                                                fontSize: 16),
+                                                          )
+                                                        ],
+                                                      ),
+                                                      SizedBox(
+                                                        width: 30,
+                                                      ),
+                                                      Column(
+                                                        children: [
+                                                          Container(
+                                                              height: 70,
+                                                              width: 70,
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                shape: BoxShape
+                                                                    .circle,
+                                                                border:
+                                                                    Border.all(
+                                                                  width: 1,
+                                                                  color: Theme.of(
+                                                                          context)
+                                                                      .scaffoldBackgroundColor,
+                                                                ),
+                                                                color:
+                                                                    appPrimaryColor,
+                                                              ),
+                                                              child: IconButton(
+                                                                  icon: Icon(
+                                                                    Icons.camera,
+                                                                    color: Colors
+                                                                        .white,
+                                                                    size: 30,
+                                                                  ),
+                                                                  onPressed:
+                                                                      () async {
+                                                                    try {
+                                                                      //_imageFile =
+                                                                      final ImagePicker picker = ImagePicker();
+      
+                                    XFile? file = await picker.pickImage(
+                                      source: ImageSource.camera,
+                                      maxWidth: 200.0,
+                                      maxHeight: 500.0,
+                                      imageQuality: 70,
+                                    );
+      
+                                    if (file != null) {
+                                      print("Image Path: ${file.path}");
+                                      _imageFile = File(file.path);
+                                    } else {  print("No image selected");
+                                    }
+                                                                      // selectedFileName =
+                                                                      //     file.toString();
+                                                                      // _imageFile =
+                                                                      //     File(file.path);
+                                                                      _imageFile =
+                                                                          File(file!
+                                                                              .path);
+                                                                      // String dir = path.dirname(file.path);
+                                                                      // selectedFileName =  path.join(dir, 'case01wd03id01.png');
+      
+                                                                      selectedFileName = File(
+                                                                              file.path)
+                                                                          .uri
+                                                                          .pathSegments
+                                                                          .last;
+      
+                                                                      print(
+                                                                          'NewPath: ${selectedFileName}');
+                                                                      Navigator.pop(
+                                                                          context);
+                                                                      setState(
+                                                                          () {});
+                                                                    } catch (e) {
+                                                                      // _pickImageError = e;
+                                                                      //   showBottomToast(
+                                                                      //       "Image picker error: $e");
+                                                                    }
+                                                                  })),
+                                                          Text(
+                                                            'Gallery',
+                                                            style: TextStyle(
+                                                                color:
+                                                                    Colors.black,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w600,
+                                                                fontSize: 16),
+                                                          )
+                                                        ],
+                                                      ),
+                                                      SizedBox(
+                                                        width: 30,
+                                                      ),
+                                                      Column(
+                                                        children: [
+                                                          Container(
+                                                              height: 70,
+                                                              width: 70,
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                shape: BoxShape
+                                                                    .circle,
+                                                                border:
+                                                                    Border.all(
+                                                                  width: 1,
+                                                                  color: Theme.of(
+                                                                          context)
+                                                                      .scaffoldBackgroundColor,
+                                                                ),
+                                                                color:
+                                                                    appPrimaryColor,
+                                                              ),
+                                                              child: IconButton(
+                                                                  icon: Icon(
+                                                                    FontAwesomeIcons
+                                                                        .filePdf,
+                                                                    color: Colors
+                                                                        .white,
+                                                                    size: 30,
+                                                                  ),
+                                                                  onPressed:
+                                                                      () async {
+                                                                    try {
+                                                                      //_imageFile =
+                                                                      FilePickerResult?
+                                                                          result =
+                                                                          await FilePicker
+                                                                              .platform
+                                                                              .pickFiles();
+                                                                      setState(
+                                                                          () {
+                                                                        _imageFile = File(result!
+                                                                            .files
+                                                                            .single
+                                                                            .path
+                                                                            .toString());
+      
+                                                                        //selectedFileName = File(file.path).uri.pathSegments.last;
+                                                                        print(
+                                                                            'NewPath: ${_imageFile!.absolute.path.toString()}');
+                                                                                                                                          });
+      
+                                                                      //_imageFile = File(file.path);
+                                                                      // String dir = path.dirname(file.path);
+                                                                      // selectedFileName =  path.join(dir, 'case01wd03id01.png');
+                                                                      // print(selectedFileName);
+      
+                                                                      Navigator.pop(
+                                                                          context);
+                                                                      setState(
+                                                                          () {});
+                                                                    } catch (e) {
+                                                                      // _pickImageError = e;
+      
+                                                                    }
+                                                                  })),
+                                                          Text(
+                                                            'Document',
+                                                            style: TextStyle(
+                                                                color:
+                                                                    Colors.black,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w600,
+                                                                fontSize: 16),
+                                                          )
+                                                        ],
+                                                      ),
+                                                      Expanded(child: Text('')),
+                                                    ],
+                                                  )
+                                                ],
+                                              ),
                                             ),
-                                          ),
-                                        );
-                                      });
-                                },
-                                style: OutlinedButton.styleFrom(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(4.0),
+                                          );
+                                        });
+                                  },
+                                  style: OutlinedButton.styleFrom(
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(4.0),
+                                    ),
+                                    backgroundColor: Colors.grey,
+                                    side: BorderSide(
+                                        width: 0.5, color: Colors.black),
                                   ),
-                                  backgroundColor: Colors.grey,
-                                  side: BorderSide(
-                                      width: 0.5, color: Colors.black),
+                                  child: Text(
+                                    'Choose file',
+                                    style: TextStyle(
+                                        color: Colors.black, fontSize: 15),
+                                  ),
                                 ),
-                                child: Text(
-                                  'Choose file',
+                                SizedBox(
+                                  width: 5.0,
+                                ),
+                              ],
+                            ),
+                          ),
+                          _imageFile != null
+                              ? Text(
+                                  getFileExtension(_imageFile!.path.toString()),
+                                  // _imageFile.path.toString(),
                                   style: TextStyle(
-                                      color: Colors.black, fontSize: 15),
+                                      color: Colors.black, fontSize: 17),
+                                  overflow: TextOverflow.ellipsis,
+                                  softWrap: false,
+                                )
+                              : Text(
+                                  'No file choosen',
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 15,
+                                      fontFamily: font),
                                 ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Text(
+                            'DESCRIPTION',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Container(
+                              padding: EdgeInsets.only(left: 10),
+      
+                              // decoration: BoxDecoration(
+                              //   color: Colors.grey[100],
+                              //   border: Border.all(width: 1, color: Colors.grey),
+                              //   borderRadius: BorderRadius.circular(3),
+                              // ),
+                              child: TextFormField(
+                                controller: txtDes,
+                                maxLines: null,
+                                validator: (value) {
+                                  if (value!.isEmpty) {
+                                    return 'Description is required';
+                                  }
+                                  return null;
+                                },
+                                decoration: InputDecoration(
+                                  hintStyle: TextStyle(color: colorText),
+                                  hintText: '  Enter Description',
+                                  filled: true,
+                                  fillColor: tfBackgroundColor,
+                                  contentPadding:
+                                      EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(25.0),
+                                    borderSide: BorderSide.none,
+                                  ),
+                                  enabledBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide.none,
+                                    borderRadius: BorderRadius.circular(25.7),
+                                  ),
+                                ),
+                                // decoration: InputDecoration(
+                                //   border: InputBorder.none,
+                                //   hintText: 'Enter Description',
+                                // ),
+                                onSaved: (String? value) {
+                                  print(value);
+                                },
+                              )),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Text(
+                            'STATUS',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w600,
+                              fontFamily: font,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Row(
+                            children: [
+                              Radio(
+                                value: 1,
+                                groupValue: _radioSelected,
+                                // activeColor: appColorRADIO,
+                                activeColor: colorTextDarkBlue,
+                                onChanged: (value) {
+                                  setState(() {
+                                    _radioSelected = value as int;
+                                    // _radioVal = 'Active';
+                                    _radioVal = '1';
+                                  });
+                                },
                               ),
-                              SizedBox(
-                                width: 5.0,
+                              Text('Active'),
+                              Radio(
+                                value: 2,
+                                groupValue: _radioSelected,
+                                // activeColor: appColorRADIO,
+                                activeColor: colorTextDarkBlue,
+                                onChanged: (value) {
+                                  setState(() {
+                                    _radioSelected = value as int;
+                                    // _radioVal = 'Inactive';
+                                    _radioVal = '0';
+                                  });
+                                },
                               ),
+                              Text('Inactive'),
                             ],
                           ),
-                        ),
-                        _imageFile != null
-                            ? Text(
-                                getFileExtension(_imageFile!.path.toString()),
-                                // _imageFile.path.toString(),
-                                style: TextStyle(
-                                    color: Colors.black, fontSize: 17),
-                                overflow: TextOverflow.ellipsis,
-                                softWrap: false,
-                              )
-                            : Text(
-                                'No file choosen',
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 15,
-                                    fontFamily: font),
-                              ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Text(
-                          'DESCRIPTION',
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 15,
-                            fontWeight: FontWeight.w600,
+                          SizedBox(
+                            height: 5,
                           ),
-                        ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        Container(
-                            padding: EdgeInsets.only(left: 10),
-
-                            // decoration: BoxDecoration(
-                            //   color: Colors.grey[100],
-                            //   border: Border.all(width: 1, color: Colors.grey),
-                            //   borderRadius: BorderRadius.circular(3),
-                            // ),
-                            child: TextFormField(
-                              controller: txtDes,
-                              maxLines: null,
-                              validator: (value) {
-                                if (value!.isEmpty) {
-                                  return 'Description is required';
-                                }
-                                return null;
+                          InkWell(
+                              onTap: () {
+                                //  if (_formKey.currentState.validate()) {
+                                if (txtDes.text.isEmpty) {
+                                showBottomToast("Please enter description");
+                              } else {
+                                FocusScope.of(context)
+                                    .requestFocus(FocusNode());
+                                apiCallForAddDocument();
+                              }
+                                //  }
                               },
-                              decoration: InputDecoration(
-                                hintStyle: TextStyle(color: colorText),
-                                hintText: '  Enter Description',
-                                filled: true,
-                                fillColor: tfBackgroundColor,
-                                contentPadding:
-                                    EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(25.0),
-                                  borderSide: BorderSide.none,
+                              child: Container(
+                                height: 30,
+                                decoration: BoxDecoration(
+                                  color: btnBgColor,
+                                  // border: Border.all(width: 1, color: Colors.grey),
+                                  borderRadius: BorderRadius.circular(6),
                                 ),
-                                enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide.none,
-                                  borderRadius: BorderRadius.circular(25.7),
-                                ),
-                              ),
-                              // decoration: InputDecoration(
-                              //   border: InputBorder.none,
-                              //   hintText: 'Enter Description',
-                              // ),
-                              onSaved: (String? value) {
-                                print(value);
-                              },
-                            )),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Text(
-                          'STATUS',
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 15,
-                            fontWeight: FontWeight.w600,
-                            fontFamily: font,
+                                alignment: Alignment.center,
+                                child: Text("Submit",
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 17)),
+                              )),
+                          SizedBox(
+                            height: 50,
                           ),
-                        ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        Row(
-                          children: [
-                            Radio(
-                              value: 1,
-                              groupValue: _radioSelected,
-                              // activeColor: appColorRADIO,
-                              activeColor: colorTextDarkBlue,
-                              onChanged: (value) {
-                                setState(() {
-                                  _radioSelected = value as int;
-                                  // _radioVal = 'Active';
-                                  _radioVal = '1';
-                                });
-                              },
-                            ),
-                            Text('Active'),
-                            Radio(
-                              value: 2,
-                              groupValue: _radioSelected,
-                              // activeColor: appColorRADIO,
-                              activeColor: colorTextDarkBlue,
-                              onChanged: (value) {
-                                setState(() {
-                                  _radioSelected = value as int;
-                                  // _radioVal = 'Inactive';
-                                  _radioVal = '0';
-                                });
-                              },
-                            ),
-                            Text('Inactive'),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        InkWell(
-                            onTap: () {
-                              //  if (_formKey.currentState.validate()) {
-                              if (txtDes.text.isEmpty) {
-                              showBottomToast("Please enter description");
-                            } else {
-                              FocusScope.of(context)
-                                  .requestFocus(FocusNode());
-                              apiCallForAddDocument();
-                            }
-                              //  }
-                            },
-                            child: Container(
-                              height: 30,
-                              decoration: BoxDecoration(
-                                color: btnBgColor,
-                                // border: Border.all(width: 1, color: Colors.grey),
-                                borderRadius: BorderRadius.circular(6),
-                              ),
-                              alignment: Alignment.center,
-                              child: Text("Submit",
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 17)),
-                            )),
-                        SizedBox(
-                          height: 50,
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

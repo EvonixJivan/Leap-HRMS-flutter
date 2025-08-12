@@ -350,65 +350,69 @@ class _AttendanceListState extends State<AttendanceList> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: scaffoldKey,
-      backgroundColor: global.appBackground,
-      body: GestureDetector(
-        onTap: () {
-          FocusScope.of(context).requestFocus(new FocusNode());
-        },
-        child: Stack(
-          children: <Widget>[
-            getCustomHeader(),
-            Padding(
-              padding: EdgeInsets.only(top: ScreenUtil().setSp(90)),
-              child: ListView(
-                physics: const BouncingScrollPhysics(),
-                children: <Widget>[
-                  getCalendarView(),
-                  getIntroView(),
-                  getAttendanceOfTheDayView(),
-                  //Check live app and hide show tracking  btn by G1...
-                  (attendanceStatus > 11) //(attendanceStatus > 0)
-
-                      ? Container(
-                          padding: EdgeInsets.only(
-                              left: ScreenUtil().setSp(20),
-                              right: ScreenUtil().setSp(20),
-                              bottom: ScreenUtil().setSp(15),
-                              top: ScreenUtil().setSp(10)),
-                          child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                                backgroundColor: global.btnBgColor,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(20.0))),
-                            child: Text(
-                              'Show Tracking',
-                              style: TextStyle(
-                                  color: appWhiteColor,
-                                  fontSize: ScreenUtil().setSp(15),
-                                  fontWeight: FontWeight.w600,
-                                  fontFamily: font),
+    return SafeArea(
+       top: false,
+        bottom: true,
+      child: Scaffold(
+        key: scaffoldKey,
+        backgroundColor: global.appBackground,
+        body: GestureDetector(
+          onTap: () {
+            FocusScope.of(context).requestFocus(new FocusNode());
+          },
+          child: Stack(
+            children: <Widget>[
+              getCustomHeader(),
+              Padding(
+                padding: EdgeInsets.only(top: ScreenUtil().setSp(90)),
+                child: ListView(
+                  physics: const BouncingScrollPhysics(),
+                  children: <Widget>[
+                    getCalendarView(),
+                    getIntroView(),
+                    getAttendanceOfTheDayView(),
+                    //Check live app and hide show tracking  btn by G1...
+                    (attendanceStatus > 11) //(attendanceStatus > 0)
+      
+                        ? Container(
+                            padding: EdgeInsets.only(
+                                left: ScreenUtil().setSp(20),
+                                right: ScreenUtil().setSp(20),
+                                bottom: ScreenUtil().setSp(15),
+                                top: ScreenUtil().setSp(10)),
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor: global.btnBgColor,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(20.0))),
+                              child: Text(
+                                'Show Tracking',
+                                style: TextStyle(
+                                    color: appWhiteColor,
+                                    fontSize: ScreenUtil().setSp(15),
+                                    fontWeight: FontWeight.w600,
+                                    fontFamily: font),
+                              ),
+                              onPressed: () {
+                                // getCurrentPosition();
+                                setState(() {
+                                  apiCallForGetAttendanceOfMonth();
+                                  Navigator.of(context).push(
+                                      new MaterialPageRoute(
+                                          builder: (BuildContext context) =>
+                                              const CurrentLocationScreen()));
+                                });
+                              },
                             ),
-                            onPressed: () {
-                              // getCurrentPosition();
-                              setState(() {
-                                apiCallForGetAttendanceOfMonth();
-                                Navigator.of(context).push(
-                                    new MaterialPageRoute(
-                                        builder: (BuildContext context) =>
-                                            const CurrentLocationScreen()));
-                              });
-                            },
+                          )
+                        : Container(
+                            child: const Text(''),
                           ),
-                        )
-                      : Container(
-                          child: const Text(''),
-                        ),
-                ],
-              ),
-            )
-          ],
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

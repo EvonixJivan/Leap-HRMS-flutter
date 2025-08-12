@@ -476,73 +476,77 @@ final documentSubCategory = Padding(
   ),
 );
 
-    return Scaffold(
-        body: Stack(
-          children: [
-            Container(
-              color: appBackgroundDashboard,
-              child: Stack(
-                children: <Widget>[
-                  CustomHeaderWithBack(
-                      scaffoldKey: widget.scaffoldKey, title: widget.title),
-
-                  // CustomHeader(
-                  //     scaffoldKey: widget.scaffoldKey, title: widget.title),
-
-                  Container(
-                    margin: EdgeInsets.only(top: 90.0),
-                    child: Column(
-                      children: <Widget>[
-                        documentCategoryType,
-                        documentSubCategory,
-                        Expanded(
-                          child: RefreshIndicator(
-                            key: _refreshIndicatorKey,
-                            onRefresh: _handleRefresh,
-                            child: (_assignmentListModel?.data!.isNotEmpty ?? false)
-                                ? getDocumentListView()
-                                : Container(
-                                    child: Center(
-                                      child: Text(_noDataFound),
+    return SafeArea(
+       top: false,
+        bottom: true,
+      child: Scaffold(
+          body: Stack(
+            children: [
+              Container(
+                color: appBackgroundDashboard,
+                child: Stack(
+                  children: <Widget>[
+                    CustomHeaderWithBack(
+                        scaffoldKey: widget.scaffoldKey, title: widget.title),
+      
+                    // CustomHeader(
+                    //     scaffoldKey: widget.scaffoldKey, title: widget.title),
+      
+                    Container(
+                      margin: EdgeInsets.only(top: 90.0),
+                      child: Column(
+                        children: <Widget>[
+                          documentCategoryType,
+                          documentSubCategory,
+                          Expanded(
+                            child: RefreshIndicator(
+                              key: _refreshIndicatorKey,
+                              onRefresh: _handleRefresh,
+                              child: (_assignmentListModel?.data!.isNotEmpty ?? false)
+                                  ? getDocumentListView()
+                                  : Container(
+                                      child: Center(
+                                        child: Text(_noDataFound),
+                                      ),
                                     ),
-                                  ),
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          ],
-        ),
-        floatingActionButton: new Visibility(
-          visible: _isVisible,
-          child: new FloatingActionButton(
-            onPressed: () async {
-              // Navigator.push(
-              //     context,
-              //     MaterialPageRoute(builder: (context) => AddDocument())
-              // );
-              Map results =
-                  await Navigator.of(context).push(new MaterialPageRoute(
-                builder: (BuildContext context) {
-                  return AddDocument(
-                    scaffoldKey: widget.scaffoldKey,
-                    title: 'Add Document',
-                    selectedDocName: selectedDocName,
-                  );
-                },
-              ));
-              if (results.containsKey('reload')) {
-                // apiCallForGetLeave('All');
-                apiCallForDocumentList(accessLevel!);
-              }
-            },
-            child: Icon(Icons.add),
-            backgroundColor: colorTextDarkBlue,
+            ],
           ),
-        ));
+          floatingActionButton: new Visibility(
+            visible: _isVisible,
+            child: new FloatingActionButton(
+              onPressed: () async {
+                // Navigator.push(
+                //     context,
+                //     MaterialPageRoute(builder: (context) => AddDocument())
+                // );
+                Map results =
+                    await Navigator.of(context).push(new MaterialPageRoute(
+                  builder: (BuildContext context) {
+                    return AddDocument(
+                      scaffoldKey: widget.scaffoldKey,
+                      title: 'Add Document',
+                      selectedDocName: selectedDocName,
+                    );
+                  },
+                ));
+                if (results.containsKey('reload')) {
+                  // apiCallForGetLeave('All');
+                  apiCallForDocumentList(accessLevel!);
+                }
+              },
+              child: Icon(Icons.add),
+              backgroundColor: colorTextDarkBlue,
+            ),
+          )),
+    );
   }
 
   Widget getDocumentListView() {

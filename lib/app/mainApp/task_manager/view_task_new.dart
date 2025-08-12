@@ -74,126 +74,130 @@ late  DateTime nDate;
     DateTime startDate = DateTime.now().subtract(Duration(days: 5000));
     DateTime endDate = DateTime.now().add(Duration(days: 5000));
 
-    return Scaffold(
-      backgroundColor: Colors.grey[100],
-      body: Stack(
-        children: <Widget>[
-          CustomHeaderWithBack(
-              scaffoldKey: widget.scaffoldKey, title: widget.title),
-          Padding(
-            padding: EdgeInsets.only(top: ScreenUtil().setSp(90)),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget>[
-                Card(
-                  elevation: 5,
-                  child: CalendarStrip(
-                    containerHeight: 80,
-                    startDate: startDate,
-                    endDate: endDate,
-                    onDateSelected: (date) {
-                      setState(() {
-                        this.selectedDate = formatter.format(date);
-                        apiCallForGetTaskList();
-                      });
-                    },
-                    dateTileBuilder: dateTileBuilder,
-                    iconColor: Colors.black87,
-                    monthNameWidget: monthNameWidget,
-                    containerDecoration: BoxDecoration(color: Colors.white),
-                    onWeekSelected: (start, end) {
-                      print('Week selected: $start - $end');
-                    }, markedDates: [],
-                     leftIcon: Icon(Icons.chevron_left),
-                    rightIcon: Icon(Icons.chevron_right),  selectedDate: nDate,
+    return SafeArea(
+       top: false,
+        bottom: true,
+      child: Scaffold(
+        backgroundColor: Colors.grey[100],
+        body: Stack(
+          children: <Widget>[
+            CustomHeaderWithBack(
+                scaffoldKey: widget.scaffoldKey, title: widget.title),
+            Padding(
+              padding: EdgeInsets.only(top: ScreenUtil().setSp(90)),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  Card(
+                    elevation: 5,
+                    child: CalendarStrip(
+                      containerHeight: 80,
+                      startDate: startDate,
+                      endDate: endDate,
+                      onDateSelected: (date) {
+                        setState(() {
+                          this.selectedDate = formatter.format(date);
+                          apiCallForGetTaskList();
+                        });
+                      },
+                      dateTileBuilder: dateTileBuilder,
+                      iconColor: Colors.black87,
+                      monthNameWidget: monthNameWidget,
+                      containerDecoration: BoxDecoration(color: Colors.white),
+                      onWeekSelected: (start, end) {
+                        print('Week selected: $start - $end');
+                      }, markedDates: [],
+                       leftIcon: Icon(Icons.chevron_left),
+                      rightIcon: Icon(Icons.chevron_right),  selectedDate: nDate,
+                    ),
                   ),
-                ),
-                new Card(
-                  elevation: 2,
-                  child: Padding(
-                    padding: EdgeInsets.fromLTRB(7, 7, 7, 7),
+                  new Card(
+                    elevation: 2,
+                    child: Padding(
+                      padding: EdgeInsets.fromLTRB(7, 7, 7, 7),
+                      child: (_taskList != null &&
+                             _taskList?.data != null &&
+                             _taskList!.data.length > 0)
+                          ? Text(
+                              'Total Working Minutes : ${_taskList?.totalCount}',
+                              style: TextStyle(
+                                  color: Color.fromRGBO(255, 81, 54, 1),
+                                  fontSize: 18.0),
+                            )
+                          : Text(
+                              "Total Working Minutes : " + '0',
+                              style: TextStyle(
+                                  color: Color.fromRGBO(255, 81, 54, 1),
+                                  fontSize: 18.0),
+                            ),
+                    ),
+                  ),
+                  // SizedBox(
+                  //   height: 5.0,
+                  // ),
+                  Expanded(
                     child: (_taskList != null &&
                            _taskList?.data != null &&
                            _taskList!.data.length > 0)
-                        ? Text(
-                            'Total Working Minutes : ${_taskList?.totalCount}',
-                            style: TextStyle(
-                                color: Color.fromRGBO(255, 81, 54, 1),
-                                fontSize: 18.0),
-                          )
-                        : Text(
-                            "Total Working Minutes : " + '0',
-                            style: TextStyle(
-                                color: Color.fromRGBO(255, 81, 54, 1),
-                                fontSize: 18.0),
-                          ),
-                  ),
-                ),
-                // SizedBox(
-                //   height: 5.0,
-                // ),
-                Expanded(
-                  child: (_taskList != null &&
-                         _taskList?.data != null &&
-                         _taskList!.data.length > 0)
-                      ? buildList()
-                      : Container(
-                          child: Center(
-                            child: Text(
-                              'No data found',
-                              style: TextStyle(fontSize: 30),
+                        ? buildList()
+                        : Container(
+                            child: Center(
+                              child: Text(
+                                'No data found',
+                                style: TextStyle(fontSize: 30),
+                              ),
                             ),
                           ),
-                        ),
-                )
-              ],
+                  )
+                ],
+              ),
             ),
-          ),
-          // AppLoaderView(),
-        ],
-      ),
-      floatingActionButton: SpeedDial(
-//        marginRight: 18,
-//        marginBottom: 20,
-        animatedIcon: AnimatedIcons.menu_close,
-        animatedIconTheme: IconThemeData(size: 22.0),
-
-        closeManually: false,
-        curve: Curves.bounceIn,
-        overlayColor: Colors.black,
-        overlayOpacity: 0.5,
-        tooltip: 'Speed Dial',
-        heroTag: 'speed-dial-hero-tag',
-        backgroundColor: appPrimaryColor,
-        foregroundColor: Colors.white,
-        elevation: 8.0,
-        shape: CircleBorder(),
-        children: [
-          SpeedDialChild(
-              child: Icon(Icons.date_range),
-              backgroundColor: Colors.red,
-              label: 'Manage Task',
+            // AppLoaderView(),
+          ],
+        ),
+        floatingActionButton: SpeedDial(
+      //        marginRight: 18,
+      //        marginBottom: 20,
+          animatedIcon: AnimatedIcons.menu_close,
+          animatedIconTheme: IconThemeData(size: 22.0),
+      
+          closeManually: false,
+          curve: Curves.bounceIn,
+          overlayColor: Colors.black,
+          overlayOpacity: 0.5,
+          tooltip: 'Speed Dial',
+          heroTag: 'speed-dial-hero-tag',
+          backgroundColor: appPrimaryColor,
+          foregroundColor: Colors.white,
+          elevation: 8.0,
+          shape: CircleBorder(),
+          children: [
+            SpeedDialChild(
+                child: Icon(Icons.date_range),
+                backgroundColor: Colors.red,
+                label: 'Manage Task',
+                labelStyle: TextStyle(fontSize: 18.0),
+                onTap: () {
+                  _taskButtonTapped();
+                }),
+            SpeedDialChild(
+              child: Icon(Icons.check_box),
+              backgroundColor: Colors.blue,
+              label: 'To Do Task',
               labelStyle: TextStyle(fontSize: 18.0),
               onTap: () {
-                _taskButtonTapped();
-              }),
-          SpeedDialChild(
-            child: Icon(Icons.check_box),
-            backgroundColor: Colors.blue,
-            label: 'To Do Task',
-            labelStyle: TextStyle(fontSize: 18.0),
-            onTap: () {
-              Navigator.of(context).push(new MaterialPageRoute(
-                builder: (BuildContext context) {
-                  return Todo(
-                    scaffoldKey: widget.scaffoldKey,
-                    title: 'ToDo Task',
-                  );
-                },
-              ));
-            },
-          ),
-        ],
+                Navigator.of(context).push(new MaterialPageRoute(
+                  builder: (BuildContext context) {
+                    return Todo(
+                      scaffoldKey: widget.scaffoldKey,
+                      title: 'ToDo Task',
+                    );
+                  },
+                ));
+              },
+            ),
+          ],
+        ),
       ),
     );
   }

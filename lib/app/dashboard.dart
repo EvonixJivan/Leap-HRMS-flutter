@@ -9,6 +9,7 @@ import 'package:hrms/app/mainApp/notification/notification.dart';
 import 'package:hrms/app/mainApp/task_manager/team_lead/team_members.dart';
 import 'package:hrms/app/mainApp/task_manager/view_task.dart';
 import 'package:hrms/appUtil/app_util_config.dart';
+import 'package:hrms/appUtil/global.dart' as global;
 import 'package:hrms/appUtil/network_util.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -92,12 +93,13 @@ class _DashboardPageState extends State<DashboardPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor:global.appBackground,
       key: scaffoldKey,
       body: Center(
         child: bodyContainer(),
       ),
       bottomNavigationBar: Container(
-        height: 100,
+        height: 105,
         // width: MediaQuery.of(context).size.width - 90,
         decoration: BoxDecoration(
           color: appPrimaryColor, //Color.fromARGB(255, 241, 173, 121),
@@ -107,7 +109,7 @@ class _DashboardPageState extends State<DashboardPage> {
           //     image: AssetImage('assets/image/bottom_bgn.png'),
           //     fit: BoxFit.fill),
         ),
-        padding: EdgeInsets.only(top: 10),
+        padding: EdgeInsets.only(top: 1),
         child: BottomNavigationBar(
           elevation: 0,
           selectedIconTheme:

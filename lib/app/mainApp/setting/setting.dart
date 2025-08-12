@@ -99,29 +99,33 @@ class _AppSettingState extends State<AppSetting> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: appBackgroundDashboard,
-      child: Stack(
-        children: <Widget>[
-          CustomHeader(scaffoldKey: widget.scaffoldKey, title: widget.title),
-          (_userCallBack != null)
-              ? Padding(
-                  padding: EdgeInsets.only(top: ScreenUtil().setSp(120)),
-                  child: ListView(
-                    children: <Widget>[
-                      profileCard(),
-                      settingCard(),
-                      helpLineCard(),
-                    ],
+    return SafeArea(
+       top: false,
+        bottom: true,
+      child: Container(
+        color: appBackgroundDashboard,
+        child: Stack(
+          children: <Widget>[
+            CustomHeader(scaffoldKey: widget.scaffoldKey, title: widget.title),
+            (_userCallBack != null)
+                ? Padding(
+                    padding: EdgeInsets.only(top: ScreenUtil().setSp(120)),
+                    child: ListView(
+                      children: <Widget>[
+                        profileCard(),
+                        settingCard(),
+                        helpLineCard(),
+                      ],
+                    ),
+                  )
+                : Container(
+                    child: Center(
+                      child: Text(_noDataFound),
+                      //new CircularProgressIndicator(),
+                    ),
                   ),
-                )
-              : Container(
-                  child: Center(
-                    child: Text(_noDataFound),
-                    //new CircularProgressIndicator(),
-                  ),
-                ),
-        ],
+          ],
+        ),
       ),
     );
   }

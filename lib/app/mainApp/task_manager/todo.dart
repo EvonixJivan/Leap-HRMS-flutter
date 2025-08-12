@@ -263,215 +263,219 @@ class TodoState extends State<Todo> with TickerProviderStateMixin {
                   )
                 
                   ));
-    return Scaffold(
-      body: Container(
-        child: Form(
-          key: formTodokey,
-          child: DefaultTabController(
-            child: Center(
-              child: Column(
-                children: <Widget>[
-                  CustomHeaderWithBack(
-                      scaffoldKey: widget.scaffoldKey, title: widget.title),
-                  Visibility(
-                      child: (teamLead == 1)
-                          ? Container(
-                              child: teamMember,
-                            )
-                          : Visibility(
-                              visible: false,
-                              child: Text(''),
-                            )),
-                  Card(
-                      elevation: 3,
-                      child: Column(
-                        children: <Widget>[
-                          Padding(
-                            padding: const EdgeInsets.only(
-                                top: 5, left: 20, right: 20),
-                            child: Container(
-                              child: ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.white,
-                                    elevation: 2),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: <Widget>[
-                                    Text(_valueToAdd),
-                                    Icon(Icons.calendar_today),
-                                  ],
-                                ),
-                                onPressed: () {
-                                  setState(() {
-                                    _selectDateAdd();
-                                  });
-                                },
-                              ),
-                            ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.only(left: 20, right: 20),
-                            child: TextFormField(
-                              validator: (value) {
-                                if (value!.isEmpty) {
-                                  return 'Please add task';
-                                }
-                                return null;
-                              },
-                              controller: taskController,
-                              maxLines: 1,
-                              decoration: InputDecoration(hintText: "Add Task"),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          Center(
-                            child: Container(
-                                height: 35,
-                                margin: EdgeInsets.all(0),
+    return SafeArea(
+       top: false,
+        bottom: true,
+      child: Scaffold(
+        body: Container(
+          child: Form(
+            key: formTodokey,
+            child: DefaultTabController(
+              child: Center(
+                child: Column(
+                  children: <Widget>[
+                    CustomHeaderWithBack(
+                        scaffoldKey: widget.scaffoldKey, title: widget.title),
+                    Visibility(
+                        child: (teamLead == 1)
+                            ? Container(
+                                child: teamMember,
+                              )
+                            : Visibility(
+                                visible: false,
+                                child: Text(''),
+                              )),
+                    Card(
+                        elevation: 3,
+                        child: Column(
+                          children: <Widget>[
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  top: 5, left: 20, right: 20),
+                              child: Container(
                                 child: ElevatedButton(
                                   style: ElevatedButton.styleFrom(
-                                      elevation: 5,
-                                      textStyle: TextStyle(color: Colors.white),
-                                      padding: const EdgeInsets.all(0.0),
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(20.0))),
-                                  child: Container(
-                                    decoration: const BoxDecoration(
-                                        gradient: LinearGradient(
-                                          colors: <Color>[
-                                            Colors.green,
-                                            Colors.green
-                                          ],
-                                        ),
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(20.0))),
-                                    padding:
-                                        const EdgeInsets.fromLTRB(70, 7, 70, 7),
-                                    child: const Text('Add ToDo Task',
-                                        style: TextStyle(fontSize: 17)),
+                                      backgroundColor: Colors.white,
+                                      elevation: 2),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: <Widget>[
+                                      Text(_valueToAdd),
+                                      Icon(Icons.calendar_today),
+                                    ],
                                   ),
                                   onPressed: () {
                                     setState(() {
-                                      addTask();
+                                      _selectDateAdd();
                                     });
                                   },
-                                )),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                        ],
-                      )),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  Divider(
-                    height: 1,
-                    color: Colors.black,
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 20, right: 20),
-                    child: Container(
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.white, elevation: 2),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Text(_valueToFilter),
-                            Icon(Icons.calendar_today),
+                                ),
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(left: 20, right: 20),
+                              child: TextFormField(
+                                validator: (value) {
+                                  if (value!.isEmpty) {
+                                    return 'Please add task';
+                                  }
+                                  return null;
+                                },
+                                controller: taskController,
+                                maxLines: 1,
+                                decoration: InputDecoration(hintText: "Add Task"),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            Center(
+                              child: Container(
+                                  height: 35,
+                                  margin: EdgeInsets.all(0),
+                                  child: ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                        elevation: 5,
+                                        textStyle: TextStyle(color: Colors.white),
+                                        padding: const EdgeInsets.all(0.0),
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(20.0))),
+                                    child: Container(
+                                      decoration: const BoxDecoration(
+                                          gradient: LinearGradient(
+                                            colors: <Color>[
+                                              Colors.green,
+                                              Colors.green
+                                            ],
+                                          ),
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(20.0))),
+                                      padding:
+                                          const EdgeInsets.fromLTRB(70, 7, 70, 7),
+                                      child: const Text('Add ToDo Task',
+                                          style: TextStyle(fontSize: 17)),
+                                    ),
+                                    onPressed: () {
+                                      setState(() {
+                                        addTask();
+                                      });
+                                    },
+                                  )),
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
                           ],
+                        )),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Divider(
+                      height: 1,
+                      color: Colors.black,
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20, right: 20),
+                      child: Container(
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.white, elevation: 2),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Text(_valueToFilter),
+                              Icon(Icons.calendar_today),
+                            ],
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              _selectDateFilter();
+                            });
+                          },
                         ),
-                        onPressed: () {
-                          setState(() {
-                            _selectDateFilter();
-                          });
-                        },
                       ),
                     ),
-                  ),
-                  Container(
-                    decoration: new BoxDecoration(
-                      gradient: new LinearGradient(colors: [
-                        Color.fromRGBO(255, 81, 54, 1),
-                        Color.fromRGBO(255, 163, 54, 1),
-                      ]),
-                    ),
-                    height: 40,
-                    child: TabBar(
-                      controller: _controller,
-                      isScrollable: true,
-                      labelColor: Colors.green,
-                      unselectedLabelColor: Colors.white,
-                      indicator: BoxDecoration(color: Colors.grey[200]),
-                      tabs: [
-                        Container(
-                          child: Tab(
-                            text: "All Tasks",
+                    Container(
+                      decoration: new BoxDecoration(
+                        gradient: new LinearGradient(colors: [
+                          Color.fromRGBO(255, 81, 54, 1),
+                          Color.fromRGBO(255, 163, 54, 1),
+                        ]),
+                      ),
+                      height: 40,
+                      child: TabBar(
+                        controller: _controller,
+                        isScrollable: true,
+                        labelColor: Colors.green,
+                        unselectedLabelColor: Colors.white,
+                        indicator: BoxDecoration(color: Colors.grey[200]),
+                        tabs: [
+                          Container(
+                            child: Tab(
+                              text: "All Tasks",
+                            ),
                           ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.all(5),
-                          child: Tab(text: "Scheduled"),
-                        ),
-                        Container(
-                          margin: EdgeInsets.all(5),
-                          child: Tab(text: "Today"),
-                        ),
-                        Container(
-                          margin: EdgeInsets.all(5),
-                          child: Tab(text: "Done"),
-                        ),
-                        Container(
-                          margin: EdgeInsets.all(5),
-                          child: Tab(text: "Deleted"),
-                        ),
-                      ],
+                          Container(
+                            margin: EdgeInsets.all(5),
+                            child: Tab(text: "Scheduled"),
+                          ),
+                          Container(
+                            margin: EdgeInsets.all(5),
+                            child: Tab(text: "Today"),
+                          ),
+                          Container(
+                            margin: EdgeInsets.all(5),
+                            child: Tab(text: "Done"),
+                          ),
+                          Container(
+                            margin: EdgeInsets.all(5),
+                            child: Tab(text: "Deleted"),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                  Expanded(
-                    child: TabBarView(
-                      controller: _controller,
-                      children: [
-                        AllTasks(
-                          filterBy: '',
-                          date: _valueToFilterForAPI,
-                          refresh: refresh,
-                        ),
-                        AllTasks(
-                          filterBy: 'scheduled',
-                          date: _valueToFilterForAPI,
-                          refresh: refresh,
-                        ),
-                        AllTasks(
-                          filterBy: '',
-                          date: _todayDate,
-                          refresh: refresh,
-                        ),
-                        AllTasks(
-                          filterBy: 'done',
-                          date: _valueToFilterForAPI,
-                          refresh: refresh,
-                        ),
-                        AllTasks(
-                          filterBy: 'deleted',
-                          date: _valueToFilterForAPI,
-                          refresh: refresh,
-                        ),
-                      ],
+                    Expanded(
+                      child: TabBarView(
+                        controller: _controller,
+                        children: [
+                          AllTasks(
+                            filterBy: '',
+                            date: _valueToFilterForAPI,
+                            refresh: refresh,
+                          ),
+                          AllTasks(
+                            filterBy: 'scheduled',
+                            date: _valueToFilterForAPI,
+                            refresh: refresh,
+                          ),
+                          AllTasks(
+                            filterBy: '',
+                            date: _todayDate,
+                            refresh: refresh,
+                          ),
+                          AllTasks(
+                            filterBy: 'done',
+                            date: _valueToFilterForAPI,
+                            refresh: refresh,
+                          ),
+                          AllTasks(
+                            filterBy: 'deleted',
+                            date: _valueToFilterForAPI,
+                            refresh: refresh,
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
+              length: 5,
             ),
-            length: 5,
           ),
         ),
       ),

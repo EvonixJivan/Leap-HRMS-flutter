@@ -95,36 +95,40 @@ class _NotificationListState extends State<NotificationList> {
   Widget build(BuildContext context) {
 
     final TextTheme textTheme = Theme.of(context).textTheme;
-    return Scaffold(
-      body: Container(
-        color: appBackgroundDashboard,
-        child: Stack(
-          children: <Widget>[
-             CustomHeaderWithBack(scaffoldKey: widget.scaffoldKey, title: widget.title),
-            // CustomHeader(scaffoldKey: widget.scaffoldKey, title: widget.title),
-
-            // CustomHeaderWithBackGreen(
-            //     scaffoldKey: widget.scaffoldKey, title: widget.title),
-            Container(
-              margin: EdgeInsets.only(top: 90.0),
-              child: Column(
-                children: <Widget>[
-                  Expanded(
-                    child: RefreshIndicator(
-                        key: _refreshIndicatorKey,
-                        onRefresh: _handleRefresh,
-                        child: (_notificationApiCallBack?.items?.isNotEmpty ?? false)
-                            ? getNotificationListView()
-                            : Container(
-                                child: Center(
-                                  child: Text(_noDataFound),
-                                ),
-                              )),
-                  ),
-                ],
-              ),
-            )
-          ],
+    return SafeArea(
+       top: false,
+        bottom: true,
+      child: Scaffold(
+        body: Container(
+          color: appBackgroundDashboard,
+          child: Stack(
+            children: <Widget>[
+               CustomHeaderWithBack(scaffoldKey: widget.scaffoldKey, title: widget.title),
+              // CustomHeader(scaffoldKey: widget.scaffoldKey, title: widget.title),
+      
+              // CustomHeaderWithBackGreen(
+              //     scaffoldKey: widget.scaffoldKey, title: widget.title),
+              Container(
+                margin: EdgeInsets.only(top: 90.0),
+                child: Column(
+                  children: <Widget>[
+                    Expanded(
+                      child: RefreshIndicator(
+                          key: _refreshIndicatorKey,
+                          onRefresh: _handleRefresh,
+                          child: (_notificationApiCallBack?.items?.isNotEmpty ?? false)
+                              ? getNotificationListView()
+                              : Container(
+                                  child: Center(
+                                    child: Text(_noDataFound),
+                                  ),
+                                )),
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

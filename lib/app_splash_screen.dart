@@ -63,32 +63,36 @@ class _AppSplashScreenState extends State<AppSplashScreen> {
     //2,436 x 1,125
 //    ScreenUtil.instance = ScreenUtil.getInstance()..init(context);
 //    ScreenUtil.instance = ScreenUtil(width: 375, height: 812)..init(context);
-    return Scaffold(
-        body: Container(
-      color: appWhiteColor,
-      child: Stack(
-        children: <Widget>[
-          Align(alignment: Alignment.bottomCenter, child: loadLogo()),
-          Image.asset(
-            'assets/image/splash_bg.png',
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height - 100,
-            fit: BoxFit.fill,
-          ),
-          Align(
-            alignment: Alignment.topCenter,
-            child: Container(
-              padding: EdgeInsets.only(left: 30),
-              child: Image.asset(
-                'assets/image/splash_ig.png',
-                height: MediaQuery.of(context).size.height - 250,
-                fit: BoxFit.fill,
+    return SafeArea(
+       top: false,
+        bottom: true,
+      child: Scaffold(
+          body: Container(
+        color: appWhiteColor,
+        child: Stack(
+          children: <Widget>[
+            Align(alignment: Alignment.bottomCenter, child: loadLogo()),
+            Image.asset(
+              'assets/image/splash_bg.png',
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height - 100,
+              fit: BoxFit.fill,
+            ),
+            Align(
+              alignment: Alignment.topCenter,
+              child: Container(
+                padding: EdgeInsets.only(left: 30),
+                child: Image.asset(
+                  'assets/image/splash_ig.png',
+                  height: MediaQuery.of(context).size.height - 250,
+                  fit: BoxFit.fill,
+                ),
               ),
             ),
-          ),
-        ],
-      ),
-    ));
+          ],
+        ),
+      )),
+    );
   }
 
   @override

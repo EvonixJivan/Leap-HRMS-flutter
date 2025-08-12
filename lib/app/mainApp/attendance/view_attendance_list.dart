@@ -74,92 +74,96 @@ class _ViewAttendanceListState extends State<ViewAttendanceList> {
   Widget build(BuildContext context) {
     final TextTheme textTheme = Theme.of(context).textTheme;
 
-    return Scaffold(
-      body: Container(
-        color: appBackgroundDashboard,
-        child: Stack(
-          children: <Widget>[
-            CustomHeaderWithBackGreen(
-                scaffoldKey: widget.scaffoldKey, title: widget.title),
-            Container(
-              margin: EdgeInsets.only(top: 90.0),
-              child: Column(
-                children: <Widget>[
-                  Expanded(
-                    child: RefreshIndicator(
-                      key: _refreshIndicatorKey,
-                      onRefresh: _handleRefresh,
-                      child: (_dayAttendanceListApi?.attendanceItems?.attendanceDetails.isNotEmpty ?? false)
-                          ? ListView.builder(
-                              shrinkWrap: true,
-                              // physics: NeverScrollableScrollPhysics(),
-                              physics: ScrollPhysics(),
-                              itemBuilder: (BuildContext context, int index) {
-                                return Padding(
-                                  padding: EdgeInsets.only(
-                                      left: ScreenUtil().setSp(10),
-                                      right: ScreenUtil().setSp(10),
-                                      top: ScreenUtil().setSp(5),
-                                      bottom: ScreenUtil().setSp(5)),
+    return SafeArea(
+       top: false,
+        bottom: true,
+      child: Scaffold(
+        body: Container(
+          color: appBackgroundDashboard,
+          child: Stack(
+            children: <Widget>[
+              CustomHeaderWithBackGreen(
+                  scaffoldKey: widget.scaffoldKey, title: widget.title),
+              Container(
+                margin: EdgeInsets.only(top: 90.0),
+                child: Column(
+                  children: <Widget>[
+                    Expanded(
+                      child: RefreshIndicator(
+                        key: _refreshIndicatorKey,
+                        onRefresh: _handleRefresh,
+                        child: (_dayAttendanceListApi?.attendanceItems?.attendanceDetails.isNotEmpty ?? false)
+                            ? ListView.builder(
+                                shrinkWrap: true,
+                                // physics: NeverScrollableScrollPhysics(),
+                                physics: ScrollPhysics(),
+                                itemBuilder: (BuildContext context, int index) {
+                                  return Padding(
+                                    padding: EdgeInsets.only(
+                                        left: ScreenUtil().setSp(10),
+                                        right: ScreenUtil().setSp(10),
+                                        top: ScreenUtil().setSp(5),
+                                        bottom: ScreenUtil().setSp(5)),
+                                    child: Column(
+                                      children: <Widget>[
+                                        (index == 0)
+                                            ? firstCard(
+                                                _dayAttendanceListApi!
+                                                    .attendanceItems!
+                                                    .attendanceDetails[0]
+                                                    .attachment!,
+                                                '${DateFormat('dd MMM, yyyy').format(DateFormat("yyyy-MM-dd").parse(_dayAttendanceListApi!.attendanceItems!.attendanceDetails[0].punchDate!, true).toLocal())}',
+                                                '${DateFormat('hh:mm a').format(DateFormat("yyyy-MM-dd HH:mm:ss").parse(_dayAttendanceListApi!.attendanceItems!.attendanceDetails[0].inTime!, true).toLocal())}',
+                                                '${DateFormat('hh:mm a').format(DateFormat("yyyy-MM-dd HH:mm:ss").parse(_dayAttendanceListApi!.attendanceItems!.attendanceDetails[0].outTime!, true).toLocal())}',
+                                                '${_dayAttendanceListApi!.attendanceItems!.attendanceDetails[0].totalWorkingHours}',
+                                                '${_dayAttendanceListApi!.attendanceItems!.attendanceDetails[0].totalPauseHours}')
+                                            : pauseCard(
+                                                '${DateFormat('hh:mm a').format(DateFormat("yyyy-MM-dd HH:mm:ss").parse(_dayAttendanceListApi!.attendanceItems!.attendanceDetails[index].inTime!, true).toLocal())}',
+                                                (_dayAttendanceListApi!
+                                                            .attendanceItems!
+                                                            .attendanceDetails[
+                                                                index]
+                                                            .outTime ==
+                                                        '')
+                                                    ? ''
+                                                    : '${DateFormat('hh:mm a').format(DateFormat("yyyy-MM-dd HH:mm:ss").parse(_dayAttendanceListApi!.attendanceItems!.attendanceDetails[index].outTime!, true).toLocal())}',
+                                                (_dayAttendanceListApi!
+                                                            .attendanceItems!
+                                                            .attendanceDetails[
+                                                                index]
+                                                            .outTime ==
+                                                        '')
+                                                    ? ''
+                                                    : '${DateTime.parse(_dayAttendanceListApi!.attendanceItems!.attendanceDetails[index].outTime!).difference(DateTime.parse(_dayAttendanceListApi!.attendanceItems!.attendanceDetails[index].inTime!)).inMinutes} minutes',
+                                                '${_dayAttendanceListApi!.attendanceItems!.attendanceDetails[index].reason}'),
+                                      ],
+                                    ),
+                                  );
+                                },
+                                itemCount: _dayAttendanceListApi!
+                                    .attendanceItems!.attendanceDetails.length,
+                              )
+                            : Container(
+                                child: Center(
                                   child: Column(
                                     children: <Widget>[
-                                      (index == 0)
-                                          ? firstCard(
-                                              _dayAttendanceListApi!
-                                                  .attendanceItems!
-                                                  .attendanceDetails[0]
-                                                  .attachment!,
-                                              '${DateFormat('dd MMM, yyyy').format(DateFormat("yyyy-MM-dd").parse(_dayAttendanceListApi!.attendanceItems!.attendanceDetails[0].punchDate!, true).toLocal())}',
-                                              '${DateFormat('hh:mm a').format(DateFormat("yyyy-MM-dd HH:mm:ss").parse(_dayAttendanceListApi!.attendanceItems!.attendanceDetails[0].inTime!, true).toLocal())}',
-                                              '${DateFormat('hh:mm a').format(DateFormat("yyyy-MM-dd HH:mm:ss").parse(_dayAttendanceListApi!.attendanceItems!.attendanceDetails[0].outTime!, true).toLocal())}',
-                                              '${_dayAttendanceListApi!.attendanceItems!.attendanceDetails[0].totalWorkingHours}',
-                                              '${_dayAttendanceListApi!.attendanceItems!.attendanceDetails[0].totalPauseHours}')
-                                          : pauseCard(
-                                              '${DateFormat('hh:mm a').format(DateFormat("yyyy-MM-dd HH:mm:ss").parse(_dayAttendanceListApi!.attendanceItems!.attendanceDetails[index].inTime!, true).toLocal())}',
-                                              (_dayAttendanceListApi!
-                                                          .attendanceItems!
-                                                          .attendanceDetails[
-                                                              index]
-                                                          .outTime ==
-                                                      '')
-                                                  ? ''
-                                                  : '${DateFormat('hh:mm a').format(DateFormat("yyyy-MM-dd HH:mm:ss").parse(_dayAttendanceListApi!.attendanceItems!.attendanceDetails[index].outTime!, true).toLocal())}',
-                                              (_dayAttendanceListApi!
-                                                          .attendanceItems!
-                                                          .attendanceDetails[
-                                                              index]
-                                                          .outTime ==
-                                                      '')
-                                                  ? ''
-                                                  : '${DateTime.parse(_dayAttendanceListApi!.attendanceItems!.attendanceDetails[index].outTime!).difference(DateTime.parse(_dayAttendanceListApi!.attendanceItems!.attendanceDetails[index].inTime!)).inMinutes} minutes',
-                                              '${_dayAttendanceListApi!.attendanceItems!.attendanceDetails[index].reason}'),
+                                      SizedBox(
+                                        height: 180.0,
+                                      ),
+                                      Text(
+                                        _noDataFound,
+                                      ),
                                     ],
                                   ),
-                                );
-                              },
-                              itemCount: _dayAttendanceListApi!
-                                  .attendanceItems!.attendanceDetails.length,
-                            )
-                          : Container(
-                              child: Center(
-                                child: Column(
-                                  children: <Widget>[
-                                    SizedBox(
-                                      height: 180.0,
-                                    ),
-                                    Text(
-                                      _noDataFound,
-                                    ),
-                                  ],
                                 ),
                               ),
-                            ),
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            )
-          ],
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

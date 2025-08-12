@@ -274,90 +274,94 @@ class ApproveTaskState extends State<ApproveTask> {
     DateTime startDate = DateTime.now().subtract(Duration(days: 5000));
     DateTime endDate = DateTime.now().add(Duration(days: 5000));
 
-    return Scaffold(
-      backgroundColor: Colors.grey[100],
-      body: Stack(
-        children: <Widget>[
-          CustomHeaderWithBack(
-              scaffoldKey: widget.scaffoldKey, title: widget.title),
-          Container(
-            margin: EdgeInsets.only(top: ScreenUtil().setSp(90.0)),
-            child: Column(
-              children: <Widget>[
-                Card(
-                  elevation: 5,
-                  child: CalendarStrip(
-                    containerHeight: 80,
-                    startDate: startDate,
-                    endDate: endDate,
-                    // selectedDate: selected,
-                    onDateSelected: (date) {
-                      setState(() {
-                        this.selectedDate = formatter.format(date);
-                        nDate = date;
-                        apiCallForTeamTaskList();
-                      });
-                    },
-                    selectedDate: nDate,
-                    dateTileBuilder: dateTileBuilder,
-                    iconColor: Colors.black87,
-                    monthNameWidget: monthNameWidget,
-                    containerDecoration: BoxDecoration(color: Colors.white),
-                     markedDates: [],
-                     leftIcon: Icon(Icons.chevron_left),
-                    rightIcon: Icon(Icons.chevron_right),  onWeekSelected: (start, end) {
-                      print('Week selected: $start - $end');
-                    },
-                  ),
-                ),
-                Container(
-                  width: MediaQuery.of(context).size.width - 10,
-                  child: new Card(
-                    elevation: 2,
-                    child: Padding(
-                      padding: EdgeInsets.fromLTRB(7, 7, 7, 7),
-                      child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            (_employeeTaskApiCallBack!.data.length > 0)
-                                ? Text(
-                                    'Total Working Minutes : ${_employeeTaskApiCallBack!.totalCount}',
-                                    style: TextStyle(
-                                        color: Color.fromRGBO(255, 81, 54, 1),
-                                        fontSize: 18.0),
-                                  )
-                                : Text(
-                                    "Total Working Minutes : " + '0',
-                                    style: TextStyle(
-                                        color: Color.fromRGBO(255, 81, 54, 1),
-                                        fontSize: 18.0),
-                                  ),
-                            (_employeeTaskApiCallBack!.data.length > 0)
-                                ? Text(
-                                    '${_employeeTaskApiCallBack!.taskApprovedCount ?? '0'} / ${_employeeTaskApiCallBack!.taskCount ?? '0'}')
-                                : Text('0'),
-                          ]),
+    return SafeArea(
+       top: false,
+        bottom: true,
+      child: Scaffold(
+        backgroundColor: Colors.grey[100],
+        body: Stack(
+          children: <Widget>[
+            CustomHeaderWithBack(
+                scaffoldKey: widget.scaffoldKey, title: widget.title),
+            Container(
+              margin: EdgeInsets.only(top: ScreenUtil().setSp(90.0)),
+              child: Column(
+                children: <Widget>[
+                  Card(
+                    elevation: 5,
+                    child: CalendarStrip(
+                      containerHeight: 80,
+                      startDate: startDate,
+                      endDate: endDate,
+                      // selectedDate: selected,
+                      onDateSelected: (date) {
+                        setState(() {
+                          this.selectedDate = formatter.format(date);
+                          nDate = date;
+                          apiCallForTeamTaskList();
+                        });
+                      },
+                      selectedDate: nDate,
+                      dateTileBuilder: dateTileBuilder,
+                      iconColor: Colors.black87,
+                      monthNameWidget: monthNameWidget,
+                      containerDecoration: BoxDecoration(color: Colors.white),
+                       markedDates: [],
+                       leftIcon: Icon(Icons.chevron_left),
+                      rightIcon: Icon(Icons.chevron_right),  onWeekSelected: (start, end) {
+                        print('Week selected: $start - $end');
+                      },
                     ),
                   ),
-                ),
-                teamMember,
-                Expanded(
-                  child: RefreshIndicator(
-                    key: _refreshIndicatorKey,
-                    onRefresh: _handleRefresh,
-                    child: (_employeeTaskApiCallBack!.data.length > 0)
-                        ? buildList()
-                        : Container(
-                            child: Center(
-                              child: Text(_noDataFound),
-                            ),
-                          ),
+                  Container(
+                    width: MediaQuery.of(context).size.width - 10,
+                    child: new Card(
+                      elevation: 2,
+                      child: Padding(
+                        padding: EdgeInsets.fromLTRB(7, 7, 7, 7),
+                        child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              (_employeeTaskApiCallBack!.data.length > 0)
+                                  ? Text(
+                                      'Total Working Minutes : ${_employeeTaskApiCallBack!.totalCount}',
+                                      style: TextStyle(
+                                          color: Color.fromRGBO(255, 81, 54, 1),
+                                          fontSize: 18.0),
+                                    )
+                                  : Text(
+                                      "Total Working Minutes : " + '0',
+                                      style: TextStyle(
+                                          color: Color.fromRGBO(255, 81, 54, 1),
+                                          fontSize: 18.0),
+                                    ),
+                              (_employeeTaskApiCallBack!.data.length > 0)
+                                  ? Text(
+                                      '${_employeeTaskApiCallBack!.taskApprovedCount ?? '0'} / ${_employeeTaskApiCallBack!.taskCount ?? '0'}')
+                                  : Text('0'),
+                            ]),
+                      ),
+                    ),
                   ),
-                ),
-              ],
-            ),
-          )
-        ],
+                  teamMember,
+                  Expanded(
+                    child: RefreshIndicator(
+                      key: _refreshIndicatorKey,
+                      onRefresh: _handleRefresh,
+                      child: (_employeeTaskApiCallBack!.data.length > 0)
+                          ? buildList()
+                          : Container(
+                              child: Center(
+                                child: Text(_noDataFound),
+                              ),
+                            ),
+                    ),
+                  ),
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

@@ -217,374 +217,378 @@ class AddTaskState extends State<AddTask> {
                 value: _typeDropdownValue,
               ));
 
-    return Scaffold(
-      body: GestureDetector(
-        onTap: () {
-          FocusScope.of(context).requestFocus(new FocusNode());
-        },
-        child: Stack(
-          children: <Widget>[
-            CustomHeaderWithReloadBack(
-                scaffoldKey: widget.scaffoldKey, title: widget.title),
-            Form(
-              key: formkey,
-              child: Padding(
-                padding: EdgeInsets.only(
-                    top: ScreenUtil().setSp(90),
-                    left: ScreenUtil().setSp(5),
-                    right: ScreenUtil().setSp(5),
-                    bottom: ScreenUtil().setSp(5)),
-                child: Card(
-                  elevation: 5,
-                  child: ListView(
-                    children: <Widget>[
-                      Padding(
-                        padding: EdgeInsets.all(5),
-                        child: Text(
-                          '${DateFormat(' dd, MMM yyyy').format(DateTime.now())}',
-                          style: titleStyle,
-                          textAlign: TextAlign.center,
+    return SafeArea(
+       top: false,
+        bottom: true,
+      child: Scaffold(
+        body: GestureDetector(
+          onTap: () {
+            FocusScope.of(context).requestFocus(new FocusNode());
+          },
+          child: Stack(
+            children: <Widget>[
+              CustomHeaderWithReloadBack(
+                  scaffoldKey: widget.scaffoldKey, title: widget.title),
+              Form(
+                key: formkey,
+                child: Padding(
+                  padding: EdgeInsets.only(
+                      top: ScreenUtil().setSp(90),
+                      left: ScreenUtil().setSp(5),
+                      right: ScreenUtil().setSp(5),
+                      bottom: ScreenUtil().setSp(5)),
+                  child: Card(
+                    elevation: 5,
+                    child: ListView(
+                      children: <Widget>[
+                        Padding(
+                          padding: EdgeInsets.all(5),
+                          child: Text(
+                            '${DateFormat(' dd, MMM yyyy').format(DateTime.now())}',
+                            style: titleStyle,
+                            textAlign: TextAlign.center,
+                          ),
                         ),
-                      ),
-                      Container(
-                        padding: EdgeInsets.only(top: 20),
-                        margin: EdgeInsets.only(left: 20, right: 20),
-                        child: Row(
-                          children: <Widget>[
-                            Expanded(
-                              child: Text(
-                                'Client : ',
-                                style:
-                                    TextStyle(fontSize: ScreenUtil().setSp(15)),
+                        Container(
+                          padding: EdgeInsets.only(top: 20),
+                          margin: EdgeInsets.only(left: 20, right: 20),
+                          child: Row(
+                            children: <Widget>[
+                              Expanded(
+                                child: Text(
+                                  'Client : ',
+                                  style:
+                                      TextStyle(fontSize: ScreenUtil().setSp(15)),
+                                ),
                               ),
-                            ),
-                            SizedBox(
-                              width: 15,
-                            ),
-                            Expanded(
-                              child: Text(
-                                'Project : ',
-                                style:
-                                    TextStyle(fontSize: ScreenUtil().setSp(15)),
+                              SizedBox(
+                                width: 15,
                               ),
-                            )
-                          ],
+                              Expanded(
+                                child: Text(
+                                  'Project : ',
+                                  style:
+                                      TextStyle(fontSize: ScreenUtil().setSp(15)),
+                                ),
+                              )
+                            ],
+                          ),
                         ),
-                      ),
-                      Container(
-                        padding: const EdgeInsets.only(top: 0),
-                        margin: EdgeInsets.only(left: 20, right: 20, top: 10),
-                        child: Row(
-                          children: <Widget>[
-                            (activeListApi?.data?.isNotEmpty ?? false)
-                                ? Expanded(
-                                    child: DropdownButton(
-                                      hint: Text('Select Client'),
-                                      items: activeListApi?.data!.map((item) {
-                                        return DropdownMenuItem(
-                                          child: new Text(
-                                            item.clientName ?? "",
-                                            maxLines: 2,
-                                            style: TextStyle(
-                                                overflow:
-                                                    TextOverflow.ellipsis),
-                                          ),
-                                          value: item.id.toString(),
-                                        );
-                                      }).toList(),
-                                      onChanged: (newValue) {
-                                        _projectDropdownValue = "";
-//                                         setState(() {
-//                                           _clientDropdownValue = newValue;
-// //                                          print(_clientDropdownValue);
-//                                           getProjectList();
-//                                         });
-                                        setState(() {
-                                          _clientDropdownValue =
-                                              newValue.toString();
-                                          //                                          print(_clientDropdownValue);
-                                          // getProjectList();
-                                          isLoadAPI = 2;
-                                          checkInternet();
-                                        });
-                                      },
-                                      isExpanded: true,
-                                      value: _clientDropdownValue,
-                                    ),
-                                  )
-                                : Expanded(
-                                    child: Text('Loading....'),
-                                  ),
-                            SizedBox(
-                              width: 15,
-                            ),
-                            (_projectListCallBack?.data!.isNotEmpty ?? false)
-                                ? Expanded(
-                                    child: DropdownButton(
-                                      hint: Text('Select Project'),
-                                      items: _projectListCallBack!.data!
-                                          .map((dataItem) {
-                                            return DropdownMenuItem(
-                                              child: Text(
-                                                dataItem.name ?? "",
-                                                maxLines: 2,
-                                                style: TextStyle(
-                                                  fontSize:
-                                                      ScreenUtil().setSp(15),
+                        Container(
+                          padding: const EdgeInsets.only(top: 0),
+                          margin: EdgeInsets.only(left: 20, right: 20, top: 10),
+                          child: Row(
+                            children: <Widget>[
+                              (activeListApi?.data?.isNotEmpty ?? false)
+                                  ? Expanded(
+                                      child: DropdownButton(
+                                        hint: Text('Select Client'),
+                                        items: activeListApi?.data!.map((item) {
+                                          return DropdownMenuItem(
+                                            child: new Text(
+                                              item.clientName ?? "",
+                                              maxLines: 2,
+                                              style: TextStyle(
                                                   overflow:
-                                                      TextOverflow.ellipsis,
+                                                      TextOverflow.ellipsis),
+                                            ),
+                                            value: item.id.toString(),
+                                          );
+                                        }).toList(),
+                                        onChanged: (newValue) {
+                                          _projectDropdownValue = "";
+      //                                         setState(() {
+      //                                           _clientDropdownValue = newValue;
+      // //                                          print(_clientDropdownValue);
+      //                                           getProjectList();
+      //                                         });
+                                          setState(() {
+                                            _clientDropdownValue =
+                                                newValue.toString();
+                                            //                                          print(_clientDropdownValue);
+                                            // getProjectList();
+                                            isLoadAPI = 2;
+                                            checkInternet();
+                                          });
+                                        },
+                                        isExpanded: true,
+                                        value: _clientDropdownValue,
+                                      ),
+                                    )
+                                  : Expanded(
+                                      child: Text('Loading....'),
+                                    ),
+                              SizedBox(
+                                width: 15,
+                              ),
+                              (_projectListCallBack?.data!.isNotEmpty ?? false)
+                                  ? Expanded(
+                                      child: DropdownButton(
+                                        hint: Text('Select Project'),
+                                        items: _projectListCallBack!.data!
+                                            .map((dataItem) {
+                                              return DropdownMenuItem(
+                                                child: Text(
+                                                  dataItem.name ?? "",
+                                                  maxLines: 2,
+                                                  style: TextStyle(
+                                                    fontSize:
+                                                        ScreenUtil().setSp(15),
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
+                                                  ),
                                                 ),
-                                              ),
-                                              value: dataItem.id.toString(),
-                                            );
-                                          })
-                                          .toSet() // remove duplicate values if any
-                                          .toList(),
-                                      onChanged: (newValue) {
-                                        setState(() {
-                                          _projectDropdownValue =
-                                              newValue.toString();
-                                        });
-                                      },
-                                      isExpanded: true,
-                                      value: _projectListCallBack!.data!.any(
-                                              (item) =>
-                                                  item.id.toString() ==
-                                                  _projectDropdownValue)
-                                          ? _projectDropdownValue
-                                          : null, // fallback to null if invalid
+                                                value: dataItem.id.toString(),
+                                              );
+                                            })
+                                            .toSet() // remove duplicate values if any
+                                            .toList(),
+                                        onChanged: (newValue) {
+                                          setState(() {
+                                            _projectDropdownValue =
+                                                newValue.toString();
+                                          });
+                                        },
+                                        isExpanded: true,
+                                        value: _projectListCallBack!.data!.any(
+                                                (item) =>
+                                                    item.id.toString() ==
+                                                    _projectDropdownValue)
+                                            ? _projectDropdownValue
+                                            : null, // fallback to null if invalid
+                                      ),
+                                    )
+                                  : Expanded(
+                                      child: Text(
+                                          (_projectListCallBack?.data?.isEmpty ??
+                                                  true)
+                                              ? 'No Project Found'
+                                              : 'Loading....'),
                                     ),
-                                  )
-                                : Expanded(
-                                    child: Text(
-                                        (_projectListCallBack?.data?.isEmpty ??
-                                                true)
-                                            ? 'No Project Found'
-                                            : 'Loading....'),
-                                  ),
-                          ],
+                            ],
+                          ),
                         ),
-                      ),
-                      Container(
-                        padding: EdgeInsets.only(top: 10),
-                        margin: EdgeInsets.only(left: 20, right: 20),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text(
-                              'Task Type : ',
-                              style:
-                                  TextStyle(fontSize: ScreenUtil().setSp(15)),
-                              textAlign: TextAlign.start,
-                            ),
-                            taskType,
-                          ],
-                        ),
-                      ),
-                      Container(
-                        padding: EdgeInsets.only(top: 20),
-                        margin: EdgeInsets.only(left: 20, right: 20),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text(
-                              'Task : ',
-                              style:
-                                  TextStyle(fontSize: ScreenUtil().setSp(15)),
-                              textAlign: TextAlign.start,
-                            ),
-                            TextFormField(
-                              controller: taskController,
-                              //autofocus: true,
-                              maxLines: null,
-                              decoration:
-                                  InputDecoration(labelText: "Add Task"),
-                              // validator: (value) {
-                              //   if (value.isEmpty) {
-                              //     return 'Please enter task';
-                              //   }
-                              // },
-                            ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        padding: EdgeInsets.only(top: 20),
-                        margin: EdgeInsets.only(left: 20, right: 20),
-                        child: Row(
-                          children: <Widget>[
-                            Expanded(
-                              child: Text(
-                                'Hours : ',
+                        Container(
+                          padding: EdgeInsets.only(top: 10),
+                          margin: EdgeInsets.only(left: 20, right: 20),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Text(
+                                'Task Type : ',
                                 style:
                                     TextStyle(fontSize: ScreenUtil().setSp(15)),
+                                textAlign: TextAlign.start,
                               ),
-                            ),
-                            SizedBox(
-                              width: 15,
-                            ),
-                            Expanded(
-                              child: Text(
-                                'Minutes : ',
+                              taskType,
+                            ],
+                          ),
+                        ),
+                        Container(
+                          padding: EdgeInsets.only(top: 20),
+                          margin: EdgeInsets.only(left: 20, right: 20),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Text(
+                                'Task : ',
                                 style:
                                     TextStyle(fontSize: ScreenUtil().setSp(15)),
+                                textAlign: TextAlign.start,
                               ),
-                            )
-                          ],
+                              TextFormField(
+                                controller: taskController,
+                                //autofocus: true,
+                                maxLines: null,
+                                decoration:
+                                    InputDecoration(labelText: "Add Task"),
+                                // validator: (value) {
+                                //   if (value.isEmpty) {
+                                //     return 'Please enter task';
+                                //   }
+                                // },
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                      Container(
-                        padding: const EdgeInsets.only(top: 0, bottom: 20),
-                        margin: EdgeInsets.only(left: 20, right: 20),
-                        child: Row(
-                          children: <Widget>[
-                            Expanded(
-                              child: DropdownButton(
-                                hint: Text('Choose Hours'),
-                                isExpanded: true,
-                                value: _hrstDropdownValue,
-                                onChanged: (newValue) {
-                                  setState(() {
-                                    _hrstDropdownValue = newValue.toString();
-                                  });
-                                },
-                                items: [
-                                  '00',
-                                  '01',
-                                  '02',
-                                  '03',
-                                  '04',
-                                  '05',
-                                  '06',
-                                  '07',
-                                  '08',
-                                  '09'
-                                ].map<DropdownMenuItem<String>>((String value) {
-                                  return DropdownMenuItem(
-                                    child: new Text(value),
-                                    value: value,
-                                  );
-                                }).toList(),
+                        Container(
+                          padding: EdgeInsets.only(top: 20),
+                          margin: EdgeInsets.only(left: 20, right: 20),
+                          child: Row(
+                            children: <Widget>[
+                              Expanded(
+                                child: Text(
+                                  'Hours : ',
+                                  style:
+                                      TextStyle(fontSize: ScreenUtil().setSp(15)),
+                                ),
                               ),
-                            ),
-                            SizedBox(
-                              width: 15,
-                            ),
-                            Expanded(
-                              child: DropdownButton(
-                                hint: Text('Choose minutes'),
-                                isExpanded: true,
-                                value: _minDropdownValue,
-                                onChanged: (newValue) {
-                                  setState(() {
-                                    _minDropdownValue = newValue.toString();
-                                  });
-                                },
-                                items: [
-                                  '00',
-                                  '05',
-                                  '10',
-                                  '15',
-                                  '20',
-                                  '25',
-                                  '30',
-                                  '35',
-                                  '40',
-                                  '45',
-                                  '50',
-                                  '55'
-                                ].map<DropdownMenuItem<String>>((String value) {
-                                  return DropdownMenuItem(
-                                    child: new Text(value),
-                                    value: value,
-                                  );
-                                }).toList(),
+                              SizedBox(
+                                width: 15,
                               ),
-                            )
-                          ],
+                              Expanded(
+                                child: Text(
+                                  'Minutes : ',
+                                  style:
+                                      TextStyle(fontSize: ScreenUtil().setSp(15)),
+                                ),
+                              )
+                            ],
+                          ),
                         ),
-                      ),
-                      Container(
-                        child: CheckboxListTile(
-                          title: Text('is new task'),
-                          controlAffinity: ListTileControlAffinity.leading,
-                          value: isnewtask,
-                          onChanged: (bool? newValue) {
-                            setState(() {
-                              isnewtask = newValue ?? false;
-                            });
-                          },
-                        ),
-                      ),
-                      Center(
-                        child: Container(
-                            padding: EdgeInsets.only(
-                              top: 20,
-                            ),
-                            height: 55,
-                            margin: EdgeInsets.all(0),
-                            child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                  elevation: 5,
-                                  textStyle: TextStyle(color: Colors.white),
-                                  padding: const EdgeInsets.all(0.0),
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.circular(20.0))),
-                              child: Container(
-                                decoration: const BoxDecoration(
-                                    gradient: LinearGradient(
-                                      colors: <Color>[
-                                        Color.fromRGBO(255, 81, 54, 1),
-                                        Color.fromRGBO(255, 163, 54, 1),
-                                      ],
-                                    ),
-                                    borderRadius: BorderRadius.all(
-                                        Radius.circular(20.0))),
-                                padding:
-                                    const EdgeInsets.fromLTRB(70, 7, 70, 7),
-                                child: const Text('Add Task',
-                                    style: TextStyle(fontSize: 17)),
+                        Container(
+                          padding: const EdgeInsets.only(top: 0, bottom: 20),
+                          margin: EdgeInsets.only(left: 20, right: 20),
+                          child: Row(
+                            children: <Widget>[
+                              Expanded(
+                                child: DropdownButton(
+                                  hint: Text('Choose Hours'),
+                                  isExpanded: true,
+                                  value: _hrstDropdownValue,
+                                  onChanged: (newValue) {
+                                    setState(() {
+                                      _hrstDropdownValue = newValue.toString();
+                                    });
+                                  },
+                                  items: [
+                                    '00',
+                                    '01',
+                                    '02',
+                                    '03',
+                                    '04',
+                                    '05',
+                                    '06',
+                                    '07',
+                                    '08',
+                                    '09'
+                                  ].map<DropdownMenuItem<String>>((String value) {
+                                    return DropdownMenuItem(
+                                      child: new Text(value),
+                                      value: value,
+                                    );
+                                  }).toList(),
+                                ),
                               ),
-                              onPressed: () {
-                                if (formkey.currentState!.validate()) {
-                                  if (taskController.text.isEmpty) {
-                                    showBottomToast('Please enter task');
-                                  } else if (_minDropdownValue == null) {
-                                    showBottomToast('Select minutes');
-                                  } else if (hrsToMin() == '0') {
-                                    showBottomToast(
-                                        'Total time should not be zero');
-                                  } else {
-                                    addTask();
+                              SizedBox(
+                                width: 15,
+                              ),
+                              Expanded(
+                                child: DropdownButton(
+                                  hint: Text('Choose minutes'),
+                                  isExpanded: true,
+                                  value: _minDropdownValue,
+                                  onChanged: (newValue) {
+                                    setState(() {
+                                      _minDropdownValue = newValue.toString();
+                                    });
+                                  },
+                                  items: [
+                                    '00',
+                                    '05',
+                                    '10',
+                                    '15',
+                                    '20',
+                                    '25',
+                                    '30',
+                                    '35',
+                                    '40',
+                                    '45',
+                                    '50',
+                                    '55'
+                                  ].map<DropdownMenuItem<String>>((String value) {
+                                    return DropdownMenuItem(
+                                      child: new Text(value),
+                                      value: value,
+                                    );
+                                  }).toList(),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                        Container(
+                          child: CheckboxListTile(
+                            title: Text('is new task'),
+                            controlAffinity: ListTileControlAffinity.leading,
+                            value: isnewtask,
+                            onChanged: (bool? newValue) {
+                              setState(() {
+                                isnewtask = newValue ?? false;
+                              });
+                            },
+                          ),
+                        ),
+                        Center(
+                          child: Container(
+                              padding: EdgeInsets.only(
+                                top: 20,
+                              ),
+                              height: 55,
+                              margin: EdgeInsets.all(0),
+                              child: ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                    elevation: 5,
+                                    textStyle: TextStyle(color: Colors.white),
+                                    padding: const EdgeInsets.all(0.0),
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(20.0))),
+                                child: Container(
+                                  decoration: const BoxDecoration(
+                                      gradient: LinearGradient(
+                                        colors: <Color>[
+                                          Color.fromRGBO(255, 81, 54, 1),
+                                          Color.fromRGBO(255, 163, 54, 1),
+                                        ],
+                                      ),
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(20.0))),
+                                  padding:
+                                      const EdgeInsets.fromLTRB(70, 7, 70, 7),
+                                  child: const Text('Add Task',
+                                      style: TextStyle(fontSize: 17)),
+                                ),
+                                onPressed: () {
+                                  if (formkey.currentState!.validate()) {
+                                    if (taskController.text.isEmpty) {
+                                      showBottomToast('Please enter task');
+                                    } else if (_minDropdownValue == null) {
+                                      showBottomToast('Select minutes');
+                                    } else if (hrsToMin() == '0') {
+                                      showBottomToast(
+                                          'Total time should not be zero');
+                                    } else {
+                                      addTask();
+                                    }
                                   }
-                                }
-                              },
-                            )),
-                      ),
-                      Container(
-                        child: CheckboxListTile(
-                          title: Text('Want to add more task'),
-                          controlAffinity: ListTileControlAffinity.leading,
-                          value: isMoreTask,
-                          onChanged: (bool? newValue) {
-                            setState(() {
-                              isMoreTask = newValue!;
-                            });
-                          },
+                                },
+                              )),
                         ),
-                      ),
-                      SizedBox(
-                        height: 30,
-                      ),
-                      loadAttendanceStatus(),
-                    ],
+                        Container(
+                          child: CheckboxListTile(
+                            title: Text('Want to add more task'),
+                            controlAffinity: ListTileControlAffinity.leading,
+                            value: isMoreTask,
+                            onChanged: (bool? newValue) {
+                              setState(() {
+                                isMoreTask = newValue!;
+                              });
+                            },
+                          ),
+                        ),
+                        SizedBox(
+                          height: 30,
+                        ),
+                        loadAttendanceStatus(),
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
-            //  AppLoaderView(),
-          ],
+              //  AppLoaderView(),
+            ],
+          ),
         ),
       ),
     );

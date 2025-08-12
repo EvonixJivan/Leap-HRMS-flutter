@@ -40,23 +40,27 @@ class _EditProfileState extends State<EditProfile> {
   @override
   Widget build(BuildContext context) {
     // // TODO: implement build
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: appPrimaryColor,
-        title: Text(widget.title, style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600),),
-        centerTitle: true,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.white,),
-          onPressed: (){
-            Navigator.pop(context);
-          },
-        ),
-      ),
-
-      body: InAppWebView(
-          gestureRecognizers: Set()..add(Factory<VerticalDragGestureRecognizer>(() => VerticalDragGestureRecognizer())),
-          // initialUrlRequest: URLRequest(url: Uri.parse(widget.url))
+    return SafeArea(
+       top: false,
+        bottom: true,
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: appPrimaryColor,
+          title: Text(widget.title, style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600),),
+          centerTitle: true,
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back, color: Colors.white,),
+            onPressed: (){
+              Navigator.pop(context);
+            },
           ),
+        ),
+      
+        body: InAppWebView(
+            gestureRecognizers: Set()..add(Factory<VerticalDragGestureRecognizer>(() => VerticalDragGestureRecognizer())),
+            // initialUrlRequest: URLRequest(url: Uri.parse(widget.url))
+            ),
+      ),
     );
     // return Scaffold(
     //   appBar: AppBar(

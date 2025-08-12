@@ -107,47 +107,51 @@ class _TrackingViewState extends State<TrackingView> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
 
-    return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(title),
+    return SafeArea(
+       top: false,
+        bottom: true,
+      child: Scaffold(
+        appBar: AppBar(
+          // Here we take the value from the MyHomePage object that was created by
+          // the App.build method, and use it to set our appbar title.
+          title: Text(title),
+        ),
+        body: (appLine.length > 0)
+            ? FlutterMap(
+                options: MapOptions(
+                  center: LatLng(18.580085, 73.75782167),
+                  zoom: 14.0,
+                  onTap: (tapPosition, point) {
+                    print('Tapped at $point');
+                  },
+                ),
+                children: [
+                  TileLayer(
+                    urlTemplate:
+                        'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+                    subdomains: ['a', 'b', 'c'],
+                  ),
+                  PolylineLayer(
+                    polylines: [
+                      Polyline(
+                        points: getNewPoints(0),
+                        color: Colors.blue,
+                        strokeWidth: 9.0,
+                      ),
+                      Polyline(
+                        points: getNewPoints(0),
+                        color: Colors.red,
+                        strokeWidth: 3.0,
+                      ),
+                    ],
+                  ),
+                ],
+              )
+            : Center(
+                child: Container(
+                child: Text('Loading'),
+              )),
       ),
-      body: (appLine.length > 0)
-          ? FlutterMap(
-              options: MapOptions(
-                center: LatLng(18.580085, 73.75782167),
-                zoom: 14.0,
-                onTap: (tapPosition, point) {
-                  print('Tapped at $point');
-                },
-              ),
-              children: [
-                TileLayer(
-                  urlTemplate:
-                      'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-                  subdomains: ['a', 'b', 'c'],
-                ),
-                PolylineLayer(
-                  polylines: [
-                    Polyline(
-                      points: getNewPoints(0),
-                      color: Colors.blue,
-                      strokeWidth: 9.0,
-                    ),
-                    Polyline(
-                      points: getNewPoints(0),
-                      color: Colors.red,
-                      strokeWidth: 3.0,
-                    ),
-                  ],
-                ),
-              ],
-            )
-          : Center(
-              child: Container(
-              child: Text('Loading'),
-            )),
     );
   }
 

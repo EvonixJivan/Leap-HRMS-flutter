@@ -196,6 +196,8 @@ class _VehicleState extends State<Vehicle> {
     );
 
     return SafeArea(
+       top: false,
+        bottom: true,
       child: Scaffold(
         body: GestureDetector(
           child: Stack(

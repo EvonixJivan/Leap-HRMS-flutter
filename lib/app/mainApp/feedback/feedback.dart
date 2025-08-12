@@ -353,69 +353,73 @@ class _FeedBackState extends State<FeedBack> {
       ],
     );
 
-    return Scaffold(
-      body: Container(
-        color: appBackgroundDashboard,
-        child: GestureDetector(
-          child: Stack(
-            children: <Widget>[
-              // CustomHeaderWithBackGreen(scaffoldKey:widget.scaffoldKey, title: widget.title),
-              // CustomHeader(
-              //     scaffoldKey: widget.scaffoldKey, title: widget.title),
-              getCustomAppBar(),
-              Container(
-                margin: EdgeInsets.only(top: 90.0),
-                child: ListView(
-                  children: <Widget>[
-                    Card(
-                      color: appBackground,
-                      margin: EdgeInsets.only(
-                          left: ScreenUtil().setSp(20),
-                          right: ScreenUtil().setSp(20),
-                          bottom: ScreenUtil().setSp(30)),
-                      elevation: 5,
-                      child: Form(
-                        key: _formKey,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            SizedBox(
-                              height: ScreenUtil().setSp(20),
-                            ),
-                            Center(
-                              child: Text(
-                                DateFormat('dd MMM, yyyy')
-                                    .format(DateTime.now()),
-                                style: TextStyle(
-                                    // color: appAccentColor,
-                                    color: colorTextDarkBlue,
-                                    fontSize: ScreenUtil().setSp(18),
-                                    fontWeight: FontWeight.w800),
+    return SafeArea(
+       top: false,
+        bottom: true,
+      child: Scaffold(
+        body: Container(
+          color: appBackgroundDashboard,
+          child: GestureDetector(
+            child: Stack(
+              children: <Widget>[
+                // CustomHeaderWithBackGreen(scaffoldKey:widget.scaffoldKey, title: widget.title),
+                // CustomHeader(
+                //     scaffoldKey: widget.scaffoldKey, title: widget.title),
+                getCustomAppBar(),
+                Container(
+                  margin: EdgeInsets.only(top: 90.0),
+                  child: ListView(
+                    children: <Widget>[
+                      Card(
+                        color: appBackground,
+                        margin: EdgeInsets.only(
+                            left: ScreenUtil().setSp(20),
+                            right: ScreenUtil().setSp(20),
+                            bottom: ScreenUtil().setSp(30)),
+                        elevation: 5,
+                        child: Form(
+                          key: _formKey,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              SizedBox(
+                                height: ScreenUtil().setSp(20),
                               ),
-                            ),
-                            SizedBox(height: 10),
-                            module,
-                            feedbacktitle,
-                            detail,
-                            submitButton,
-                            SizedBox(
-                              height: ScreenUtil().setSp(20),
-                            )
-                          ],
+                              Center(
+                                child: Text(
+                                  DateFormat('dd MMM, yyyy')
+                                      .format(DateTime.now()),
+                                  style: TextStyle(
+                                      // color: appAccentColor,
+                                      color: colorTextDarkBlue,
+                                      fontSize: ScreenUtil().setSp(18),
+                                      fontWeight: FontWeight.w800),
+                                ),
+                              ),
+                              SizedBox(height: 10),
+                              module,
+                              feedbacktitle,
+                              detail,
+                              submitButton,
+                              SizedBox(
+                                height: ScreenUtil().setSp(20),
+                              )
+                            ],
+                          ),
                         ),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0)),
                       ),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0)),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
+            onTap: () {
+              //Navigator.of(context).pop();
+              FocusScope.of(context).requestFocus(new FocusNode());
+            },
           ),
-          onTap: () {
-            //Navigator.of(context).pop();
-            FocusScope.of(context).requestFocus(new FocusNode());
-          },
         ),
       ),
     );

@@ -77,27 +77,31 @@ class EditTaskState extends State<EditTask> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: GestureDetector(
-        onTap: () {
-          FocusScope.of(context).requestFocus(new FocusNode());
-        },
-        child: Stack(
-          children: <Widget>[
-            CustomHeaderWithBack(
-                scaffoldKey: widget.scaffoldKey, title: widget.title),
-            Form(
-              key: formkey,
-              child: Padding(
-                  padding: EdgeInsets.only(top: ScreenUtil().setSp(170)),
-                  child:
-                      (activeListApi != null && activeListApi!.data!.length > 0)
-                          ? buildListView()
-                          : Container(
-                              child: Center(child: Text('Loading')),
-                            )),
-            )
-          ],
+    return SafeArea(
+       top: false,
+        bottom: true,
+      child: Scaffold(
+        body: GestureDetector(
+          onTap: () {
+            FocusScope.of(context).requestFocus(new FocusNode());
+          },
+          child: Stack(
+            children: <Widget>[
+              CustomHeaderWithBack(
+                  scaffoldKey: widget.scaffoldKey, title: widget.title),
+              Form(
+                key: formkey,
+                child: Padding(
+                    padding: EdgeInsets.only(top: ScreenUtil().setSp(170)),
+                    child:
+                        (activeListApi != null && activeListApi!.data!.length > 0)
+                            ? buildListView()
+                            : Container(
+                                child: Center(child: Text('Loading')),
+                              )),
+              )
+            ],
+          ),
         ),
       ),
     );

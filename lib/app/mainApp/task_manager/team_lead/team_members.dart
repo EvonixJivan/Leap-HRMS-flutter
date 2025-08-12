@@ -77,190 +77,194 @@ late  DateTime nDate;
   @override
   Widget build(BuildContext context) {
 
-    return Scaffold(
-        backgroundColor: Colors.grey[100],
-        body: Stack(
-          children: <Widget>[
-            CustomHeaderWithBack(
-                scaffoldKey: widget.scaffoldKey, title: widget.title),
-            Container(
-              margin: EdgeInsets.only(top: ScreenUtil().setSp(90.0)),
-              child: Column(
-                children: <Widget>[
-                  Card(
-                    elevation: 5,
-                    child: CalendarStrip(
-                      containerHeight: 80,
-                      startDate: startDate,
-                      endDate: endDate,
-                      onDateSelected: (date) {
-                        setState(() {
-                          this.selectedDate = formatter.format(date);
-                          nDate = date;
-                          apiCallForTeamMembers();
-                        });
+    return SafeArea(
+       top: false,
+        bottom: true,
+      child: Scaffold(
+          backgroundColor: Colors.grey[100],
+          body: Stack(
+            children: <Widget>[
+              CustomHeaderWithBack(
+                  scaffoldKey: widget.scaffoldKey, title: widget.title),
+              Container(
+                margin: EdgeInsets.only(top: ScreenUtil().setSp(90.0)),
+                child: Column(
+                  children: <Widget>[
+                    Card(
+                      elevation: 5,
+                      child: CalendarStrip(
+                        containerHeight: 80,
+                        startDate: startDate,
+                        endDate: endDate,
+                        onDateSelected: (date) {
+                          setState(() {
+                            this.selectedDate = formatter.format(date);
+                            nDate = date;
+                            apiCallForTeamMembers();
+                          });
+                        },
+                        selectedDate: nDate,
+                        dateTileBuilder: dateTileBuilder,
+                        iconColor: Colors.black87,
+                        monthNameWidget: monthNameWidget,
+                        containerDecoration: BoxDecoration(color: Colors.white),
+                        markedDates: [],
+                       leftIcon: Icon(Icons.chevron_left),
+                      rightIcon: Icon(Icons.chevron_right),  onWeekSelected: (start, end) {
+                        print('Week selected: $start - $end');
                       },
-                      selectedDate: nDate,
-                      dateTileBuilder: dateTileBuilder,
-                      iconColor: Colors.black87,
-                      monthNameWidget: monthNameWidget,
-                      containerDecoration: BoxDecoration(color: Colors.white),
-                      markedDates: [],
-                     leftIcon: Icon(Icons.chevron_left),
-                    rightIcon: Icon(Icons.chevron_right),  onWeekSelected: (start, end) {
-                      print('Week selected: $start - $end');
-                    },
+                      ),
                     ),
-                  ),
-                  Expanded(
-                    child: RefreshIndicator(
-                      key: _refreshIndicatorKey,
-                      onRefresh: _handleRefresh,
-                      child: (_employeeListApiCallBack!.data!.length > 0)
-                          ? buildListView()
-                          : Container(
-                              child: Center(
-                                child: Text(_noDataFound),
+                    Expanded(
+                      child: RefreshIndicator(
+                        key: _refreshIndicatorKey,
+                        onRefresh: _handleRefresh,
+                        child: (_employeeListApiCallBack!.data!.length > 0)
+                            ? buildListView()
+                            : Container(
+                                child: Center(
+                                  child: Text(_noDataFound),
+                                ),
                               ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+                      child: Card(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: <Widget>[
+                                Row(
+                                  children: <Widget>[
+                                    SizedBox(
+                                      width: 10.0,
+                                    ),
+                                    Expanded(
+                                      child: Row(
+                                        children: <Widget>[
+                                          Container(
+                                            margin: EdgeInsets.symmetric(
+                                                horizontal: 1.0),
+                                            color: Colors.green,
+                                            height: 8,
+                                            width: 8,
+                                          ),
+                                          SizedBox(
+                                            width: 5.0,
+                                          ),
+                                          Text('Present'),
+                                        ],
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: Row(
+                                        children: <Widget>[
+                                          Container(
+                                            margin: EdgeInsets.symmetric(
+                                                horizontal: 1.0),
+                                            color: Colors.red,
+                                            height: 8,
+                                            width: 8,
+                                          ),
+                                          SizedBox(
+                                            width: 5.0,
+                                          ),
+                                          Text('Absent'),
+                                        ],
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: Row(
+                                        children: <Widget>[
+                                          Container(
+                                            margin: EdgeInsets.symmetric(
+                                                horizontal: 1.0),
+                                            color: Colors.indigo,
+                                            height: 8,
+                                            width: 8,
+                                          ),
+                                          SizedBox(
+                                            width: 5.0,
+                                          ),
+                                          Text('On Leave'),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  children: <Widget>[
+                                    SizedBox(
+                                      width: 10.0,
+                                    ),
+                                    Expanded(
+                                      child: Row(
+                                        children: <Widget>[
+                                          Container(
+                                            margin: EdgeInsets.symmetric(
+                                                horizontal: 1.0),
+                                            color: Colors.yellow,
+                                            height: 8,
+                                            width: 8,
+                                          ),
+                                          SizedBox(
+                                            width: 5.0,
+                                          ),
+                                          Text('Holiday'),
+                                        ],
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: Row(
+                                        children: <Widget>[
+                                          Container(
+                                            margin: EdgeInsets.symmetric(
+                                                horizontal: 1.0),
+                                            color: Colors.blueGrey,
+                                            height: 8,
+                                            width: 8,
+                                          ),
+                                          SizedBox(
+                                            width: 5.0,
+                                          ),
+                                          Text('Weekoff'),
+                                        ],
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: Row(
+                                        children: <Widget>[
+                                          Container(
+                                            margin: EdgeInsets.symmetric(
+                                                horizontal: 1.0),
+                                            color: Colors.lightGreen,
+                                            height: 8,
+                                            width: 8,
+                                          ),
+                                          SizedBox(
+                                            width: 5.0,
+                                          ),
+                                          Text('Half day'),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
                             ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 8.0, right: 8.0),
-                    child: Card(
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: <Widget>[
-                              Row(
-                                children: <Widget>[
-                                  SizedBox(
-                                    width: 10.0,
-                                  ),
-                                  Expanded(
-                                    child: Row(
-                                      children: <Widget>[
-                                        Container(
-                                          margin: EdgeInsets.symmetric(
-                                              horizontal: 1.0),
-                                          color: Colors.green,
-                                          height: 8,
-                                          width: 8,
-                                        ),
-                                        SizedBox(
-                                          width: 5.0,
-                                        ),
-                                        Text('Present'),
-                                      ],
-                                    ),
-                                  ),
-                                  Expanded(
-                                    child: Row(
-                                      children: <Widget>[
-                                        Container(
-                                          margin: EdgeInsets.symmetric(
-                                              horizontal: 1.0),
-                                          color: Colors.red,
-                                          height: 8,
-                                          width: 8,
-                                        ),
-                                        SizedBox(
-                                          width: 5.0,
-                                        ),
-                                        Text('Absent'),
-                                      ],
-                                    ),
-                                  ),
-                                  Expanded(
-                                    child: Row(
-                                      children: <Widget>[
-                                        Container(
-                                          margin: EdgeInsets.symmetric(
-                                              horizontal: 1.0),
-                                          color: Colors.indigo,
-                                          height: 8,
-                                          width: 8,
-                                        ),
-                                        SizedBox(
-                                          width: 5.0,
-                                        ),
-                                        Text('On Leave'),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                children: <Widget>[
-                                  SizedBox(
-                                    width: 10.0,
-                                  ),
-                                  Expanded(
-                                    child: Row(
-                                      children: <Widget>[
-                                        Container(
-                                          margin: EdgeInsets.symmetric(
-                                              horizontal: 1.0),
-                                          color: Colors.yellow,
-                                          height: 8,
-                                          width: 8,
-                                        ),
-                                        SizedBox(
-                                          width: 5.0,
-                                        ),
-                                        Text('Holiday'),
-                                      ],
-                                    ),
-                                  ),
-                                  Expanded(
-                                    child: Row(
-                                      children: <Widget>[
-                                        Container(
-                                          margin: EdgeInsets.symmetric(
-                                              horizontal: 1.0),
-                                          color: Colors.blueGrey,
-                                          height: 8,
-                                          width: 8,
-                                        ),
-                                        SizedBox(
-                                          width: 5.0,
-                                        ),
-                                        Text('Weekoff'),
-                                      ],
-                                    ),
-                                  ),
-                                  Expanded(
-                                    child: Row(
-                                      children: <Widget>[
-                                        Container(
-                                          margin: EdgeInsets.symmetric(
-                                              horizontal: 1.0),
-                                          color: Colors.lightGreen,
-                                          height: 8,
-                                          width: 8,
-                                        ),
-                                        SizedBox(
-                                          width: 5.0,
-                                        ),
-                                        Text('Half day'),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
                           ),
                         ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-            )
-          ],
-        ));
+                  ],
+                ),
+              )
+            ],
+          )),
+    );
   }
 
   Widget buildListView() {

@@ -312,82 +312,86 @@ class _LoginScreenState extends State<LoginScreen> {
     );
 
     return SafeArea(
-      child: Scaffold(
-        body: Stack(
-          children: <Widget>[
-            logo,
-            Container(
-              color: appPrimaryColor,
-              child: ListView(
-                children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.all(0),
-                    child: Form(
-                      key: _formKey,
-                      child: Column(
-                        children: <Widget>[
-                          Stack(
-                            children: <Widget>[
-                              SimpleHeader(),
-                              Image.asset(
-                                'assets/image/logo_bg.png',
-                                width: MediaQuery.of(context).size.width,
-                                height: 250,
-                                fit: BoxFit.fill,
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(
-                                    top: ScreenUtil().setSp(190),
-                                    left: ScreenUtil().setSp(20),
-                                    right: ScreenUtil().setSp(0)),
-                                child: Image.asset(
-                                  'assets/image/login_ig.png',
-                                  height: ScreenUtil().setSp(230.95),
+       top: false,
+        bottom: true,
+      child: SafeArea(
+        child: Scaffold(
+          body: Stack(
+            children: <Widget>[
+              logo,
+              Container(
+                color: appPrimaryColor,
+                child: ListView(
+                  children: <Widget>[
+                    Padding(
+                      padding: EdgeInsets.all(0),
+                      child: Form(
+                        key: _formKey,
+                        child: Column(
+                          children: <Widget>[
+                            Stack(
+                              children: <Widget>[
+                                SimpleHeader(),
+                                Image.asset(
+                                  'assets/image/logo_bg.png',
+                                  width: MediaQuery.of(context).size.width,
+                                  height: 250,
                                   fit: BoxFit.fill,
                                 ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(height: 30.0),
-                          email,
-                          SizedBox(height: 10.0),
-                          password,
-                          loginButton,
-                          Container(
-                            margin: EdgeInsets.only(left: 40, right: 40),
-                            height: 50,
-                            decoration: new BoxDecoration(
-                                color: Color.fromARGB(255, 230, 176, 132),
-                                borderRadius: new BorderRadius.circular(25)),
-                            padding: EdgeInsets.all(5),
-                            child: Row(
-                              children: [
-                                otherLogin,
-                                Expanded(child: Text('')),
-                                forgotPassword,
-                                Expanded(child: Text('')),
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                      top: ScreenUtil().setSp(190),
+                                      left: ScreenUtil().setSp(20),
+                                      right: ScreenUtil().setSp(0)),
+                                  child: Image.asset(
+                                    'assets/image/login_ig.png',
+                                    height: ScreenUtil().setSp(230.95),
+                                    fit: BoxFit.fill,
+                                  ),
+                                ),
                               ],
                             ),
-                          ),
-                          SizedBox(height: 50.0),
-                        ],
+                            SizedBox(height: 30.0),
+                            email,
+                            SizedBox(height: 10.0),
+                            password,
+                            loginButton,
+                            Container(
+                              margin: EdgeInsets.only(left: 40, right: 40),
+                              height: 50,
+                              decoration: new BoxDecoration(
+                                  color: Color.fromARGB(255, 230, 176, 132),
+                                  borderRadius: new BorderRadius.circular(25)),
+                              padding: EdgeInsets.all(5),
+                              child: Row(
+                                children: [
+                                  otherLogin,
+                                  Expanded(child: Text('')),
+                                  forgotPassword,
+                                  Expanded(child: Text('')),
+                                ],
+                              ),
+                            ),
+                            SizedBox(height: 50.0),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                  Align(
-                    alignment: Alignment.center,
-                    child: Container(
-                      width: MediaQuery.of(context).size.width - 200,
-                      padding: EdgeInsets.only(bottom: 30),
-                      height: 3,
-                      color: appWhiteColor,
+                    Align(
+                      alignment: Alignment.center,
+                      child: Container(
+                        width: MediaQuery.of(context).size.width - 200,
+                        padding: EdgeInsets.only(bottom: 30),
+                        height: 3,
+                        color: appWhiteColor,
+                      ),
                     ),
-                  ),
-                  SizedBox(height: 10.0),
-                ],
+                    SizedBox(height: 10.0),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

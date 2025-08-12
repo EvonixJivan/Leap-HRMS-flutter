@@ -71,88 +71,92 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-        backgroundColor: Colors.grey[100],
-        body: Stack(
-          children: <Widget>[
-            CustomHeaderWithBack(
-                scaffoldKey: widget.scaffoldKey, title: widget.title),
-            Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-              new Card(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(5.0)),
-                margin: EdgeInsets.only(
-                    top: ScreenUtil().setSp(120),
-                    left: ScreenUtil().setSp(10),
-                    right: ScreenUtil().setSp(10)),
-                elevation: 2,
-                child: Padding(
-                  padding: EdgeInsets.all(7),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Text(
-                        formatted ?? "",
-                        style: TextStyle(
-                            color: Color.fromRGBO(255, 81, 54, 1),
-                            fontSize: 18.0),
-                        textAlign: TextAlign.left,
-                      ),
-                      Row(
-                        children: <Widget>[
-                          Icon(
-                            Icons.access_time,
-                            color: Colors.grey,
-                            size: 18,
-                          ),
-                          (_taskList != null &&
-                                  _taskList?.data != null &&
-                                  _taskList!.data!.length > 0)
-                              ? Text(
-                                  ' ${_taskList?.totalCount}/480',
-                                  style: TextStyle(
-                                      color: Colors.green, fontSize: 18.0),
-                                )
-                              : Text(
-                                  ' 0/480',
-                                  style: TextStyle(
-                                      color: Colors.green, fontSize: 18.0),
-                                ),
-                        ],
-                      )
-                    ],
+    return SafeArea(
+       top: false,
+        bottom: true,
+      child: new Scaffold(
+          backgroundColor: Colors.grey[100],
+          body: Stack(
+            children: <Widget>[
+              CustomHeaderWithBack(
+                  scaffoldKey: widget.scaffoldKey, title: widget.title),
+              Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+                new Card(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5.0)),
+                  margin: EdgeInsets.only(
+                      top: ScreenUtil().setSp(120),
+                      left: ScreenUtil().setSp(10),
+                      right: ScreenUtil().setSp(10)),
+                  elevation: 2,
+                  child: Padding(
+                    padding: EdgeInsets.all(7),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Text(
+                          formatted ?? "",
+                          style: TextStyle(
+                              color: Color.fromRGBO(255, 81, 54, 1),
+                              fontSize: 18.0),
+                          textAlign: TextAlign.left,
+                        ),
+                        Row(
+                          children: <Widget>[
+                            Icon(
+                              Icons.access_time,
+                              color: Colors.grey,
+                              size: 18,
+                            ),
+                            (_taskList != null &&
+                                    _taskList?.data != null &&
+                                    _taskList!.data!.length > 0)
+                                ? Text(
+                                    ' ${_taskList?.totalCount}/480',
+                                    style: TextStyle(
+                                        color: Colors.green, fontSize: 18.0),
+                                  )
+                                : Text(
+                                    ' 0/480',
+                                    style: TextStyle(
+                                        color: Colors.green, fontSize: 18.0),
+                                  ),
+                          ],
+                        )
+                      ],
+                    ),
                   ),
                 ),
-              ),
-              Expanded(
-                child: (_taskList != null &&
-                        _taskList?.data != null &&
-                        _taskList!.data!.length > 0)
-                    ? getListView()
-                    : Container(
-                        child: Center(
-                          child: Text(
-                            noDataFound,
-                            style: TextStyle(fontSize: 30),
+                Expanded(
+                  child: (_taskList != null &&
+                          _taskList?.data != null &&
+                          _taskList!.data!.length > 0)
+                      ? getListView()
+                      : Container(
+                          child: Center(
+                            child: Text(
+                              noDataFound,
+                              style: TextStyle(fontSize: 30),
+                            ),
                           ),
                         ),
-                      ),
-              )
-            ]),
-            AppLoaderView(),
-          ],
-        ),
-        floatingActionButton: Container(
-          height: 50,
-          width: 50,
-          child: FloatingActionButton(
-            onPressed: () {
-              _buttonTapped();
-            },
-            backgroundColor: Colors.deepOrange,
-            child: Icon(Icons.add, color: Colors.white,),
+                )
+              ]),
+              AppLoaderView(),
+            ],
           ),
-        ));
+          floatingActionButton: Container(
+            height: 50,
+            width: 50,
+            child: FloatingActionButton(
+              onPressed: () {
+                _buttonTapped();
+              },
+              backgroundColor: Colors.deepOrange,
+              child: Icon(Icons.add, color: Colors.white,),
+            ),
+          )),
+    );
   }
 
   Future _buttonTapped() async {

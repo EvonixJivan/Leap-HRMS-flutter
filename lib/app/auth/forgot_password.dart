@@ -137,6 +137,8 @@ class _ForgotPasswordState extends State<ForgotPassword> {
     );
 
     return SafeArea(
+       top: false,
+        bottom: true,
       child: Scaffold(
         body: Container(
           color: appPrimaryColor,

@@ -160,37 +160,41 @@ class _DriverState extends State<Driver> {
   Widget build(BuildContext context) {
 
 
-    return Scaffold(
-      body: Container(
-        color: appBackgroundDashboard,
-        child: Stack(
-          children: <Widget>[
-            CustomHeaderWithBackGreen(
-                scaffoldKey: widget.scaffoldKey, title: widget.title),
-            Container(
-              margin: EdgeInsets.only(top: 90),
-              child: Column(
-                children: <Widget>[
-                  Expanded(
-                    child: RefreshIndicator(
-                      key: _refreshIndicatorKey,
-                      onRefresh: _handleRefresh,
-                      child: (_driverPackageApiCallBack!.items.length > 0)
-                          ? getPackageListView()
-                          : Container(
-                              child: Center(
-                                child: Text(_noDataFound),
+    return SafeArea(
+       top: false,
+        bottom: true,
+      child: Scaffold(
+        body: Container(
+          color: appBackgroundDashboard,
+          child: Stack(
+            children: <Widget>[
+              CustomHeaderWithBackGreen(
+                  scaffoldKey: widget.scaffoldKey, title: widget.title),
+              Container(
+                margin: EdgeInsets.only(top: 90),
+                child: Column(
+                  children: <Widget>[
+                    Expanded(
+                      child: RefreshIndicator(
+                        key: _refreshIndicatorKey,
+                        onRefresh: _handleRefresh,
+                        child: (_driverPackageApiCallBack!.items.length > 0)
+                            ? getPackageListView()
+                            : Container(
+                                child: Center(
+                                  child: Text(_noDataFound),
+                                ),
                               ),
-                            ),
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            )
-          ],
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
+        floatingActionButton: _showFabButton(),
       ),
-      floatingActionButton: _showFabButton(),
     );
   }
 

@@ -108,34 +108,38 @@ class _HolidayState extends State<Holiday> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        color: appBackgroundDashboard,
-        child: Stack(
-          children: <Widget>[
-            CustomHeaderWithBack(
-                scaffoldKey: widget.scaffoldKey, title: widget.title),
-            Container(
-              margin: EdgeInsets.only(top: 90.0),
-              child: Column(
-                children: <Widget>[
-                  Expanded(
-                    child: RefreshIndicator(
-                      key: _refreshIndicatorKey,
-                      onRefresh: _handleRefresh,
-                      child: (_holidayCallBack?.items!.holidays!.isNotEmpty ?? false)
-                          ? getHolidayListView()
-                          : Container(
-                              child: Center(
-                                child: Text(_noDataFound),
+    return SafeArea(
+       top: false,
+        bottom: true,
+      child: Scaffold(
+        body: Container(
+          color: appBackgroundDashboard,
+          child: Stack(
+            children: <Widget>[
+              CustomHeaderWithBack(
+                  scaffoldKey: widget.scaffoldKey, title: widget.title),
+              Container(
+                margin: EdgeInsets.only(top: 90.0),
+                child: Column(
+                  children: <Widget>[
+                    Expanded(
+                      child: RefreshIndicator(
+                        key: _refreshIndicatorKey,
+                        onRefresh: _handleRefresh,
+                        child: (_holidayCallBack?.items!.holidays!.isNotEmpty ?? false)
+                            ? getHolidayListView()
+                            : Container(
+                                child: Center(
+                                  child: Text(_noDataFound),
+                                ),
                               ),
-                            ),
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            )
-          ],
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

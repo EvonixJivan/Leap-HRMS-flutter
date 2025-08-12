@@ -820,72 +820,76 @@ class _AddLeaveState extends State<AddLeave> {
           ],
         ));
 
-    return Scaffold(
-      body: GestureDetector(
-        child: Stack(
-          children: <Widget>[
-            CustomHeaderWithBack(
-                scaffoldKey: widget.scaffoldKey, title: widget.title),
-            Container(
-              margin: EdgeInsets.only(top: 90.0),
-              child: ListView(
-                children: <Widget>[
-                  Card(
-                    margin: EdgeInsets.only(
-                        left: ScreenUtil().setSp(10),
-                        //top: ScreenUtil().setSp(80),
-                        right: ScreenUtil().setSp(10),
-                        bottom: ScreenUtil().setSp(30)),
-                    elevation: 5,
-                    child: Form(
-                      key: _formKey,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          SizedBox(
-                            height: ScreenUtil().setSp(20),
-                          ),
-                          Center(
-                            child: Text(
-                              'Leave Application',
-                              style: TextStyle(
-                                  color: appAccentColor,
-                                  fontSize: ScreenUtil().setSp(18),
-                                  fontWeight: FontWeight.w800),
+    return SafeArea(
+       top: false,
+        bottom: true,
+      child: Scaffold(
+        body: GestureDetector(
+          child: Stack(
+            children: <Widget>[
+              CustomHeaderWithBack(
+                  scaffoldKey: widget.scaffoldKey, title: widget.title),
+              Container(
+                margin: EdgeInsets.only(top: 90.0),
+                child: ListView(
+                  children: <Widget>[
+                    Card(
+                      margin: EdgeInsets.only(
+                          left: ScreenUtil().setSp(10),
+                          //top: ScreenUtil().setSp(80),
+                          right: ScreenUtil().setSp(10),
+                          bottom: ScreenUtil().setSp(30)),
+                      elevation: 5,
+                      child: Form(
+                        key: _formKey,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            SizedBox(
+                              height: ScreenUtil().setSp(20),
                             ),
-                          ),
-                          Visibility(
-                            visible: isVisibleCount,
-                            child: _loadLeaveCount(),
-                          ),
-                          leaveType,
-                          fromDate,
-                          toDate,
-                          noOfDays,
-                          reasonForLeave,
-                          Visibility(
-                            visible: isVisibleCount,
-                            child: loadPendingStatus,
-                          ),
-                          submitButton,
-                          SizedBox(
-                            height: ScreenUtil().setSp(20),
-                          )
-                        ],
+                            Center(
+                              child: Text(
+                                'Leave Application',
+                                style: TextStyle(
+                                    color: appAccentColor,
+                                    fontSize: ScreenUtil().setSp(18),
+                                    fontWeight: FontWeight.w800),
+                              ),
+                            ),
+                            Visibility(
+                              visible: isVisibleCount,
+                              child: _loadLeaveCount(),
+                            ),
+                            leaveType,
+                            fromDate,
+                            toDate,
+                            noOfDays,
+                            reasonForLeave,
+                            Visibility(
+                              visible: isVisibleCount,
+                              child: loadPendingStatus,
+                            ),
+                            submitButton,
+                            SizedBox(
+                              height: ScreenUtil().setSp(20),
+                            )
+                          ],
+                        ),
                       ),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0)),
                     ),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0)),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
+          onTap: () {
+            //Navigator.of(context).pop();
+            FocusScope.of(context).requestFocus(new FocusNode());
+          },
         ),
-        onTap: () {
-          //Navigator.of(context).pop();
-          FocusScope.of(context).requestFocus(new FocusNode());
-        },
       ),
     );
   }

@@ -314,92 +314,96 @@ class _LeaveListState extends State<LeaveList> {
         )
                   )));
 
-    return Scaffold(
-      backgroundColor: appBackground,
-      body: Stack(
-        children: <Widget>[
-          // getCustomHeader(),
-          CustomHeader(scaffoldKey: widget.scaffoldKey, title: widget.title),
-
-          Container(
-              margin: EdgeInsets.only(
-                  top: ScreenUtil().setSp(90),
-                  left: ScreenUtil().setSp(10),
-                  right: ScreenUtil().setSp(10)),
-              child: Column(
-                children: <Widget>[
-                  Visibility(visible: isVisibleDropDown, child: teamMember),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Visibility(
-                    visible: isVisibleCount,
-                    child: Container(
-                      child: (_totalLeaveCountApiCallBack?.items!.isNotEmpty ?? false)//(_totalLeaveCountApiCallBack!.items.length > 0)
-                          ? _loadLeaveCountList()
-                          : Container(),
-                      height: 80.0,
+    return SafeArea(
+       top: false,
+        bottom: true,
+      child: Scaffold(
+        backgroundColor: appBackground,
+        body: Stack(
+          children: <Widget>[
+            // getCustomHeader(),
+            CustomHeader(scaffoldKey: widget.scaffoldKey, title: widget.title),
+      
+            Container(
+                margin: EdgeInsets.only(
+                    top: ScreenUtil().setSp(90),
+                    left: ScreenUtil().setSp(10),
+                    right: ScreenUtil().setSp(10)),
+                child: Column(
+                  children: <Widget>[
+                    Visibility(visible: isVisibleDropDown, child: teamMember),
+                    SizedBox(
+                      height: 20,
                     ),
-                  ),
-               Row(
-  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-  children: [
-    _buildLeaveButton(
-      label: 'Approved',
-      icon: Icons.thumb_up,
-      color: Colors.green,
-      onTap: () {
-        apiCallForGetLeave('Approved', _id ?? "");
-        apiCallForAvailableLeave(_id ?? "");
-      },
-    ),
-    SizedBox(width: 5,),
-    _buildLeaveButton(
-      label: 'Pending',
-      icon: Icons.info,
-      color: Colors.grey,
-      onTap: () {
-        apiCallForGetLeave('Pending', _id ?? "");
-        apiCallForAvailableLeave(_id ?? "");
-      },
-    ),
-     SizedBox(width: 5,),
-    _buildLeaveButton(
-      label: 'Rejected',
-      icon: Icons.close,
-      color: Colors.red,
-      onTap: () {
-        apiCallForGetLeave('Disapproved', _id ?? "");
-        apiCallForAvailableLeave(_id ?? "");
-      },
-    ),
-  ],
-),
-
-                  // SizedBox(
-                  //   height: 30,
-                  // ),
-                  Expanded(
-                    child: (_userLeaveCallBack?.items?.isNotEmpty ?? false)
-                        ? getLeaveListView()
-                        : Container(
-                            child: Center(
-                              child: Text(
-                                _noDataFound,
-                              ),
-                            ),
-                          ),
-                  ),
-                ],
-              ))
+                    Visibility(
+                      visible: isVisibleCount,
+                      child: Container(
+                        child: (_totalLeaveCountApiCallBack?.items!.isNotEmpty ?? false)//(_totalLeaveCountApiCallBack!.items.length > 0)
+                            ? _loadLeaveCountList()
+                            : Container(),
+                        height: 80.0,
+                      ),
+                    ),
+                 Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+      _buildLeaveButton(
+        label: 'Approved',
+        icon: Icons.thumb_up,
+        color: Colors.green,
+        onTap: () {
+          apiCallForGetLeave('Approved', _id ?? "");
+          apiCallForAvailableLeave(_id ?? "");
+        },
+      ),
+      SizedBox(width: 5,),
+      _buildLeaveButton(
+        label: 'Pending',
+        icon: Icons.info,
+        color: Colors.grey,
+        onTap: () {
+          apiCallForGetLeave('Pending', _id ?? "");
+          apiCallForAvailableLeave(_id ?? "");
+        },
+      ),
+       SizedBox(width: 5,),
+      _buildLeaveButton(
+        label: 'Rejected',
+        icon: Icons.close,
+        color: Colors.red,
+        onTap: () {
+          apiCallForGetLeave('Disapproved', _id ?? "");
+          apiCallForAvailableLeave(_id ?? "");
+        },
+      ),
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          _buttonTapped();
-        },
-        child: Icon(Icons.add, color: Colors.white,),
-        backgroundColor: colorTextDarkBlue,
+      
+                    // SizedBox(
+                    //   height: 30,
+                    // ),
+                    Expanded(
+                      child: (_userLeaveCallBack?.items?.isNotEmpty ?? false)
+                          ? getLeaveListView()
+                          : Container(
+                              child: Center(
+                                child: Text(
+                                  _noDataFound,
+                                ),
+                              ),
+                            ),
+                    ),
+                  ],
+                ))
+          ],
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            _buttonTapped();
+          },
+          child: Icon(Icons.add, color: Colors.white,),
+          backgroundColor: colorTextDarkBlue,
+        ),
       ),
     );
   }
