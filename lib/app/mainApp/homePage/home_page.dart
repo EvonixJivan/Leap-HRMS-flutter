@@ -3248,9 +3248,10 @@ Widget _loadAttendanceButton() {
                 ? 1.0
                 : double.parse((inMinutes / workingMiniutes).toStringAsFixed(2))
             : 0.01;
-        //print(_timeCountChart);
+        // print(_timeCountChart);
         _totalHours =
             '${inHours.toString().padLeft(2, '0')}:${(inMinutes % 60).toString().padLeft(2, '0')}';
+                  // print("G1----------->$_totalHours");
       } else {
         _totalHours = '00:00';
         _timeCountChart = 0.01;

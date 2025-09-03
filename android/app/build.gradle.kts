@@ -23,8 +23,8 @@ android {
         applicationId = "co.aipex.hrms"
         minSdk = 23 //flutter.minSdkVersion
         targetSdk = 36//flutter.targetSdkVersion
-        versionCode = 21 //flutter.versionCode
-        versionName = "1.8.1"  //flutter.versionName
+        versionCode = 23 //flutter.versionCode
+        versionName = "1.8.3"  //flutter.versionName
     }
 
     buildTypes {

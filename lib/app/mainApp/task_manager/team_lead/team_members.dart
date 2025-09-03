@@ -42,7 +42,8 @@ class TeamMemberState extends State<TeamMember> {
  String? formatted;
   var formatter = new DateFormat('yyyy-MM-dd');
  String? selectedDate;
-late  DateTime nDate;
+  DateTime nDate = new DateTime.now();
+
   @override
   void initState() {
     super.initState();
@@ -93,7 +94,7 @@ late  DateTime nDate;
                     Card(
                       elevation: 5,
                       child: CalendarStrip(
-                        containerHeight: 80,
+                        containerHeight: 82,
                         startDate: startDate,
                         endDate: endDate,
                         onDateSelected: (date) {
@@ -119,7 +120,7 @@ late  DateTime nDate;
                       child: RefreshIndicator(
                         key: _refreshIndicatorKey,
                         onRefresh: _handleRefresh,
-                        child: (_employeeListApiCallBack!.data!.length > 0)
+                        child: (_employeeListApiCallBack?.data != null && _employeeListApiCallBack!.data!.isNotEmpty)
                             ? buildListView()
                             : Container(
                                 child: Center(

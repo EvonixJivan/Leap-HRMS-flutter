@@ -26,18 +26,23 @@ class EmployeeTaskApiCallBack {
      required this.data});
 
   EmployeeTaskApiCallBack.fromJson(Map<String, dynamic> json) {
-    status = json['status'];
-    message = json['message'];
-    offset = json['offset'];
-    suceess = json['suceess'];
-    count = json['count'];
-    limit = json['limit'];
-    totalCount = json['totalCount'];
-    taskApprovedCount = json['taskApprovedCount'];
-    taskNonApprovedCount = json['taskNonApprovedCount'];
-    taskCount = json['taskCount'];
-    if (json['data'] != null) {
+      status = json['status'] ?? 0;
+      message = json['message'];
+      offset = json['offset'] ?? 0;
+      suceess = json['suceess'] ?? false;
+      count = json['count'] ?? 0;
+      limit = json['limit'] ?? 0;
+      totalCount = json['totalCount'] ?? 0;
+
+      // Default to 0 if missing/null
+      taskApprovedCount = json['taskApprovedCount'] ?? 0;
+      taskNonApprovedCount = json['taskNonApprovedCount'] ?? 0;
+      taskCount = json['taskCount'] ?? 0;
+
+      if (json['data'] != null) {
         data = List<Data>.from(json['data'].map((v) => Data.fromJson(v)));
+      } else {
+        data = [];
       }
   }
 

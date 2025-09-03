@@ -55,7 +55,7 @@ class ApproveTaskState extends State<ApproveTask> {
  String? _apiToken;
  String? selectedDate;
  late DateTime selected;
- late DateTime nDate;
+  DateTime nDate = new DateTime.now();
 
   Future apiCallForTeamMembers() async {
     final SharedPreferences prefs = await _prefs;
@@ -290,7 +290,7 @@ class ApproveTaskState extends State<ApproveTask> {
                   Card(
                     elevation: 5,
                     child: CalendarStrip(
-                      containerHeight: 80,
+                      containerHeight: 82,
                       startDate: startDate,
                       endDate: endDate,
                       // selectedDate: selected,
@@ -322,7 +322,7 @@ class ApproveTaskState extends State<ApproveTask> {
                         child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
-                              (_employeeTaskApiCallBack!.data.length > 0)
+                              (_employeeTaskApiCallBack?.data != null && _employeeTaskApiCallBack!.data!.isNotEmpty)
                                   ? Text(
                                       'Total Working Minutes : ${_employeeTaskApiCallBack!.totalCount}',
                                       style: TextStyle(
@@ -335,7 +335,8 @@ class ApproveTaskState extends State<ApproveTask> {
                                           color: Color.fromRGBO(255, 81, 54, 1),
                                           fontSize: 18.0),
                                     ),
-                              (_employeeTaskApiCallBack!.data.length > 0)
+                              // (_employeeTaskApiCallBack!.data.length > 0)
+                              (_employeeTaskApiCallBack?.data != null && _employeeTaskApiCallBack!.data.isNotEmpty)
                                   ? Text(
                                       '${_employeeTaskApiCallBack!.taskApprovedCount ?? '0'} / ${_employeeTaskApiCallBack!.taskCount ?? '0'}')
                                   : Text('0'),
@@ -348,7 +349,8 @@ class ApproveTaskState extends State<ApproveTask> {
                     child: RefreshIndicator(
                       key: _refreshIndicatorKey,
                       onRefresh: _handleRefresh,
-                      child: (_employeeTaskApiCallBack!.data.length > 0)
+                      child: //(_employeeTaskApiCallBack!.data.length > 0)
+                       (_employeeTaskApiCallBack?.data != null && _employeeTaskApiCallBack!.data.isNotEmpty)
                           ? buildList()
                           : Container(
                               child: Center(
@@ -562,7 +564,7 @@ class ApproveTaskState extends State<ApproveTask> {
                               left: ScreenUtil().setSp(10),
                               bottom: ScreenUtil().setSp(10)),
                           child: Text(
-                            '${DateFormat('hh:mm a, dd MMM yyyy').format(DateFormat("yyyy-MM-dd HH:mm:ss").parse(_employeeTaskApiCallBack!.data[index].createdAt ?? "", true).toLocal())}',
+                            '${DateFormat('hh:mm a, dd MMM').format(DateFormat("yyyy-MM-dd HH:mm:ss").parse(_employeeTaskApiCallBack!.data[index].createdAt ?? "", true).toLocal())}',
                             style: dateTimeTextStyle,
                           )
                           // Text(
@@ -572,9 +574,10 @@ class ApproveTaskState extends State<ApproveTask> {
                           // ),
                           ),
                       Container(
+                        width: 130,
                         padding: EdgeInsets.only(
                             top: 2, bottom: 2, left: 1, right: 1),
-                        child: ElevatedButton(
+                        child: TextButton(
                           style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.white, elevation: 0),
                           child: Row(
